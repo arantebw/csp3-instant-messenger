@@ -19,3 +19,4 @@ Route::get('/dashboard', 'DashboardController@index');
 Route::post('/message/create', 'GroupMessagesController@store');
 Route::get('/message/{message}', 'GroupMessagesController@show');
 Route::post('/comment/{message}/create', 'ThreadsController@store');
+Route::get('/comment/{comment}', 'ThreadsController@show');

@@ -19,4 +19,8 @@ class ThreadsController extends Controller
     	// Redirection
     	return back();
     }
+
+    public function show(Thread $comment) {
+    	return view('dashboard.comment', compact('comment'));
+    }
 }

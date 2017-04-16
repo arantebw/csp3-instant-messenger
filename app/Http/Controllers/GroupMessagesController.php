@@ -24,6 +24,6 @@ class GroupMessagesController extends Controller
     }
 
     public function show(GroupMessage $message) {
-        return view('dashboard.show', compact('message'));
+        return view('dashboard.comments', compact('message'));
     }
 }
