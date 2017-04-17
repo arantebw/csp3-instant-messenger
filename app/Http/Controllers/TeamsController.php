@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class TeamsController extends Controller
 {
-    //
+    public function create() {
+        return view('sessions.team');
+    }
 }

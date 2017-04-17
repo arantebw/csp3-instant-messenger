@@ -18,3 +18,8 @@
 .chat-btn {
   padding: 20px;
 }
+
+.main-footer {
+  background-color: lightgrey;
+  padding: 30px 0 30px 0;
+}
