@@ -20,7 +20,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">#general</a>
+            <a class="nav-link" href="/dashboard">#general</a>
         </li>
 
         <li class="nav-item">
@@ -49,7 +49,14 @@
     </ul>
     <hr>
 
+    <!-- Creates new team, channel, or invite member -->
     <ul class="nav nav-pills flex-column">
+        <li class="nav-item">
+            <a class="nav-link" href="#">+ New team</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">+ New channel</a>
+        </li>
         <li class="nav-item">
             <a class="nav-link" href="#">+ New member</a>
         </li>
