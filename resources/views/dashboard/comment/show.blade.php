@@ -13,11 +13,14 @@
     <p>username &middot;
         <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
     </p>
-    
+
     <p class="text-muted">in #general</p>
-    
+
     <p>{{ $comment->body }}</p>
 
-    <a href="#">Edit</a> &middot; <a href="#">Delete</a>
+    <hr>
+    <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">Edit</a>
+    &middot;
+    <a class="btn btn-link" href="#">Delete</a>
 </main>
 @endsection

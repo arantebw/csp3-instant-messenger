@@ -21,6 +21,27 @@ class ThreadsController extends Controller
     }
 
     public function show(Thread $comment) {
-    	return view('dashboard.comment', compact('comment'));
+    	return view('dashboard.comment.show', compact('comment'));
+    }
+
+    public function edit(Thread $comment) {
+        return view('dashboard.comment.edit', compact('comment'));
+    }
+
+    public function update(Thread $comment) {
+        // Search comment from database
+        $comment = Thread::find($comment->id);
+
+        // Validate new data
+        $this->validate(request(), [
+            'body' => 'required|min:2'
+        ]);
+
+        // Save changes
+        $comment->body = request('body');
+        $comment->save();
+
+        // Redirection
+        return view('dashboard.comment.show', compact('comment'));
     }
 }
