@@ -20,7 +20,7 @@
         {{ csrf_field() }}
         {{ method_field('PUT') }}
 
-        <textarea id="body" name="body">{{ $message->body }}</textarea>
+        <textarea class="edit-textarea" id="body" name="body">{{ $message->body }}</textarea>
 
         <hr>
         <button class="btn btn-link text-success" type="submit">

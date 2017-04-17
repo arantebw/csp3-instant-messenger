@@ -24,7 +24,7 @@
         Edit
     </a>
     &middot;
-    <form method="POST" action="/comment/{{ $comment->id }}" style="display:inline">
+    <form class="inline-form" method="POST" action="/comment/{{ $comment->id }}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
 

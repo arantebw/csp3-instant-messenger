@@ -24,7 +24,7 @@
         Edit
     </a>
     &middot;
-    <form method="POST" action="/message/{{ $message->id }}" style="display:inline">
+    <form class="inline-form" method="POST" action="/message/{{ $message->id }}">
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
 

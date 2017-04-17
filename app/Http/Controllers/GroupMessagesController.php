@@ -40,6 +40,7 @@ class GroupMessagesController extends Controller
         // Create message
         $message = GroupMessage::find($message->id);
         $message->body = request('body');
+        
         // Save message
         $message->save();
 
@@ -48,13 +49,13 @@ class GroupMessagesController extends Controller
     }
 
     public function destroy(GroupMessage $message) {
-        // Search record from database
+        // Searching group message
         $message = GroupMessage::find($message->id);
 
-        // Deletion of record
+        // Deletion of group message
         $message->delete();
 
-        // Redirection
+        // Redirects to parent channel
         return redirect('/dashboard');
     }
 }

@@ -4,3 +4,13 @@
   border-radius: 5px;
   margin-bottom: 20px;
 }
+
+.inline-form {
+  display: inline;
+}
+
+.edit-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+}

@@ -48,8 +48,8 @@ class ThreadsController extends Controller
     public function destroy(Thread $comment) {
         $comment = Thread::find($comment->id);
         $comment->delete();
-        
-        // Must redirect to parent group message
+
+        // TODO: This must redirect to parent group message
         return redirect('/dashboard');
     }
 }
