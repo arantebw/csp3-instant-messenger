@@ -19,7 +19,12 @@
   padding: 20px;
 }
 
+.main-header {
+  background-color: #bfbfbf;
+  padding: 20px 0 20px 0;
+}
+
 .main-footer {
-  background-color: lightgrey;
+  background-color: #f7f7f7;
   padding: 30px 0 30px 0;
 }
