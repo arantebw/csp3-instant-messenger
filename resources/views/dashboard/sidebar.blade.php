@@ -2,13 +2,23 @@
 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <!-- Team currently user is signed in -->
-            <a class="nav-link active" href="#">WITS, Inc. <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="#">
+                Billy Wilson Arante
+                @arante
+            </a>
         </li>
+    </ul>
+    <hr>
 
+    <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <!-- Username -->
-            <a class="nav-link" href="#">@arante</a>
+            <a class="nav-link text-muted" href="#">Teams</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">wits-inc</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">fccmanila</a>
         </li>
     </ul>
     <hr>

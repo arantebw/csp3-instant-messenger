@@ -15,6 +15,7 @@ class CreateGroupMessagesTable extends Migration
     {
         Schema::create('group_messages', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('member_id');
             $table->text('body');
             $table->timestamps();
         });

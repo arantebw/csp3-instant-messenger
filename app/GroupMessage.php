@@ -10,9 +10,13 @@ class GroupMessage extends Model
     	return $this->hasMany(Thread::class);
     }
 
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
+
     public function add_comment($comment) {
         $new_comment = new Thread;
-        
+
         $new_comment->body = request('comment');
         $new_comment->group_message_id = $this->id;
 
