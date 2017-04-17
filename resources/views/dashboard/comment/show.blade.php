@@ -22,5 +22,6 @@
     <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">Edit</a>
     &middot;
     <a class="btn btn-link" href="#">Delete</a>
+    <hr>
 </main>
 @endsection

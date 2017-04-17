@@ -11,21 +11,21 @@
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
         <p>username &middot;
-            <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+            <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
         </p>
 
         <p class="text-muted">in #general</p>
 
-    <form method="POST" action="/comment/{{ $comment->id }}">
+    <form method="POST" action="/message/{{ $message->id }}">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
 
-        <textarea id="body" name="body">{{ $comment->body }}</textarea>
+        <textarea id="body" name="body">{{ $message->body }}</textarea>
 
         <hr>
-        <button class="btn btn-link"type="submit">Save</button>
+        <button class="btn btn-link" type="submit">Save</button>
         &middot;
-        <a class="btn btn-link" href="/comment/{{ $comment->id }}">Cancel</a>
+        <a class="btn btn-link" href="/message/{{ $message->id }}">Cancel</a>
         <hr>
     </form>
 </main>

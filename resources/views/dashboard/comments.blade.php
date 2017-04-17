@@ -13,12 +13,15 @@
     <p>username &middot;
         <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
     </p>
-    
+
     <p class="text-muted">in #general</p>
-    
+
     <p>{{ $message->body }}</p>
 
-    <a href="#">Edit</a> &middot; <a href="#">Delete</a>
+    <hr>
+    <a class="btn btn-link" href="/message/{{ $message->id }}/edit">Edit</a>
+    &middot;
+    <a class="btn btn-link" href="#">Delete</a>
     <hr>
     <!-- Show number of comments -->
 

@@ -19,6 +19,8 @@ Route::get('/dashboard', 'DashboardController@index');
 
 Route::post('/message/create', 'GroupMessagesController@store');
 Route::get('/message/{message}', 'GroupMessagesController@show');
+Route::get('/message/{message}/edit', 'GroupMessagesController@edit');
+Route::put('/message/{message}', 'GroupMessagesController@update');
 
 Route::post('/comment/{message}/create', 'ThreadsController@store');
 Route::get('/comment/{comment}', 'ThreadsController@show');

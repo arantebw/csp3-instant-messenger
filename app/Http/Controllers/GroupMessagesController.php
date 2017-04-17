@@ -26,4 +26,24 @@ class GroupMessagesController extends Controller
     public function show(GroupMessage $message) {
         return view('dashboard.comments', compact('message'));
     }
+
+    public function edit(GroupMessage $message) {
+        return view('dashboard.group-message.edit', compact('message'));
+    }
+
+    public function update(GroupMessage $message) {
+        // Validation
+        $this->validate(request(), [
+            'body' => 'required|min:2'
+        ]);
+
+        // Create message
+        $message = GroupMessage::find($message->id);
+        $message->body = request('body');
+        // Save message
+        $message->save();
+
+        // Redirect
+        return view('dashboard.comments', compact('message'));
+    }
 }
