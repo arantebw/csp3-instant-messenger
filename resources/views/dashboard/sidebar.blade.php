@@ -16,7 +16,7 @@
     <!-- Show team's created channels -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#">Channels</a>
+            <a class="nav-link text-muted" href="#">Channels</a>
         </li>
 
         <li class="nav-item">
@@ -36,7 +36,7 @@
     <!-- Shows available direct messages for team members -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#">Direct Messages</a>
+            <a class="nav-link text-muted" href="#">Direct Messages</a>
         </li>
 
         <li class="nav-item">

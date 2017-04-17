@@ -19,9 +19,20 @@
     <p>{{ $message->body }}</p>
 
     <hr>
-    <a class="btn btn-link" href="/message/{{ $message->id }}/edit">Edit</a>
+    <a class="btn btn-link" href="/message/{{ $message->id }}/edit">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        Edit
+    </a>
     &middot;
-    <a class="btn btn-link" href="#">Delete</a>
+    <form method="POST" action="/message/{{ $message->id }}" style="display:inline">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+
+        <button type="submit" class="btn btn-link text-danger">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            Delete
+        </button>
+    </form>
     <hr>
     <!-- Show number of comments -->
 

@@ -44,4 +44,12 @@ class ThreadsController extends Controller
         // Redirection
         return view('dashboard.comment.show', compact('comment'));
     }
+
+    public function destroy(Thread $comment) {
+        $comment = Thread::find($comment->id);
+        $comment->delete();
+        
+        // Must redirect to parent group message
+        return redirect('/dashboard');
+    }
 }

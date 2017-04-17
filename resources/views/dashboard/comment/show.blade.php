@@ -19,9 +19,20 @@
     <p>{{ $comment->body }}</p>
 
     <hr>
-    <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">Edit</a>
+    <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        Edit
+    </a>
     &middot;
-    <a class="btn btn-link" href="#">Delete</a>
+    <form method="POST" action="/comment/{{ $comment->id }}" style="display:inline">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+
+        <button type="submit" class="btn btn-link text-danger">
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
+            Delete
+        </button>
+    </form>
     <hr>
 </main>
 @endsection

@@ -23,9 +23,15 @@
         <textarea id="body" name="body">{{ $message->body }}</textarea>
 
         <hr>
-        <button class="btn btn-link" type="submit">Save</button>
+        <button class="btn btn-link text-success" type="submit">
+            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            Save
+        </button>
         &middot;
-        <a class="btn btn-link" href="/message/{{ $message->id }}">Cancel</a>
+        <a class="btn btn-link" href="/message/{{ $message->id }}">
+            <i class="fa fa-ban" aria-hidden="true"></i>
+            Cancel
+        </a>
         <hr>
     </form>
 </main>
