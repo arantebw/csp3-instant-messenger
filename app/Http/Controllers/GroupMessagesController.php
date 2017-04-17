@@ -46,4 +46,15 @@ class GroupMessagesController extends Controller
         // Redirect
         return view('dashboard.comments', compact('message'));
     }
+
+    public function destroy(GroupMessage $message) {
+        // Search record from database
+        $message = GroupMessage::find($message->id);
+
+        // Deletion of record
+        $message->delete();
+
+        // Redirection
+        return redirect('/dashboard');
+    }
 }
