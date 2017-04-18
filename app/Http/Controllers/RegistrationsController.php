@@ -12,6 +12,7 @@ class RegistrationsController extends Controller
     }
 
     public function store() {
+        // Validates user input
         $this->validate(request(), [
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
@@ -29,10 +30,13 @@ class RegistrationsController extends Controller
         // Store changes
         $member->save();
 
-        // Session of member ID
+        // Authorize new user to login
+        auth()->login($member);
+
+        // Owner of the new team to be created
         session(['owner' => $member->id]);
 
-        // Redirect to a page
+        // Redirects to create new team page
         return view('teams.create');
     }
 }

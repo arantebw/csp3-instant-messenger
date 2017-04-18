@@ -16,6 +16,8 @@ class GroupMessagesController extends Controller
     	// Create message
     	$new_message = new GroupMessage;
     	$new_message->body = request('message');
+        $new_message->member_id = auth()->id();
+
     	// Save message
     	$new_message->save();
 
@@ -40,7 +42,7 @@ class GroupMessagesController extends Controller
         // Create message
         $message = GroupMessage::find($message->id);
         $message->body = request('body');
-        
+
         // Save message
         $message->save();
 
