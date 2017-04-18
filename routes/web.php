@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logged-out', function () {
+    return view('logged_out');
+});
+
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index');
 
@@ -42,3 +46,4 @@ Route::post('/members', 'RegistrationsController@store');
 Route::get('/members/{member}', 'RegistrationsController@show');
 Route::get('/members/{member}/edit', 'RegistrationsController@edit');
 Route::put('/members/{member}', 'RegistrationsController@update');
+Route::delete('/members/{member}', 'RegistrationsController@destroy');

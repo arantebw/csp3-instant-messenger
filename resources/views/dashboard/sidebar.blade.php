@@ -2,19 +2,22 @@
 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="/members/{{ Auth::user()->id }}">
-                @if (Auth::check())
+            @if (Auth::check())
+                <a class="nav-link" href="/members/{{ Auth::user()->id }}">
                     <!-- Displays user's first name and last name -->
                     {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
                     <br>
                     <!-- Displays username and team user currently in -->
                     {{ '@' . Auth::user()->username }} in {{ session('team') }}
-                @else
-                    <!-- No authorized user is logged in -->
+                </a>
+            @else
+                <!-- No authorized user is logged in -->
+                <a class="nav-link" href="#">
                     Billy Wilson Arante
+                    <br>
                     @arante in team-7
-                @endif
-            </a>
+                </a>
+            @endif
         </li>
     </ul>
     <hr>

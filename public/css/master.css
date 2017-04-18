@@ -30,19 +30,32 @@
   padding: 30px 0 30px 0;
 }
 
+/* Create a new user */
 .red-header {
   background-color: red;
   opacity: 0.5;
+  color: #fff;
 }
 
+/* Create a team */
 .orange-header {
   background-color: orange;
   opacity: 0.5;
+  color: #fff;
 }
 
+/* Update user profile */
 .yellow-header {
   background-color: yellow;
   opacity: 0.5;
+  color: #000;
+}
+
+/* Show landing page for loggin out */
+.blue-header {
+  background-color: blue;
+  opacity: 0.5;
+  color: #fff;
 }
 
 .left-margin {

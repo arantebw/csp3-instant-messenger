@@ -74,4 +74,15 @@ class RegistrationsController extends Controller
         // Redirects to create new team page
         return view('registrations.show');
     }
+
+    public function destroy() {
+        // Searches for record of user to be deleted
+        $user = User::find(Auth::user()->id);
+
+        // Delete the current authorized user
+        $user->delete();
+
+        // Redirect to dashboard's main page
+        return redirect('/logged-out');
+    }
 }
