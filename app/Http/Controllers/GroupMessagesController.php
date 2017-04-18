@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\GroupMessage;
+use App\Team;
 
 class GroupMessagesController extends Controller
 {
@@ -26,7 +27,10 @@ class GroupMessagesController extends Controller
     }
 
     public function show(GroupMessage $message) {
-        return view('dashboard.comments', compact('message'));
+        return view(
+            'dashboard.comments',
+            compact('message')
+        );
     }
 
     public function edit(GroupMessage $message) {

@@ -15,7 +15,7 @@
     @include ('layouts.errors')
 
     <div class="card">
-        <h3 class="card-header text-center">Thank for using Reoslack!</h3>
+        <h3 class="card-header text-center">Thank you for using Reoslack!</h3>
 
         <div class="card-block">
             <p>You are now completely logged out.</p>
