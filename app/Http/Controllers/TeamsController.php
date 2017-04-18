@@ -13,7 +13,7 @@ class TeamsController extends Controller
 
     public function store() {
         $this->validate(request(), [
-            'team' => 'min:5'
+            'team' => 'required|min:5'
         ]);
 
         $new_team = new Team;

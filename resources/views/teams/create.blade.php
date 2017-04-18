@@ -38,7 +38,7 @@
                 <input class="form-control form-control-lg" type="text" placeholder="your-new-team" id="team" name="team" required>
                 <br>
 
-                <button class="btn btn-primary pull-right" type="submit">Continue</button>
+                <button class="btn btn-outline-primary btn-lg pull-right" type="submit">Continue</button>
             </form>
         </div>
     </div>
