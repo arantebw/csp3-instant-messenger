@@ -29,4 +29,5 @@ Route::get('/comment/{comment}/edit', 'ThreadsController@edit');
 Route::put('/comment/{comment}', 'ThreadsController@update');
 Route::delete('/comment/{comment}', 'ThreadsController@destroy');
 
-Route::get('/team/create', 'TeamsController@create');
+Route::get('/teams/create', 'TeamsController@create');
+Route::post('/teams', 'TeamsController@store');
