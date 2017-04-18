@@ -29,9 +29,10 @@ class RegistrationsController extends Controller
         // Store changes
         $member->save();
 
-        // Create authorization to login
+        // Session of member ID
+        session(['owner' => $member->id]);
 
         // Redirect to a page
-        return back();
+        return view('teams.create');
     }
 }

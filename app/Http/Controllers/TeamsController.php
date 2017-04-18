@@ -18,9 +18,12 @@ class TeamsController extends Controller
 
         $new_team = new Team;
         $new_team->name = request('team');
-        $new_team->owner = 0;  // Defaults to 0; no owner yet
+        $new_team->owner = session('owner');  // Defaults to 0; no owner yet
         $new_team->save();
 
-        return back();
+        // Set current session's team
+        session(['team' => $new_team->name]);
+
+        return redirect('/dashboard');
     }
 }

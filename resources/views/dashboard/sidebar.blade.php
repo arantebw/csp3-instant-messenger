@@ -3,8 +3,11 @@
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             <a class="nav-link" href="#">
+                <!-- Displays user's first name and last name -->
                 Billy Wilson Arante
-                @arante
+
+                <!-- Displays username and team user currently in -->
+                @arante in {{ session('team') }}
             </a>
         </li>
     </ul>
