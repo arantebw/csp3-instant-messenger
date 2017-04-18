@@ -17,6 +17,7 @@ class RegistrationsController extends Controller
             'first_name' => 'required|min:2',
             'last_name' => 'required|min:2',
             'email_address' => 'required|email',
+            'username' => 'required|min:2',
             'password' => 'required|confirmed'
         ]);
 
@@ -25,6 +26,7 @@ class RegistrationsController extends Controller
         $member->first_name = request('first_name');
         $member->last_name = request('last_name');
         $member->email = request('email_address');
+        $member->username = request('username');
         $member->password = bcrypt(request('password'));
 
         // Store changes

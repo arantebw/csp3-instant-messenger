@@ -3,11 +3,17 @@
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             <a class="nav-link" href="#">
-                <!-- Displays user's first name and last name -->
-                Billy Wilson Arante
-
-                <!-- Displays username and team user currently in -->
-                @arante in {{ session('team') }}
+                @if (Auth::check())
+                    <!-- Displays user's first name and last name -->
+                    {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
+                    <br>
+                    <!-- Displays username and team user currently in -->
+                    {{ '@' . Auth::user()->username }} in {{ session('team') }}
+                @else
+                    <!-- No authorized user is logged in -->
+                    Billy Wilson Arante
+                    @arante in team-7
+                @endif
             </a>
         </li>
     </ul>

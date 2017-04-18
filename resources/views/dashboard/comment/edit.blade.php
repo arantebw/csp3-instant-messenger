@@ -23,7 +23,7 @@
         <textarea class="edit-textarea" id="body" name="body">{{ $comment->body }}</textarea>
 
         <hr>
-        <button class="btn btn-link text-primary"type="submit">
+        <button class="btn btn-link"type="submit">
             <i class="fa fa-floppy-o" aria-hidden="true"></i>
             Save
         </button>

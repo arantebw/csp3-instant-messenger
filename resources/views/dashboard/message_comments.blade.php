@@ -1,5 +1,5 @@
 <div>
-    <p>username &middot;
+    <p>{{ $comment->member_id }} &middot;
         <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
     </p>
 

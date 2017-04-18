@@ -10,7 +10,7 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-    <p>username &middot;
+    <p>{{ $message->member_id }} &middot;
         <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
     </p>
 
