@@ -4,6 +4,12 @@
     reoslack &middot; Sign up
 @endsection
 
+@section ('header')
+<div class="container-fluid main-header red-header">
+    @include ('layouts.header_content')
+</div>
+@endsection
+
 @section ('content')
 <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
     @include ('layouts.errors')

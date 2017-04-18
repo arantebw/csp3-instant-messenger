@@ -39,3 +39,4 @@ Route::post('/teams', 'TeamsController@store');
 // Members
 Route::get('/members/create', 'RegistrationsController@create');
 Route::post('/members', 'RegistrationsController@store');
+Route::get('/members/{member}', 'RegistrationsController@show');

@@ -41,4 +41,8 @@ class RegistrationsController extends Controller
         // Redirects to create new team page
         return view('teams.create');
     }
+
+    public function show() {
+        return view('registrations.show');
+    }
 }
