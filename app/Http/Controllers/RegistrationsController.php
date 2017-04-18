@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Auth;
 
 class RegistrationsController extends Controller
 {
@@ -43,6 +44,34 @@ class RegistrationsController extends Controller
     }
 
     public function show() {
+        return view('registrations.show');
+    }
+
+    public function edit() {
+        return view('registrations.edit');
+    }
+
+    public function update() {
+        // Validates user input
+        $this->validate(request(), [
+            'first_name' => 'required|min:2',
+            'last_name' => 'required|min:2',
+            'email_address' => 'required|email',
+            'username' => 'required|min:2',
+            'password' => 'required|confirmed'
+        ]);
+
+        // Update team member details
+        Auth::user()->first_name = request('first_name');
+        Auth::user()->last_name = request('last_name');
+        Auth::user()->email = request('email_address');
+        Auth::user()->username = request('username');
+        Auth::user()->password = bcrypt(request('password'));
+
+        // Store changes
+        Auth::user()->save();
+
+        // Redirects to create new team page
         return view('registrations.show');
     }
 }

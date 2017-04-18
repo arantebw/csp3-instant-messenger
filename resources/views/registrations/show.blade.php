@@ -23,26 +23,26 @@
             <div class="container">
                 <div class="form-group row">
                     <label for="">First name</label>
-                    <input class="form-control" type="text" name="" value="{{  Auth::user()->first_name }}">
+                    <input class="form-control form-control-lg" type="text" name="" value="{{  Auth::user()->first_name }}" disabled>
                 </div>
                 <div class="form-group row">
                     <label for="">Last name</label>
-                    <input class="form-control" type="text" name="" value="{{  Auth::user()->last_name }}">
+                    <input class="form-control form-control-lg" type="text" name="" value="{{  Auth::user()->last_name }}" disabled>
                 </div>
                 <div class="form-group row">
                     <label for="">Email address</label>
-                    <input class="form-control" type="text" name="" value="{{  Auth::user()->email }}">
+                    <input class="form-control form-control-lg" type="text" name="" value="{{  Auth::user()->email }}" disabled>
                 </div>
                 <div class="form-group row">
                     <label for="">Username</label>
-                    <input class="form-control" type="text" name="" value="{{  Auth::user()->username }}">
+                    <input class="form-control form-control-lg" type="text" name="" value="{{  Auth::user()->username }}" disabled>
                 </div>
                 <div class="form-group row">
                     <label for="">Password</label>
-                    <input class="form-control" type="password" name="" value="{{  Auth::user()->password }}">
+                    <input class="form-control form-control-lg" type="password" name="" value="{{  Auth::user()->password }}" disabled>
                 </div>
                 <div class="form-group row pull-right">
-                    <a class="btn btn-outline-primary btn-lg left-margin" href="">Edit</a>
+                    <a class="btn btn-outline-primary btn-lg left-margin" href="/members/{{ Auth::user()->id }}/edit">Edit</a>
                     <button class="btn btn-outline-primary btn-lg left-margin" type="submit" name="button">Delete</button>
                 </div>
             </div>

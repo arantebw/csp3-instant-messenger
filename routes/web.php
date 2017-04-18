@@ -40,3 +40,5 @@ Route::post('/teams', 'TeamsController@store');
 Route::get('/members/create', 'RegistrationsController@create');
 Route::post('/members', 'RegistrationsController@store');
 Route::get('/members/{member}', 'RegistrationsController@show');
+Route::get('/members/{member}/edit', 'RegistrationsController@edit');
+Route::put('/members/{member}', 'RegistrationsController@update');
