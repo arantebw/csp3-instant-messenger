@@ -39,6 +39,7 @@ Route::delete('/comment/{comment}', 'ThreadsController@destroy');
 // Teams
 Route::get('/teams/create', 'TeamsController@create');
 Route::post('/teams', 'TeamsController@store');
+Route::get('/teams/{team}', 'TeamsController@show');
 
 // Members
 Route::get('/members/create', 'RegistrationsController@create');

@@ -5,17 +5,18 @@
             @if (Auth::check())
                 <a class="nav-link" href="/members/{{ Auth::user()->id }}">
                     <!-- Displays user's first name and last name -->
-                    {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
-                    <br>
+                    {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}<br>
+
                     <!-- Displays username and team user currently in -->
-                    {{ '@' . Auth::user()->username }} in {{ session('team') }}
+                    {{ '@' . Auth::user()->username }}<br>
+                    {{ session('team') }}
                 </a>
             @else
                 <!-- No authorized user is logged in -->
                 <a class="nav-link" href="#">
-                    Billy Wilson Arante
-                    <br>
-                    @arante in team-7
+                    Billy Wilson Arante<br>
+                    @arante<br>
+                    team-7
                 </a>
             @endif
         </li>
@@ -26,12 +27,12 @@
         <li class="nav-item">
             <a class="nav-link text-muted" href="#">Teams</a>
         </li>
+
+        @foreach ($teams as $team)
         <li class="nav-item">
-            <a class="nav-link" href="#">wits-inc</a>
+            <a class="nav-link" href="/teams/{{ $team->id }}">{{ $team->name }}</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">fccmanila</a>
-        </li>
+        @endforeach
     </ul>
     <hr>
 
@@ -62,11 +63,19 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">Regine Blanco</a>
+            <a class="nav-link" href="#">Kevin Durant</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">Wo Harmon Scheiz</a>
+            <a class="nav-link" href="#">Kyrie Irving</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">Steph Curry</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">James Harden</a>
         </li>
     </ul>
     <hr>
@@ -74,7 +83,7 @@
     <!-- Creates new team, channel, or invite member -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#">+ New team</a>
+            <a class="nav-link" href="/teams/create">+ New team</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#">+ New channel</a>
