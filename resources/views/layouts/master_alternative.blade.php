@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>reoslack &middot; Messenger for developers</title>
+    <title>@yield ('title')</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap4.min.css" rel="stylesheet">

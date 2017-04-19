@@ -4,7 +4,10 @@
     </button>
 
     <!-- Redirect members to reoslack landing page -->
-    <a class="navbar-brand" href="#">reoslack</a>
+    <a class="navbar-brand" href="#">
+        <i class="fa fa-rebel" aria-hidden="true"></i>
+        reoslack
+    </a>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">

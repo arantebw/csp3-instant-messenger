@@ -10,7 +10,7 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-        <p>username &middot;
+        <p>{{ $message->member_id }} &middot;
             <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
         </p>
 
@@ -23,7 +23,7 @@
         <textarea class="edit-textarea" id="body" name="body">{{ $message->body }}</textarea>
 
         <hr>
-        <button class="btn btn-link text-success" type="submit">
+        <button class="btn btn-link" type="submit">
             <i class="fa fa-floppy-o" aria-hidden="true"></i>
             Save
         </button>

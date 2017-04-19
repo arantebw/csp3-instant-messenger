@@ -2,10 +2,23 @@
 <nav class="col-sm-3 col-md-2 hidden-xs-down bg-faded sidebar">
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#">
-                Billy Wilson Arante
-                @arante
-            </a>
+            @if (Auth::check())
+                <a class="nav-link" href="/members/{{ Auth::user()->id }}">
+                    <!-- Displays user's first name and last name -->
+                    <p>{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</p>
+
+                    <!-- Displays username and team user currently in -->
+                    <p>{{ '@' . Auth::user()->username }}</p>
+                    <p>{{ session('team') }}</p>
+                </a>
+            @else
+                <!-- No authorized user is logged in -->
+                <a class="nav-link" href="#">
+                    <p>Billy Wilson Arante</p>
+                    <p>@arante</p>
+                    <p>team-7</p>
+                </a>
+            @endif
         </li>
     </ul>
     <hr>
@@ -14,12 +27,12 @@
         <li class="nav-item">
             <a class="nav-link text-muted" href="#">Teams</a>
         </li>
+
+        @foreach ($teams as $team)
         <li class="nav-item">
-            <a class="nav-link" href="#">wits-inc</a>
+            <a class="nav-link" href="/teams/{{ $team->id }}">{{ $team->name }}</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">fccmanila</a>
-        </li>
+        @endforeach
     </ul>
     <hr>
 
@@ -29,17 +42,11 @@
             <a class="nav-link text-muted" href="#">Channels</a>
         </li>
 
+        @foreach ($channels as $channel)
         <li class="nav-item">
-            <a class="nav-link" href="/dashboard">#general</a>
+            <a class="nav-link" href="/dashboard">$channel->name</a>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">#random</a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">#daily-task</a>
-        </li>
+        @endforeach
     </ul>
     <hr>
 
@@ -49,26 +56,36 @@
             <a class="nav-link text-muted" href="#">Direct Messages</a>
         </li>
 
+        @foreach ($users as $user)
         <li class="nav-item">
-            <a class="nav-link" href="#">Regine Blanco</a>
+            <a class="nav-link" href="#">
+                {{ $user->first_name . ' ' . $user->last_name }}
+            </a>
         </li>
-
-        <li class="nav-item">
-            <a class="nav-link" href="#">Wo Harmon Scheiz</a>
-        </li>
+        @endforeach
     </ul>
     <hr>
 
     <!-- Creates new team, channel, or invite member -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="#">+ New team</a>
+            <a class="nav-link" href="/teams/create">+ Create team</a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href="#">+ New channel</a>
+            <a class="nav-link" href="/teams/join">+ Join team</a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" href="#">+ New member</a>
+            <a class="nav-link" href="#">+ Create channel</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">+ Join channel</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">+ Invite member</a>
         </li>
     </ul>
 </nav>

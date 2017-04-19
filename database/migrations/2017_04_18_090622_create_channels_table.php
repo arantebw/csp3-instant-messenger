@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateThreadsTable extends Migration
+class CreateChannelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,12 @@ class CreateThreadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('threads', function (Blueprint $table) {
+        Schema::create('channels', function (Blueprint $table) {
             $table->increments('id');
-
-            // Group message this comment is for
-            $table->integer('group_message_id');
-
-            // Team member created this comment
-            $table->integer('member_id');
-            
-            $table->text('body');
+            $table->integer('team_id');  // Team who owns this channel
+            $table->string('name');
+            $table->integer('member_id');  // User who created this channel
+            $table->text('purpose');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ class CreateThreadsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('threads');
+        Schema::dropIfExists('channels');
     }
 }

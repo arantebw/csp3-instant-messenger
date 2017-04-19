@@ -10,7 +10,7 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-    <p>username &middot;
+    <p>{{ $comment->member_id }} &middot;
         <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
     </p>
 
@@ -28,7 +28,7 @@
         {{ csrf_field() }}
         {{ method_field('DELETE') }}
 
-        <button type="submit" class="btn btn-link text-danger">
+        <button type="submit" class="btn btn-link">
             <i class="fa fa-trash-o" aria-hidden="true"></i>
             Delete
         </button>

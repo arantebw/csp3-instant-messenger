@@ -15,18 +15,36 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logged-out', function () {
+    return view('logged_out');
+});
+
+// Dashboard
 Route::get('/dashboard', 'DashboardController@index');
 
+// Group messages
 Route::post('/message/create', 'GroupMessagesController@store');
 Route::get('/message/{message}', 'GroupMessagesController@show');
 Route::get('/message/{message}/edit', 'GroupMessagesController@edit');
 Route::put('/message/{message}', 'GroupMessagesController@update');
 Route::delete('/message/{message}', 'GroupMessagesController@destroy');
 
+// Comments
 Route::post('/comment/{message}/create', 'ThreadsController@store');
 Route::get('/comment/{comment}', 'ThreadsController@show');
 Route::get('/comment/{comment}/edit', 'ThreadsController@edit');
 Route::put('/comment/{comment}', 'ThreadsController@update');
 Route::delete('/comment/{comment}', 'ThreadsController@destroy');
 
-Route::get('/team/create', 'TeamsController@create');
+// Teams
+Route::get('/teams/create', 'TeamsController@create');
+Route::post('/teams', 'TeamsController@store');
+Route::get('/teams/{team}', 'TeamsController@show');
+
+// Members
+Route::get('/members/create', 'RegistrationsController@create');
+Route::post('/members', 'RegistrationsController@store');
+Route::get('/members/{member}', 'RegistrationsController@show');
+Route::get('/members/{member}/edit', 'RegistrationsController@edit');
+Route::put('/members/{member}', 'RegistrationsController@update');
+Route::delete('/members/{member}', 'RegistrationsController@destroy');
