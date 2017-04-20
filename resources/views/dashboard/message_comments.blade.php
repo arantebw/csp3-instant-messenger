@@ -2,7 +2,7 @@
     <p>
 		@foreach ($users as $user)
 			@if ($comment->member_id === $user->id)
-				{{ $user->username }}
+				{{ '@' . $user->username }}
 			@endif
 		@endforeach
     	&middot;

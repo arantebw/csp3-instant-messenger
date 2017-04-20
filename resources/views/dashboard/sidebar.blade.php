@@ -3,7 +3,7 @@
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             @if (Auth::check())
-                <a class="nav-link" href="/members/{{ Auth::user()->id }}">
+                <a class="nav-link side-link" href="/members/{{ Auth::user()->id }}">
                     <!-- Displays user's first name and last name -->
                     <p>
                         <i class="fa fa-user" aria-hidden="true"></i>

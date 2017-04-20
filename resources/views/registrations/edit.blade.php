@@ -45,7 +45,7 @@
                     <input class="form-control form-control-lg" type="password" name="password" value="{{  Auth::user()->password }}">
                 </div>
                 <div class="form-group row">
-                    <label for="">Password</label>
+                    <label for="">Confirm password</label>
                     <input class="form-control form-control-lg" type="password" name="password_confirmation" value="{{  Auth::user()->password }}">
                 </div>
                 <div class="form-group row pull-right">

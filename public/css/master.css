@@ -86,3 +86,17 @@ body {
 a:hover.side-link {
   background-color: #f1f1f1;
 }
+
+main.section-right {
+  position: relative;
+}
+
+section.message-maker {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: #fff;
+  padding: 20px 20px 20px 0;
+}

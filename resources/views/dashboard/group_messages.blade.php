@@ -2,7 +2,7 @@
     <div>
     	@foreach ($users as $user)
     		@if ($message->member_id === $user->id)
-    			{{ $user->username }}
+    			{{ '@' . $user->username }}
     		@endif
     	@endforeach
     	&middot;

@@ -1,6 +1,6 @@
 <!-- dashboard/create_comment.blade.php -->
-<section class="row">
-    <div class="col-sm-12">
+<section class="row message-maker">
+    <div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2">
         <form method="post" action="/comment/{{ $message->id }}/create">
             {{ csrf_field() }}
 

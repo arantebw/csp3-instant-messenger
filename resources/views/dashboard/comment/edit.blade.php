@@ -11,7 +11,7 @@
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
         <p>
-            @foreach ($users as $user) {{ $user->username }} @endforeach
+            @foreach ($users as $user) {{ '@' . $user->username }} @endforeach
             &middot;
             <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
         </p>

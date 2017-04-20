@@ -13,7 +13,7 @@
     <p>
         @foreach ($users as $user)
             @if ($message->member_id === $user->id)
-                {{ $user->username }}
+                {{ '@' . $user->username }}
             @endif
         @endforeach
         &middot;
@@ -46,7 +46,8 @@
     @foreach ($message->comments as $comment)
         @include ('dashboard.message_comments')
     @endforeach
-
+    <br><br><br>
+    
     @include ('dashboard.create_comment')
 </main>
 @endsection
