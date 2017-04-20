@@ -11,7 +11,11 @@
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
     <p>
-        @foreach ($users as $user) {{ $user->username }} @endforeach
+        @foreach ($users as $user)
+            @if ($message->member_id === $user->id)
+                {{ $user->username }}
+            @endif
+        @endforeach
         &middot;
         <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
     </p>
@@ -19,8 +23,8 @@
     <p class="text-muted">in #general</p>
 
     <p>{{ $message->body }}</p>
-
     <hr>
+
     <a class="btn btn-link" href="/message/{{ $message->id }}/edit">
         <i class="fa fa-pencil" aria-hidden="true"></i>
         Edit

@@ -9,6 +9,7 @@
                         <i class="fa fa-user" aria-hidden="true"></i>
                         {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
                     </p>
+                    <hr>
 
                     <!-- Displays username and team user currently in -->
                     <p>

@@ -28,7 +28,7 @@ class TeamsController extends Controller
         // Set current session's team
         session(['team' => $new_team->name]);
 
-        return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
+        return redirect('/dashboard');
     }
 
     public function show(Team $team) {

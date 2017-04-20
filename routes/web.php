@@ -20,6 +20,8 @@ Route::get('/logged-out', function () {
 });
 
 // Dashboard
+Route::get('/dashboard/', 'DashboardController@index');
+Route::get('/dashboard/{team}', 'DashboardController@index');
 Route::get('/dashboard/{team}/{channel}', 'DashboardController@index');
 
 // Group messages

@@ -1,6 +1,10 @@
 <div>
     <div>
-    	{{ $message->member_id }}
+    	@foreach ($users as $user)
+    		@if ($message->member_id === $user->id)
+    			{{ $user->username }}
+    		@endif
+    	@endforeach
     	&middot;
     	<span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
     </div>

@@ -26,7 +26,7 @@ class ThreadsController extends Controller
     public function show(Thread $comment) {
         $teams = Team::all();
         $channels = Channel::all();
-        $users = User::all();
+        $users = User::where('id', $comment->member_id)->get();
 
     	return view(
             'dashboard.comment.show',
@@ -42,7 +42,7 @@ class ThreadsController extends Controller
     public function edit(Thread $comment) {
         $teams = Team::all();
         $channels = Channel::all();
-        $users = User::all();
+        $users = User::where('id', $comment->member_id)->get();
 
         return view(
             'dashboard.comment.edit',
@@ -89,6 +89,6 @@ class ThreadsController extends Controller
         $comment->delete();
 
         // TODO: This must redirect to parent group message
-        return redirect('/dashboard');
+        return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
     }
 }

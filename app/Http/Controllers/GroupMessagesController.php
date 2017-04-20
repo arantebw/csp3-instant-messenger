@@ -7,6 +7,7 @@ use App\GroupMessage;
 use App\Team;
 use App\Channel;
 use App\User;
+use App\Thread;
 
 class GroupMessagesController extends Controller
 {
@@ -31,7 +32,8 @@ class GroupMessagesController extends Controller
     public function show(GroupMessage $message) {
         $teams = Team::all();
         $channels = Channel::all();
-        $users = User::where('id', $message->member_id)->get();
+        $users = User::all();
+        $comments = Thread::all();
 
         return view(
             'dashboard.comments',
@@ -39,7 +41,8 @@ class GroupMessagesController extends Controller
                 'message',
                 'teams',
                 'channels',
-                'users'
+                'users',
+                'comments'
             )
         );
     }
@@ -97,6 +100,6 @@ class GroupMessagesController extends Controller
         $message->delete();
 
         // Redirects to parent channel
-        return redirect('/dashboard');
+        return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
     }
 }
