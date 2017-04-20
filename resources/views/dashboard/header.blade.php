@@ -5,15 +5,15 @@
 
     <!-- Redirect members to reoslack landing page -->
     <a class="navbar-brand" href="#">
-        <i class="fa fa-rebel" aria-hidden="true"></i>
+        <i class="fa fa-registered" aria-hidden="true"></i>
         reoslack
     </a>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/dashboard">Home
-                    <span class="sr-only">(current)</span>
+                <a class="nav-link" href="/dashboard/{{ session('current_team') }}/{{ session('current_channel') }}">
+                    Home
                 </a>
             </li>
 

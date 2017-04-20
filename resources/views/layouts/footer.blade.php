@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <i class="fa fa-rebel fa-2x" aria-hidden="true"></i>
+                <i class="fa fa-registered" aria-hidden="true"></i>
                 Messenger for developers
             </div>
             <div class="col-sm-6 text-right">

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\GroupMessage;
 use App\Thread;
+use App\Team;
+use App\Channel;
+use App\User;
 
 class ThreadsController extends Controller
 {
@@ -21,14 +24,42 @@ class ThreadsController extends Controller
     }
 
     public function show(Thread $comment) {
-    	return view('dashboard.comment.show', compact('comment'));
+        $teams = Team::all();
+        $channels = Channel::all();
+        $users = User::all();
+
+    	return view(
+            'dashboard.comment.show',
+            compact(
+                'comment',
+                'teams',
+                'channels',
+                'users'
+            )
+        );
     }
 
     public function edit(Thread $comment) {
-        return view('dashboard.comment.edit', compact('comment'));
+        $teams = Team::all();
+        $channels = Channel::all();
+        $users = User::all();
+
+        return view(
+            'dashboard.comment.edit',
+            compact(
+                'comment',
+                'teams',
+                'channels',
+                'users'
+            )
+        );
     }
 
     public function update(Thread $comment) {
+        $teams = Team::all();
+        $channels = Channel::all();
+        $users = User::all();
+
         // Search comment from database
         $comment = Thread::find($comment->id);
 
@@ -42,7 +73,15 @@ class ThreadsController extends Controller
         $comment->save();
 
         // Redirection
-        return view('dashboard.comment.show', compact('comment'));
+        return view(
+            'dashboard.comment.show',
+            compact(
+                'comment',
+                'teams',
+                'channels',
+                'users'
+            )
+        );
     }
 
     public function destroy(Thread $comment) {

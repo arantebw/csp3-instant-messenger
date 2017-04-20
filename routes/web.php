@@ -20,7 +20,7 @@ Route::get('/logged-out', function () {
 });
 
 // Dashboard
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/dashboard/{team}/{channel}', 'DashboardController@index');
 
 // Group messages
 Route::post('/message/create', 'GroupMessagesController@store');
@@ -40,6 +40,7 @@ Route::delete('/comment/{comment}', 'ThreadsController@destroy');
 Route::get('/teams/create', 'TeamsController@create');
 Route::post('/teams', 'TeamsController@store');
 Route::get('/teams/{team}', 'TeamsController@show');
+Route::get('/teams/{team}/set', 'TeamsController@set');
 
 // Members
 Route::get('/members/create', 'RegistrationsController@create');
@@ -48,3 +49,12 @@ Route::get('/members/{member}', 'RegistrationsController@show');
 Route::get('/members/{member}/edit', 'RegistrationsController@edit');
 Route::put('/members/{member}', 'RegistrationsController@update');
 Route::delete('/members/{member}', 'RegistrationsController@destroy');
+
+// Channels
+Route::get('/channels/create', 'ChannelsController@create');
+Route::post('/channels', 'ChannelsController@store');
+Route::get('/channels/{channel}', 'ChannelsController@show');
+Route::get('/channels/{channel}/set', 'ChannelsController@set');
+
+// Direct messages
+Route::get('/dashboard/{team}/{user1}/chats/{user2}', 'UsersController@chats');

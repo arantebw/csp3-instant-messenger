@@ -10,7 +10,8 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
-    <p>{{ $comment->member_id }} &middot;
+    <p>
+        {{ $comment->member_id }} &middot;
         <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
     </p>
 

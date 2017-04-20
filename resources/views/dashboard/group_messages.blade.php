@@ -1,5 +1,7 @@
 <div>
-    <div>{{ $message->member_id }} &middot;
+    <div>
+    	{{ $message->member_id }}
+    	&middot;
     	<span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
     </div>
 

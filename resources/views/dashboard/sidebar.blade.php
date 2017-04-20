@@ -5,17 +5,27 @@
             @if (Auth::check())
                 <a class="nav-link" href="/members/{{ Auth::user()->id }}">
                     <!-- Displays user's first name and last name -->
-                    <p>{{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}</p>
+                    <p>
+                        <i class="fa fa-user" aria-hidden="true"></i>
+                        {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
+                    </p>
 
                     <!-- Displays username and team user currently in -->
-                    <p>{{ '@' . Auth::user()->username }}</p>
-                    <p>{{ session('team') }}</p>
+                    <p>
+                        <i class="fa fa-at" aria-hidden="true"></i>
+                        {{ Auth::user()->username }}
+                    </p>
+
+                    <p>
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        {{ session('current_team') }}
+                    </p>
                 </a>
             @else
                 <!-- No authorized user is logged in -->
                 <a class="nav-link" href="#">
                     <p>Billy Wilson Arante</p>
-                    <p>@arante</p>
+                    <p>arante</p>
                     <p>team-7</p>
                 </a>
             @endif
@@ -30,7 +40,10 @@
 
         @foreach ($teams as $team)
         <li class="nav-item">
-            <a class="nav-link" href="/teams/{{ $team->id }}">{{ $team->name }}</a>
+            <a class="nav-link" href="/teams/{{ $team->id }}">
+                <i class="fa fa-users" aria-hidden="true"></i>
+                {{ $team->name }}
+            </a>
         </li>
         @endforeach
     </ul>
@@ -44,7 +57,10 @@
 
         @foreach ($channels as $channel)
         <li class="nav-item">
-            <a class="nav-link" href="/dashboard">$channel->name</a>
+            <a class="nav-link" href="/channels/{{ $channel->id }}">
+                <i class="fa fa-slack" aria-hidden="true"></i>
+                {{ $channel->name }}
+            </a>
         </li>
         @endforeach
     </ul>
@@ -58,7 +74,8 @@
 
         @foreach ($users as $user)
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->username }}/chats/{{ $user->username }}">
+                <i class="fa fa-user" aria-hidden="true"></i>
                 {{ $user->first_name . ' ' . $user->last_name }}
             </a>
         </li>
@@ -69,23 +86,42 @@
     <!-- Creates new team, channel, or invite member -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="/teams/create">+ Create team</a>
+            <a class="nav-link text-muted" href="#">Actions</a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/teams/join">+ Join team</a>
+            <a class="nav-link" href="/teams/create">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Create team
+            </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">+ Create channel</a>
+            <a class="nav-link" href="/teams/join">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Join team
+            </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">+ Join channel</a>
+            <a class="nav-link" href="/channels/create">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Create channel
+            </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">+ Invite member</a>
+            <a class="nav-link" href="#">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Join channel
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                Invite member
+            </a>
         </li>
     </ul>
 </nav>
