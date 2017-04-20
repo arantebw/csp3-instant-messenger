@@ -16,6 +16,8 @@
     <!-- Personal styles -->
     <link rel="stylesheet" href="/css/master.css">
 
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
   </head>
   <body>
 

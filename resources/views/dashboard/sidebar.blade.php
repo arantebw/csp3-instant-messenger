@@ -7,19 +7,25 @@
                     <!-- Displays user's first name and last name -->
                     <p>
                         <i class="fa fa-user" aria-hidden="true"></i>
-                        {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
+                        <span class="sidebar-item">
+                            {{ Auth::user()->first_name . ' ' . Auth::user()->last_name }}
+                        </span>
                     </p>
                     <hr>
 
                     <!-- Displays username and team user currently in -->
                     <p>
                         <i class="fa fa-at" aria-hidden="true"></i>
-                        {{ Auth::user()->username }}
+                        <span class="sidebar-item">
+                            {{ Auth::user()->username }}
+                        </span>
                     </p>
 
                     <p>
                         <i class="fa fa-users" aria-hidden="true"></i>
-                        {{ session('current_team') }}
+                        <span class="sidebar-item">
+                            {{ session('current_team') }}
+                        </span>
                     </p>
                 </a>
             @else
@@ -41,9 +47,11 @@
 
         @foreach ($teams as $team)
         <li class="nav-item">
-            <a class="nav-link" href="/teams/{{ $team->id }}">
+            <a class="nav-link side-link" href="/teams/{{ $team->id }}">
                 <i class="fa fa-users" aria-hidden="true"></i>
-                {{ $team->name }}
+                <span class="sidebar-item">
+                    {{ $team->name }}
+                </span>
             </a>
         </li>
         @endforeach
@@ -58,9 +66,11 @@
 
         @foreach ($channels as $channel)
         <li class="nav-item">
-            <a class="nav-link" href="/channels/{{ $channel->id }}">
+            <a class="nav-link side-link" href="/channels/{{ $channel->id }}">
                 <i class="fa fa-slack" aria-hidden="true"></i>
-                {{ $channel->name }}
+                <span class="sidebar-item">
+                    {{ $channel->name }}
+                </span>
             </a>
         </li>
         @endforeach
@@ -75,9 +85,11 @@
 
         @foreach ($users as $user)
         <li class="nav-item">
-            <a class="nav-link" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->username }}/chats/{{ $user->username }}">
+            <a class="nav-link side-link" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->username }}/chats/{{ $user->username }}">
                 <i class="fa fa-user" aria-hidden="true"></i>
-                {{ $user->first_name . ' ' . $user->last_name }}
+                <span class="sidebar-item">
+                    {{ $user->first_name . ' ' . $user->last_name }}
+                </span>
             </a>
         </li>
         @endforeach
@@ -91,37 +103,47 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/teams/create">
+            <a class="nav-link side-link" href="/teams/create">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-                Create team
+                <span class="sidebar-item">
+                    Create team
+                </span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/teams/join">
+            <a class="nav-link side-link" href="/teams/join">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-                Join team
+                <span class="sidebar-item">
+                    Join team
+                </span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="/channels/create">
+            <a class="nav-link side-link" href="/channels/create">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-                Create channel
+                <span class="sidebar-item">
+                    Create channel
+                </span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link side-link" href="#">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-                Join channel
+                <span class="sidebar-item">
+                    Join channel
+                </span>
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link side-link" href="#">
                 <i class="fa fa-plus" aria-hidden="true"></i>
-                Invite member
+                <span class="sidebar-item">
+                    Invite member
+                </span>
             </a>
         </li>
     </ul>
