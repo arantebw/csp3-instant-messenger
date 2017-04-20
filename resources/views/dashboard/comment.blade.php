@@ -13,10 +13,10 @@
     <p>username &middot;
         <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
     </p>
-    
+
     <p class="text-muted">in #general</p>
-    
-    <p>{{ $comment->body }}</p>
+
+    <p class="group-message">{{ $comment->body }}</p>
 
     <a href="#">Edit</a> &middot; <a href="#">Delete</a>
 </main>

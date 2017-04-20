@@ -22,7 +22,7 @@
 
     <p class="text-muted">in #general</p>
 
-    <p>{{ $message->body }}</p>
+    <p class="group-message">{{ $message->body }}</p>
     <hr>
 
     <a class="btn btn-link" href="/message/{{ $message->id }}/edit">

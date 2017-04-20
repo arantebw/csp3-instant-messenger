@@ -1,3 +1,7 @@
+a:hover.btn.btn-link {
+  text-decoration: none;
+}
+
 .new-message {
   border: 1px solid lightgrey;
   padding: 10px;
@@ -67,4 +71,8 @@
 
 .left-margin {
   margin: 10px;
+}
+
+.group-message {
+  padding: 20px;
 }

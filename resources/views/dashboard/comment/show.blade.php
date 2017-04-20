@@ -18,7 +18,7 @@
 
     <p class="text-muted">in #general</p>
 
-    <p>{{ $comment->body }}</p>
+    <p class="group-message">{{ $comment->body }}</p>
 
     <hr>
     <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">

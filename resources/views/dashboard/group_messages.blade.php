@@ -10,7 +10,7 @@
     </div>
 
     <a href="/message/{{ $message->id }}">
-        {{ $message->body }}
+        <p class="group-message">{{ $message->body }}</p>
     </a>
 </div>
 <hr>
