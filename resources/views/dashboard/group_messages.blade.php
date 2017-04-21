@@ -2,11 +2,11 @@
     <div>
     	@foreach ($users as $user)
     		@if ($message->member_id === $user->id)
-    			{{ '@' . $user->username }}
+    			{{ $user->username }}
     		@endif
     	@endforeach
     	&middot;
-    	<span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
+    	<small class="text-muted">{{ $message->created_at->diffForHumans() }}</small>
     </div>
 
     <a href="/message/{{ $message->id }}">

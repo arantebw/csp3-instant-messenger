@@ -18,7 +18,8 @@ class CreateGroupMessagesTable extends Migration
 
             // Team member created this group message
             $table->integer('member_id');
-            
+            $table->integer('team_id');
+            $table->integer('channel_id');
             $table->text('body');
             $table->timestamps();
         });

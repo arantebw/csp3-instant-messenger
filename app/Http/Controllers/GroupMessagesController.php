@@ -17,10 +17,22 @@ class GroupMessagesController extends Controller
     		'message' => 'required'
     	]);
 
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $team_id = $t->id;
+        }
+
+        $channel = Channel::where('name', session('current_channel'))->get();
+        foreach ($channel as $c) {
+            $channel_id = $c->id;
+        }
+        
     	// Create message
     	$new_message = new GroupMessage;
     	$new_message->body = request('message');
         $new_message->member_id = auth()->id();
+        $new_message->team_id = $team_id;
+        $new_message->channel_id = $channel_id;
 
     	// Save message
     	$new_message->save();

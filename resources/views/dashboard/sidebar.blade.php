@@ -106,7 +106,7 @@
         @foreach ($users as $user)
         <li class="nav-item">
             <a class="nav-link side-link" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
-                <i class="fa fa-user" aria-hidden="true"></i>
+                <i class="fa fa-circle-o" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     {{ $user->first_name . ' ' . $user->last_name }}
                 </span>

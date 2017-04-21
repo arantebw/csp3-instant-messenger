@@ -20,7 +20,7 @@ class GroupMessage extends Model
         $new_comment->body = request('comment');
         $new_comment->group_message_id = $this->id;
         $new_comment->member_id = auth()->id();
-
+        
         $new_comment->save();
     }
 }
