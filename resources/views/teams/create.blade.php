@@ -11,6 +11,10 @@
 @endsection
 
 @section ('content')
+<a href="/dashboard">
+    <i class="fa fa-times fa-3x close-button-black text-muted" aria-hidden="true"></i>
+</a>
+
 <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
     @include ('layouts.errors')
 

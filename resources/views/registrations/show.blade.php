@@ -11,13 +11,15 @@
 @endsection
 
 @section ('content')
+<a href="/dashboard">
+    <i class="fa fa-times fa-3x close-button-black text-muted" aria-hidden="true"></i>
+</a>
+
 <div class="col-md-8 col-md-offset-4 card-settings">
     @include ('layouts.errors')
 
     <div class="card">
         <h3 class="card-header text-center">Your user profile</h3>
-
-        <!-- <img class="card-img-top" src="/img/team.jpg"> -->
 
         <div class="card-block">
             <div class="container">

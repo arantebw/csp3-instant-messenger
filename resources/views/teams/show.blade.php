@@ -11,6 +11,10 @@
 @endsection
 
 @section ('content')
+<a href="/dashboard">
+    <i class="fa fa-times fa-3x close-button-white" aria-hidden="true"></i>
+</a>
+
 <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
     @include ('layouts.errors')
 
@@ -36,7 +40,9 @@
                 @endforeach
                 <br>
 
-                <button class="btn btn-outline-primary btn-lg pull-right left-margin" type="submit">Delete</button>
+                <button class="btn btn-outline-primary btn-lg pull-right left-margin" type="submit">
+                    Delete
+                </button>
 
                 <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/teams/{{ $team->id }}/edit">
                     Edit

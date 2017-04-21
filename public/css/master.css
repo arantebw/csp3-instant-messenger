@@ -121,3 +121,17 @@ section.message-maker {
 .counter-padding {
   padding: 0 10px;
 }
+
+.close-button-white {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+}
+
+.close-button-black {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: #000;
+}

@@ -3,7 +3,7 @@
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
             @if (Auth::check())
-                <a class="nav-link side-link" href="/members/{{ Auth::user()->id }}">
+                <a class="nav-link side-link text-muted" href="/members/{{ Auth::user()->id }}">
                     <!-- Displays user's first name and last name -->
                     <p>
                         <i class="fa fa-user" aria-hidden="true"></i>
@@ -31,7 +31,7 @@
             @else
                 <!-- No authorized user is logged in -->
                 <!-- Displays user's first name and last name -->
-                <a class="nav-link side-link" href="#">
+                <a class="nav-link side-link text-muted" href="#">
                 <p>
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span class="sidebar-item">
@@ -67,7 +67,7 @@
 
         @foreach ($teams as $team)
         <li class="nav-item">
-            <a class="nav-link side-link" href="/teams/{{ $team->id }}">
+            <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
                 <i class="fa fa-users" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     {{ $team->name }}
@@ -86,7 +86,7 @@
 
         @foreach ($channels as $channel)
         <li class="nav-item">
-            <a class="nav-link side-link" href="/channels/{{ $channel->id }}">
+            <a class="nav-link side-link text-muted" href="/channels/{{ $channel->id }}">
                 <i class="fa fa-slack" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     {{ $channel->name }}
@@ -105,7 +105,7 @@
 
         @foreach ($users as $user)
         <li class="nav-item">
-            <a class="nav-link side-link" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
+            <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
                 <i class="fa fa-circle-o" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     {{ $user->first_name . ' ' . $user->last_name }}
@@ -123,7 +123,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link" href="/teams/create">
+            <a class="nav-link side-link text-muted" href="/teams/create">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Create team
@@ -132,7 +132,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link" href="/teams/join">
+            <a class="nav-link side-link text-muted" href="/teams/join">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Join team
@@ -141,7 +141,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link" href="/channels/create">
+            <a class="nav-link side-link text-muted" href="/channels/create">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Create channel
@@ -150,7 +150,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link" href="#">
+            <a class="nav-link side-link text-muted" href="#">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Join channel
@@ -159,7 +159,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link" href="#">
+            <a class="nav-link side-link text-muted" href="#">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Invite member
