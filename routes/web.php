@@ -60,3 +60,4 @@ Route::get('/channels/{channel}/set', 'ChannelsController@set');
 
 // Direct messages
 Route::get('/dashboard/{team}/{user1}/chats/{user2}', 'DirectMessagesController@chats');
+Route::post('/direct-messages/{direct_message}/create', 'DirectMessagesController@store');
