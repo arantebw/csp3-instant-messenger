@@ -43,6 +43,9 @@ Route::get('/teams/create', 'TeamsController@create');
 Route::post('/teams', 'TeamsController@store');
 Route::get('/teams/{team}', 'TeamsController@show');
 Route::get('/teams/{team}/set', 'TeamsController@set');
+Route::get('/teams/{team}/edit', 'TeamsController@edit');
+Route::put('/teams/{team}', 'TeamsController@update');
+Route::delete('/teams/{team}', 'TeamsController@destroy');
 
 // Members
 Route::get('/members/create', 'RegistrationsController@create');

@@ -2,11 +2,11 @@
     <p>
 		@foreach ($users as $user)
 			@if ($comment->member_id === $user->id)
-				{{ '@' . $user->username }}
+				<strong>{{ $user->username }}</strong>
 			@endif
 		@endforeach
     	<span class="counter-padding">&middot;</span>
-        <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+        <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
     </p>
 
 	<a href="/comment/{{ $comment->id }}">

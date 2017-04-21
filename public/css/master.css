@@ -69,6 +69,18 @@ body {
   color: #fff;
 }
 
+.indigo-header {
+  background-color: indigo;
+  opacity: 0.5;
+  color: #fff;
+}
+
+.violet-header {
+  background-color: violet;
+  opacity: 0.5;
+  color: #fff;
+}
+
 .left-margin {
   margin: 10px;
 }

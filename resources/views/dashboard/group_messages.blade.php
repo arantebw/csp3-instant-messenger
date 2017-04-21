@@ -2,7 +2,7 @@
     <div>
     	@foreach ($users as $user)
     		@if ($message->member_id === $user->id)
-    			{{ $user->username }}
+    			<strong>{{ $user->username }}</strong>
     		@endif
     	@endforeach
     	<span class="counter-padding">&middot;</span>

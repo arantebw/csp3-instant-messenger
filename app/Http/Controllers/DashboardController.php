@@ -18,19 +18,16 @@ class DashboardController extends Controller
             $current_member_id = $t->member_id;
         }
 
-        if (session('current_channel') == null) {
-            // Retrieve's current channel ID
-            $channel = Channel::where('name', session('current_channel'))->get();
-            foreach ($channel as $c) {
-                $current_channel_id = $c->id;
-            }
-            $messages = GroupMessage::where([
-                ['team_id', $current_team_id],['channel_id', $current_channel_id]
-            ])
-            ->get();
-        } else {
-            $messages = GroupMessage::all();
+        // Retrieve's current channel ID
+        $channel = Channel::where('name', session('current_channel'))->get();
+        foreach ($channel as $c) {
+            $current_channel_id = $c->id;
         }
+        
+        $messages = GroupMessage::where([
+            ['team_id', $current_team_id],['channel_id', $current_channel_id]
+        ])
+        ->get();
 
         $channels = Channel::where('team_id', $current_team_id)->get();
 

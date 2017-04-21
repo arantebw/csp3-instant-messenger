@@ -13,10 +13,16 @@ use Auth;
 class DirectMessagesController extends Controller
 {
     public function chats($team, $user1, $user2) {
+        // Filters channel's list in sidebar
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->member_id;
+        }
+        $channels = Channel::where('team_id', $current_team_id)->get();
+
         $teams = Team::all();
         $team = Team::where('name', $team)->get();
-
-        $channels = Channel::all();
 
         $users = User::all();
 

@@ -3,11 +3,12 @@
     <div>
         @foreach ($users as $user)
             @if ($user->id === $direct_message->sender_id)
-                {{ $user->username }}
+                <strong>{{ $user->username }}</strong>
             @endif
         @endforeach
 
-    	&middot;
+    	<span class="counter-padding">&middot;</span>
+        
     	<small class="text-muted">
             {{ $direct_message->created_at->diffForHumans() }}
         </small>

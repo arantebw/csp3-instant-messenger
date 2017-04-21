@@ -13,14 +13,14 @@
     <p>
         @foreach ($users as $user)
             @if ($message->member_id === $user->id)
-                {{ '@' . $user->username }}
+                <strong>{{ '@' . $user->username }}</strong>
             @endif
         @endforeach
         <span class="counter-padding">&middot;</span>
-        <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
+        <small class="text-muted">{{ $message->created_at->diffForHumans() }}</small>
     </p>
 
-    <p class="text-muted">in #general</p>
+    <small class="text-muted">in #general</small>
 
     <p class="group-message">{{ $message->body }}</p>
     <hr>

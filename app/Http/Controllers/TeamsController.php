@@ -44,7 +44,9 @@ class TeamsController extends Controller
     }
 
     public function show(Team $team) {
-        return view('teams.show', compact('team'));
+        $user = User::where('id', $team->owner)->get();
+
+        return view('teams.show', compact('team', 'user'));
     }
 
     public function set(Team $team) {
@@ -57,5 +59,34 @@ class TeamsController extends Controller
         session(['current_team' => $team->name]);
 
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
+    }
+
+    public function edit(Team $team) {
+        $user = User::all();
+        return view('teams.edit', compact('team', 'user'));
+    }
+
+    public function update(Team $team) {
+        $team = Team::find($team->id);
+
+        $this->validate(request(), [
+            'team_name' => 'required|min:2'
+        ]);
+
+        $team->name = request('team_name');
+        $user = User::where('id', request('team_owner'))->get();
+        foreach ($user as $u1) {
+            $team->owner = $u1->id;
+        }
+        $team->save();
+
+        return redirect('/teams/' . $team->id);
+    }
+
+    public function destroy(Team $team) {
+        $team = Team::find($team->id);
+        $team->delete();
+
+        return redirect('/dashboard');
     }
 }

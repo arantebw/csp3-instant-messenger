@@ -26,7 +26,7 @@ class GroupMessagesController extends Controller
         foreach ($channel as $c) {
             $channel_id = $c->id;
         }
-        
+
     	// Create message
     	$new_message = new GroupMessage;
     	$new_message->body = request('message');
@@ -42,8 +42,16 @@ class GroupMessagesController extends Controller
     }
 
     public function show(GroupMessage $message) {
+        // Filters channel's list in sidebar
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->member_id;
+        }
+        $channels = Channel::where('team_id', $current_team_id)->get();
+
         $teams = Team::all();
-        $channels = Channel::all();
+
         $users = User::all();
         $comments = Thread::all();
 
@@ -60,8 +68,15 @@ class GroupMessagesController extends Controller
     }
 
     public function edit(GroupMessage $message) {
+        // Filters channel's list in sidebar
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->member_id;
+        }
+        $channels = Channel::where('team_id', $current_team_id)->get();
+
         $teams = Team::all();
-        $channels = Channel::all();
         $users = User::all();
 
         return view(

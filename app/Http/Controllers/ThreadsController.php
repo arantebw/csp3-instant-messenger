@@ -24,9 +24,17 @@ class ThreadsController extends Controller
     }
 
     public function show(Thread $comment) {
+        // Filters channel's list in sidebar
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->member_id;
+        }
+        $channels = Channel::where('team_id', $current_team_id)->get();
+
+        $users = User::all();
         $teams = Team::all();
-        $channels = Channel::all();
-        $users = User::where('id', $comment->member_id)->get();
+        $user = User::where('id', $comment->member_id)->get();
 
     	return view(
             'dashboard.comment.show',
@@ -34,6 +42,7 @@ class ThreadsController extends Controller
                 'comment',
                 'teams',
                 'channels',
+                'user',
                 'users'
             )
         );

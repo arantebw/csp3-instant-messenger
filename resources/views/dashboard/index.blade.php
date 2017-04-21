@@ -14,8 +14,10 @@
     <h2>{{ '#' . session('current_channel') }}</h2>  <!-- Current channel -->
     <small class="text-muted">
         <span>
-            <i class="fa fa-user-o" aria-hidden="true"></i>
-            5
+            <a href="#">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                5
+            </a>
         </span>
         <span class="counter-padding">&middot;</span>
         <span>
