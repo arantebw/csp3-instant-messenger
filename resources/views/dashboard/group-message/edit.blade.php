@@ -12,7 +12,7 @@
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
         <p>
             @foreach ($users as $user) {{ '@' . $user->username }} @endforeach
-            &middot;
+            <span class="counter-padding">&middot;</span>
             <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
         </p>
 

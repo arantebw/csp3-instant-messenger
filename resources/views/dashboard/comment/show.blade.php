@@ -12,7 +12,7 @@
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
     <p>
         @foreach ($users as $user) {{ '@' . $user->username }} @endforeach
-        &middot;
+        <span class="counter-padding">&middot;</span>
         <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
     </p>
 
@@ -20,7 +20,7 @@
 
     <p class="group-message">{{ $comment->body }}</p>
     <hr>
-    
+
     <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">
         <i class="fa fa-pencil" aria-hidden="true"></i>
         Edit

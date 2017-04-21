@@ -5,7 +5,7 @@
     			{{ $user->username }}
     		@endif
     	@endforeach
-    	&middot;
+    	<span class="counter-padding">&middot;</span>
     	<small class="text-muted">{{ $message->created_at->diffForHumans() }}</small>
     </div>
 

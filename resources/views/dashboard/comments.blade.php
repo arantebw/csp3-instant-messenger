@@ -16,7 +16,7 @@
                 {{ '@' . $user->username }}
             @endif
         @endforeach
-        &middot;
+        <span class="counter-padding">&middot;</span>
         <span class="text-muted">{{ $message->created_at->diffForHumans() }}</span>
     </p>
 
@@ -47,7 +47,7 @@
         @include ('dashboard.message_comments')
     @endforeach
     <br><br><br>
-    
+
     @include ('dashboard.create_comment')
 </main>
 @endsection

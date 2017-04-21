@@ -105,3 +105,7 @@ section.message-maker {
   margin: 0 auto;
   padding: 70px 0 70px 0;
 }
+
+.counter-padding {
+  padding: 0 10px;
+}
