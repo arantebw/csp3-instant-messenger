@@ -20,7 +20,7 @@ Route::get('/logged-out', function () {
 });
 
 // Dashboard
-Route::get('/dashboard/', 'DashboardController@index');
+Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/{team}', 'DashboardController@index');
 Route::get('/dashboard/{team}/{channel}', 'DashboardController@index');
 
@@ -59,4 +59,4 @@ Route::get('/channels/{channel}', 'ChannelsController@show');
 Route::get('/channels/{channel}/set', 'ChannelsController@set');
 
 // Direct messages
-Route::get('/dashboard/{team}/{user1}/chats/{user2}', 'UsersController@chats');
+Route::get('/dashboard/{team}/{user1}/chats/{user2}', 'DirectMessagesController@chats');

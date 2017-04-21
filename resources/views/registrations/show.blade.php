@@ -11,7 +11,7 @@
 @endsection
 
 @section ('content')
-<div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
+<div class="col-md-8 col-md-offset-4 card-settings">
     @include ('layouts.errors')
 
     <div class="card">
@@ -57,7 +57,7 @@
                     <form class="" action="/members/{{ Auth::user()->id }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        
+
                         <button class="btn btn-outline-primary btn-lg left-margin" type="submit" name="button">Delete</button>
                     </form>
                 </div>

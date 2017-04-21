@@ -100,3 +100,8 @@ section.message-maker {
   background-color: #fff;
   padding: 20px 20px 20px 0;
 }
+
+.card-settings {
+  margin: 0 auto;
+  padding: 70px 0 70px 0;
+}

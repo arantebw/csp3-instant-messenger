@@ -17,13 +17,14 @@ class ChannelsController extends Controller
     public function store() {
     	// Validate user input
     	$this->validate(request(), [
-    		'channel' => 'required|min:5'
+    		'channel' => 'required|min:5',
+            'purpose' => 'required|min:5'
     	]);
 
     	// Create new channel
     	$new_channel = new Channel;
     	$new_channel->name = request('channel');
-    	$new_channel->purpose = "Default purpose.";
+    	$new_channel->purpose = request('purpose');
     	$new_channel->team_id = 1;
     	$new_channel->member_id = 1;
     	$new_channel->save();

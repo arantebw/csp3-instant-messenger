@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>reoslack &middot; Dashboard</title>
+    <title>@yield ('title')</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap4.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="/css/master.css">
 
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    
+
   </head>
   <body>
 

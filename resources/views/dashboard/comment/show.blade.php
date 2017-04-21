@@ -19,8 +19,8 @@
     <p class="text-muted">in #general</p>
 
     <p class="group-message">{{ $comment->body }}</p>
-
     <hr>
+    
     <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">
         <i class="fa fa-pencil" aria-hidden="true"></i>
         Edit

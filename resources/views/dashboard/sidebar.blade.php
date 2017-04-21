@@ -30,11 +30,31 @@
                 </a>
             @else
                 <!-- No authorized user is logged in -->
-                <a class="nav-link" href="#">
-                    <p>Billy Wilson Arante</p>
-                    <p>arante</p>
-                    <p>team-7</p>
-                </a>
+                <!-- Displays user's first name and last name -->
+                <a class="nav-link side-link" href="#">
+                <p>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span class="sidebar-item">
+                        First Name Last Name
+                    </span>
+                </p>
+                <hr>
+
+                <!-- Displays username and team user currently in -->
+                <p>
+                    <i class="fa fa-at" aria-hidden="true"></i>
+                    <span class="sidebar-item">
+                        username
+                    </span>
+                </p>
+
+                <p>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="sidebar-item">
+                        current-team
+                    </span>
+                </p>
+            </a>
             @endif
         </li>
     </ul>
