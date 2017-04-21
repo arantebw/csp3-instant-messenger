@@ -37,7 +37,7 @@ class RegistrationsController extends Controller
         auth()->login($member);
 
         // Owner of the new team to be created
-        session(['owner' => $member->id]);
+        // session(['owner' => $member->id]);
 
         // Redirects to create new team page
         return view('teams.create');
