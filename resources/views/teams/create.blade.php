@@ -5,14 +5,14 @@
 @endsection
 
 @section ('header')
-<div class="container-fluid main-header orange-header">
+<div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection
 
 @section ('content')
 <a href="/dashboard">
-    <i class="fa fa-times fa-3x close-button-black text-muted" aria-hidden="true"></i>
+    <i class="fa fa-times fa-3x close-button-white" aria-hidden="true"></i>
 </a>
 
 <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">

@@ -17,16 +17,9 @@
 
     <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
         @include ('layouts.errors')
-
-        @if (session('danger'))
-        <div class="alert alert-danger alert-dismissible text-center" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-          <span>{{ session('danger') }}</span>
-        </div>
-        @endif
-
+        @include ('layouts.danger')
+        @include ('layouts.info')
+        
         <div class="card">
             <h3 class="card-header text-center">Manage your channel</h3>
 

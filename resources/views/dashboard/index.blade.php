@@ -15,14 +15,9 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 section-right">
-    @if (session('info'))
-    <div class="alert alert-info alert-dismissible text-center" role="alert">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-      <span>{{ session('info') }}</span>
-    </div>
-    @endif
+    @include ('layouts.errors')
+    @include ('layouts.danger')
+    @include ('layouts.info')
 
     <h2>{{ '#' . session('current_channel') }}</h2>  <!-- Current channel -->
     <small class="text-muted">
@@ -34,7 +29,7 @@
         </span>
         <span class="counter-padding">&middot;</span>
         <span>
-            What is your purpose?
+            {{ session('current_channel_purpose') }}
         </span>
     </small>
     <hr>

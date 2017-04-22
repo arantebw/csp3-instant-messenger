@@ -40,6 +40,7 @@ class TeamsController extends Controller
         // Create a default general channel
         session(['current_channel' => $new_channel->name]);
 
+        session()->flash('info', 'You created the new #' . $new_team->name . ' with default #general channel.');
         return redirect('/dashboard');
     }
 
@@ -57,6 +58,7 @@ class TeamsController extends Controller
 
         // Set new current channel
         session(['current_team' => $team->name]);
+        session()->flash('info', 'You set #' . $team->name . ' as your current team.');
 
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
     }
@@ -84,9 +86,19 @@ class TeamsController extends Controller
     }
 
     public function destroy(Team $team) {
-        $team = Team::find($team->id);
-        $team->delete();
+        // $team = Team::find($team->id);
+        $current_team = Team::where('name', session('current_team'))->first();
 
+        if ($current_team->id != $team->id) {
+            $deleted_team_name = $team->name;
+            $team->delete();
+        }
+        else {
+            session()->flash('danger', 'You cannot delete a team that is your current team.');
+            return back();
+        }
+
+        session()->flash('info', 'You deleted #' . $deleted_team_name . ' successfully.');
         return redirect('/dashboard');
     }
 }

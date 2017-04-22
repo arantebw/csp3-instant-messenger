@@ -5,7 +5,7 @@
 @endsection
 
 @section ('header')
-<div class="container-fluid main-header red-header">
+<div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection

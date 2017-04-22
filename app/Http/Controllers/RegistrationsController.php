@@ -82,6 +82,8 @@ class RegistrationsController extends Controller
         // Delete the current authorized user
         $user->delete();
 
+        session()->flash('danger', 'Your account has been deleted.');
+
         // Redirect to dashboard's main page
         return redirect('/logged-out');
     }
@@ -89,6 +91,7 @@ class RegistrationsController extends Controller
     public function logout() {
         $user = User::find(Auth::user()->id);
         Auth::logout($user);
+        session()->flash('info', 'Logging out was successful.');
         return redirect('/logged-out');
     }
 }

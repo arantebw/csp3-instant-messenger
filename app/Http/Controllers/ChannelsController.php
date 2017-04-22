@@ -54,6 +54,8 @@ class ChannelsController extends Controller
 
         // Set new current channel
         session(['current_channel' => $channel->name]);
+        session(['current_channel_purpose' => $channel->purpose]);
+        
         session()->flash('info', 'You set #' . $channel->name . ' as your current channel.');
 
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));

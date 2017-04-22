@@ -5,19 +5,21 @@
 @endsection
 
 @section ('header')
-<div class="container-fluid main-header yellow-header">
+<div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection
 
 @section ('content')
 <a href="/dashboard">
-    <i class="fa fa-times fa-3x close-button-black text-muted" aria-hidden="true"></i>
+    <i class="fa fa-times fa-3x close-button-white" aria-hidden="true"></i>
 </a>
 
 <div class="col-md-8 col-md-offset-4 card-settings">
     @include ('layouts.errors')
-
+    @include ('layouts.danger')
+    @include ('layouts.info')
+    
     <div class="card">
         <h3 class="card-header text-center">Your user profile</h3>
 

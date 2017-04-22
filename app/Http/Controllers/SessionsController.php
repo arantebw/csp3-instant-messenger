@@ -47,6 +47,8 @@ class SessionsController extends Controller
         $current_user = User::where('email', request('email_address'))->first();
         auth()->login($current_user, true);
 
+        session()->flash('info', 'Logging in was successful.');
+        
         // Redirects to home page
         return redirect('/dashboard');
     }

@@ -5,7 +5,7 @@
 @endsection
 
 @section ('header')
-<div class="container-fluid main-header green-header">
+<div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection
@@ -17,6 +17,8 @@
 
 <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
     @include ('layouts.errors')
+    @include ('layouts.danger')
+    @include ('layouts.info')
 
     <div class="card">
         <h3 class="card-header text-center">Create your new channel</h3>

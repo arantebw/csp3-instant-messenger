@@ -5,21 +5,24 @@
 @endsection
 
 @section ('header')
-<div class="container-fluid main-header blue-header">
+<div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection
 
 @section ('content')
-<div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
-    @include ('layouts.errors')
 
-    <div class="card">
-        <h3 class="card-header text-center">Thank you for using Reoslack!</h3>
+    <div class="col-md-8 col-md-offset-4" style="margin:0 auto;padding: 70px 0 70px 0;">
+        @include ('layouts.errors')
+        @include ('layouts.danger')
+        @include ('layouts.info')
 
-        <div class="card-block">
-            <p>You are now completely logged out.</p>
+        <div class="card">
+            <h3 class="card-header text-center">Thank you for using Reoslack!</h3>
+
+            <div class="card-block">
+                <p>You are now completely logged out.</p>
+            </div>
         </div>
     </div>
-</div>
 @endsection

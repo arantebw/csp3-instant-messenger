@@ -34,52 +34,10 @@ body {
   padding: 30px 0 30px 0;
 }
 
-/* Create a new user page */
-.red-header {
-  background-color: red;
-  opacity: 0.5;
-  color: #fff;
-}
-
-/* Create a team page */
-.orange-header {
-  background-color: orange;
-  opacity: 0.5;
-  color: #000;
-}
-
-/* Update user profile page */
-.yellow-header {
-  background-color: yellow;
-  opacity: 0.5;
-  color: #000;
-}
-
-/* Create new channel page */
-.green-header {
-  background-color: green;
-  opacity: 0.5;
-  color: #fff;
-}
-
-/* Sign out page */
-.blue-header {
-  background-color: blue;
-  opacity: 0.5;
-  color: #fff;
-}
-
 /* Sign in page */
 .indigo-header {
   background-color: indigo;
-  opacity: 0.5;
   color: #fff;
-}
-
-.violet-header {
-  background-color: violet;
-  opacity: 0.5;
-  color: #000;
 }
 
 .left-margin {
@@ -135,4 +93,9 @@ section.message-maker {
   top: 20px;
   right: 20px;
   color: #000;
+}
+
+.bg-inverse {
+  background-color: indigo !important;
+  color: #fff !important;
 }
