@@ -51,7 +51,8 @@ class ThreadsController extends Controller
     public function edit(Thread $comment) {
         $teams = Team::all();
         $channels = Channel::all();
-        $users = User::where('id', $comment->member_id)->get();
+        $users = User::all();
+        $user = User::where('id', $comment->member_id)->get();
 
         return view(
             'dashboard.comment.edit',
@@ -59,7 +60,8 @@ class ThreadsController extends Controller
                 'comment',
                 'teams',
                 'channels',
-                'users'
+                'users',
+                'user'
             )
         );
     }
@@ -68,6 +70,7 @@ class ThreadsController extends Controller
         $teams = Team::all();
         $channels = Channel::all();
         $users = User::all();
+        $user = User::where('id', $comment->member_id)->get();
 
         // Search comment from database
         $comment = Thread::find($comment->id);
@@ -81,6 +84,8 @@ class ThreadsController extends Controller
         $comment->body = request('body');
         $comment->save();
 
+        session()->flash('info', 'You modified this comment successfully.');
+
         // Redirection
         return view(
             'dashboard.comment.show',
@@ -88,16 +93,19 @@ class ThreadsController extends Controller
                 'comment',
                 'teams',
                 'channels',
-                'users'
+                'users',
+                'user'
             )
         );
     }
 
     public function destroy(Thread $comment) {
+        $group_message = $comment->group_message_id;
         $comment = Thread::find($comment->id);
         $comment->delete();
 
-        // TODO: This must redirect to parent group message
-        return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
+        session()->flash('info', 'You deleted a comment from this group message.');
+
+        return redirect('/message/' . $group_message);
     }
 }

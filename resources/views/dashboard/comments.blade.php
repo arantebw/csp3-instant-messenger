@@ -10,6 +10,10 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+    @include ('layouts.errors')
+    @include ('layouts.danger')
+    @include ('layouts.info')
+    
     <p>
         @foreach ($users as $user)
             @if ($message->member_id === $user->id)
