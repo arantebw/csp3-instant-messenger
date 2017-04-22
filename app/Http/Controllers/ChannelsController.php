@@ -35,6 +35,8 @@ class ChannelsController extends Controller
     	$new_channel->member_id = Auth::user()->id;
     	$new_channel->save();
 
+        session()->flash('info', 'New #' . $new_channel->name . ' channel was created.');
+
     	return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
     }
 
@@ -52,6 +54,7 @@ class ChannelsController extends Controller
 
         // Set new current channel
         session(['current_channel' => $channel->name]);
+        session()->flash('info', 'You set #' . $channel->name . ' as your current channel.');
 
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
     }
