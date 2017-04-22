@@ -12,18 +12,22 @@ class DashboardController extends Controller
 {
     public function index() {
         // Retrieve's current team ID
-        $team = Team::where('name', session('current_team'))->get();
-        foreach ($team as $t) {
-            $current_team_id = $t->id;
-            $current_member_id = $t->member_id;
+        if (session('current_team')) {
+            $team = Team::where('name', session('current_team'))->get();
+            foreach ($team as $t) {
+                $current_team_id = $t->id;
+                $current_member_id = $t->member_id;
+            }
         }
 
         // Retrieve's current channel ID
-        $channel = Channel::where('name', session('current_channel'))->get();
-        foreach ($channel as $c) {
-            $current_channel_id = $c->id;
+        if (session('current_channel')) {
+            $channel = Channel::where('name', session('current_channel'))->get();
+            foreach ($channel as $c) {
+                $current_channel_id = $c->id;
+            }
         }
-        
+
         $messages = GroupMessage::where([
             ['team_id', $current_team_id],['channel_id', $current_channel_id]
         ])

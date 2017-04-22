@@ -1,6 +1,10 @@
 <!-- dashboard/index.blade.php -->
 @extends ('layouts.master')
 
+@section ('title')
+    reoslack &middot; Dashboard
+@endsection
+
 @section ('header')
     @include ('dashboard.header')
 @endsection

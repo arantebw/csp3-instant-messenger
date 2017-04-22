@@ -85,4 +85,10 @@ class RegistrationsController extends Controller
         // Redirect to dashboard's main page
         return redirect('/logged-out');
     }
+
+    public function logout() {
+        $user = User::find(Auth::user()->id);
+        Auth::logout($user);
+        return redirect('/logged-out');
+    }
 }

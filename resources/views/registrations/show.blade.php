@@ -1,7 +1,7 @@
 @extends ('layouts.master_alternative')
 
 @section ('title')
-    reoslack &middot; User profile
+    reoslack &middot; Your user profile
 @endsection
 
 @section ('header')
@@ -54,13 +54,15 @@
                 </div>
 
                 <div class="form-group row pull-right">
+                    <a class="btn btn-outline-primary btn-lg left-margin" href="/members/{{ Auth::user()->id }}/logout">Sign out</a>
+
                     <a class="btn btn-outline-primary btn-lg left-margin" href="/members/{{ Auth::user()->id }}/edit">Edit</a>
 
                     <form class="" action="/members/{{ Auth::user()->id }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
 
-                        <button class="btn btn-outline-primary btn-lg left-margin" type="submit" name="button">Delete</button>
+                        <button class="btn btn-outline-danger btn-lg left-margin" type="submit" name="button">Delete</button>
                     </form>
                 </div>
             </div>
