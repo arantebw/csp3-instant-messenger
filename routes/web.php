@@ -64,6 +64,9 @@ Route::get('/channels/create', 'ChannelsController@create');
 Route::post('/channels', 'ChannelsController@store');
 Route::get('/channels/{channel}', 'ChannelsController@show');
 Route::get('/channels/{channel}/set', 'ChannelsController@set');
+Route::get('/channels/{channel}/edit', 'ChannelsController@edit');
+Route::put('/channels/{channel}', 'ChannelsController@update');
+Route::delete('/channels/{channel}', 'ChannelsController@destroy');
 
 // Direct messages
 Route::get('/dashboard/{team}/{user1}/chats/{user2}', 'DirectMessagesController@chats');

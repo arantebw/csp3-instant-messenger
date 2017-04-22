@@ -15,6 +15,14 @@
 
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3 section-right">
+    @if (session('info'))
+    <div class="form-group">
+        <div class="alert alert-info text-center">
+            {{ session('info') }}
+        </div>
+    </div>
+    @endif
+
     <h2>{{ '#' . session('current_channel') }}</h2>  <!-- Current channel -->
     <small class="text-muted">
         <span>

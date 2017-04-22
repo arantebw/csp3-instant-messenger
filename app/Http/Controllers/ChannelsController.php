@@ -39,7 +39,9 @@ class ChannelsController extends Controller
     }
 
     public function show(Channel $channel) {
-        return view('channels.show', compact('channel'));
+        $user = User::where('id', $channel->member_id)->first();
+
+        return view('channels.show', compact('channel', 'user'));
     }
 
     public function set(Channel $channel) {
@@ -52,5 +54,40 @@ class ChannelsController extends Controller
         session(['current_channel' => $channel->name]);
 
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
+    }
+
+    public function edit(Channel $channel) {
+        $users = User::all();
+
+        return view('channels.edit', compact('channel', 'users'));
+    }
+
+    public function update(Channel $channel) {
+        // Validate user input
+        $this->validate(request(), [
+            'channel_name' => 'required|min:5',
+            'channel_purpose' => 'required|min:5'
+        ]);
+
+        $channel->name = request('channel_name');
+        $channel->purpose = request('channel_purpose');
+        $channel->member_id = request('channel_owner');
+        $channel->save();
+
+        return redirect('/channels/' . $channel->id);
+    }
+
+    public function destroy(Channel $channel) {
+        if (session('current_channel') != $channel->name) {
+            $deleted_channel = $channel->name;
+            $channel->delete();
+            session()->flash('info', 'You deleted #' . $deleted_channel . ' channel.');
+        }
+        else {
+            session()->flash('danger', 'You cannot delete a channel that is your active channel.');
+            return back();
+        }
+
+        return redirect('/dashboard');
     }
 }
