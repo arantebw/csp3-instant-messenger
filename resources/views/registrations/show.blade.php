@@ -19,7 +19,7 @@
     @include ('layouts.errors')
     @include ('layouts.danger')
     @include ('layouts.info')
-    
+
     <div class="card">
         <h3 class="card-header text-center">Your user profile</h3>
 

@@ -8,13 +8,13 @@
         @endforeach
 
     	<span class="counter-padding">&middot;</span>
-        
+
     	<small class="text-muted">
             {{ $direct_message->created_at->diffForHumans() }}
         </small>
     </div>
 
-    <a href="/direct-message/{{ $direct_message->id }}">
+    <a href="/direct-messages/{{ $direct_message->id }}">
         <p class="group-message">{{ $direct_message->body }}</p>
     </a>
 

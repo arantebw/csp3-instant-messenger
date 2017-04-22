@@ -62,4 +62,52 @@ class DirectMessagesController extends Controller
 
         return back();
     }
+
+    public function show(DirectMessage $direct_message) {
+        $teams = Team::all();
+        $channels = Channel::all();
+        $users = User::all();
+
+        $sender = User::where('id', $direct_message->sender_id)->first();
+        $receiver = User::where('id', $direct_message->receiver_id)->first();
+
+        return view('direct-messages.show',
+            compact('direct_message', 'teams', 'channels', 'users', 'sender', 'receiver')
+        );
+    }
+
+    public function edit(DirectMessage $direct_message) {
+        $teams = Team::all();
+        $channels = Channel::all();
+        $users = User::all();
+
+        $sender = User::where('id', $direct_message->sender_id)->first();
+        $receiver = User::where('id', $direct_message->receiver_id)->first();
+
+        return view('direct-messages.edit',
+            compact('direct_message', 'teams', 'channels', 'users', 'sender', 'receiver')
+        );
+    }
+
+    public function update(DirectMessage $direct_message) {
+        $teams = Team::all();
+        $channels = Channel::all();
+        $users = User::all();
+
+        $sender = User::where('id', $direct_message->sender_id)->first();
+        $receiver = User::where('id', $direct_message->receiver_id)->first();
+
+        $this->validate(request(), [
+            'body' => 'required|min:5'
+        ]);
+
+        $message = DirectMessage::find($direct_message->id);
+        $message->sender_id = $direct_message->sender_id;
+        $message->receiver_id = $direct_message->receiver_id;
+        $message->body = request('body');
+
+        $message->save();
+
+        return redirect('/dashboard/' . session('current_team') . '/' . $message->sender_id . '/chats/' . $message->receiver_id);
+    }
 }

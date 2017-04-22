@@ -99,3 +99,7 @@ section.message-maker {
   background-color: indigo !important;
   color: #fff !important;
 }
+
+.single-message {
+  padding: 20px;
+}

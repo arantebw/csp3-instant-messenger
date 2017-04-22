@@ -71,3 +71,6 @@ Route::delete('/channels/{channel}', 'ChannelsController@destroy');
 // Direct messages
 Route::get('/dashboard/{team}/{user1}/chats/{user2}', 'DirectMessagesController@chats');
 Route::post('/direct-messages/{direct_message}/create', 'DirectMessagesController@store');
+Route::get('/direct-messages/{direct_message}', 'DirectMessagesController@show');
+Route::get('/direct-messages/{direct_message}/edit', 'DirectMessagesController@edit');
+Route::put('/direct-messages/{direct_message}', 'DirectMessagesController@update');
