@@ -79,13 +79,16 @@ class GroupMessagesController extends Controller
         $teams = Team::all();
         $users = User::all();
 
+        $user = User::where('id', $message->member_id)->get();
+
         return view(
             'dashboard.group-message.edit',
             compact(
                 'message',
                 'teams',
                 'channels',
-                'users'
+                'users',
+                'user'
             )
         );
     }

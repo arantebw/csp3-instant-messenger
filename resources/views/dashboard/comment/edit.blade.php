@@ -11,12 +11,12 @@
 @section ('content')
 <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
         <p>
-            @foreach ($users as $user) {{ '@' . $user->username }} @endforeach
+            @foreach ($user as $u1) <strong>{{ '@' . $u1->username }}</strong> @endforeach
             <span class="counter-padding">&middot;</span>
-            <span class="text-muted">{{ $comment->created_at->diffForHumans() }}</span>
+            <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
         </p>
 
-        <p class="text-muted">in #general</p>
+        <small class="text-muted">in #general</small>
 
     <form method="POST" action="/comment/{{ $comment->id }}">
         {{ csrf_field() }}
