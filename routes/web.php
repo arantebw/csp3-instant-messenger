@@ -56,6 +56,9 @@ Route::put('/members/{member}', 'RegistrationsController@update');
 Route::delete('/members/{member}', 'RegistrationsController@destroy');
 Route::get('/members/{member}/logout', 'RegistrationsController@logout');
 
+Route::get('/signin', 'SessionsController@create');
+Route::post('/signin', 'SessionsController@store');
+
 // Channels
 Route::get('/channels/create', 'ChannelsController@create');
 Route::post('/channels', 'ChannelsController@store');

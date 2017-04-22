@@ -65,16 +65,18 @@
             <a class="nav-link text-muted" href="#">Teams</a>
         </li>
 
-        @foreach ($teams as $team)
-        <li class="nav-item">
-            <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
-                <i class="fa fa-users" aria-hidden="true"></i>
-                <span class="sidebar-item">
-                    {{ $team->name }}
-                </span>
-            </a>
-        </li>
-        @endforeach
+        @if (Auth::check())
+            @foreach ($teams as $team)
+            <li class="nav-item">
+                <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <span class="sidebar-item">
+                        {{ $team->name }}
+                    </span>
+                </a>
+            </li>
+            @endforeach
+        @endif
     </ul>
     <hr>
 
@@ -84,16 +86,18 @@
             <a class="nav-link text-muted" href="#">Channels</a>
         </li>
 
-        @foreach ($channels as $channel)
-        <li class="nav-item">
-            <a class="nav-link side-link text-muted" href="/channels/{{ $channel->id }}">
-                <i class="fa fa-slack" aria-hidden="true"></i>
-                <span class="sidebar-item">
-                    {{ $channel->name }}
-                </span>
-            </a>
-        </li>
-        @endforeach
+        @if (Auth::check())
+            @foreach ($channels as $channel)
+            <li class="nav-item">
+                <a class="nav-link side-link text-muted" href="/channels/{{ $channel->id }}">
+                    <i class="fa fa-slack" aria-hidden="true"></i>
+                    <span class="sidebar-item">
+                        {{ $channel->name }}
+                    </span>
+                </a>
+            </li>
+            @endforeach
+        @endif
     </ul>
     <hr>
 
@@ -103,16 +107,18 @@
             <a class="nav-link text-muted" href="#">Direct Messages</a>
         </li>
 
-        @foreach ($users as $user)
-        <li class="nav-item">
-            <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
-                <i class="fa fa-circle-o" aria-hidden="true"></i>
-                <span class="sidebar-item">
-                    {{ $user->first_name . ' ' . $user->last_name }}
-                </span>
-            </a>
-        </li>
-        @endforeach
+        @if (Auth::check())
+            @foreach ($users as $user)
+            <li class="nav-item">
+                <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
+                    <i class="fa fa-circle-o" aria-hidden="true"></i>
+                    <span class="sidebar-item">
+                        {{ $user->first_name . ' ' . $user->last_name }}
+                    </span>
+                </a>
+            </li>
+            @endforeach
+        @endif
     </ul>
     <hr>
 

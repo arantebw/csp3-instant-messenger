@@ -7,6 +7,7 @@ use App\GroupMessage;
 use App\Team;
 use App\Channel;
 use App\User;
+use Auth;
 
 class DashboardController extends Controller
 {
@@ -16,8 +17,16 @@ class DashboardController extends Controller
             $team = Team::where('name', session('current_team'))->get();
             foreach ($team as $t) {
                 $current_team_id = $t->id;
-                $current_member_id = $t->member_id;
+                $current_member_id = $t->owner;
             }
+        } else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+
+            $current_team_id = $team->id;
+            $current_member_id = $team->owner;
+
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
         }
 
         // Retrieve's current channel ID
@@ -26,13 +35,21 @@ class DashboardController extends Controller
             foreach ($channel as $c) {
                 $current_channel_id = $c->id;
             }
+        } else {
+            $channel = Channel::where('member_id', Auth::user()->id)->first();
+            $current_channel_id = $channel->id;
+
+            // Sets current channel of authenticated user
+            session(['current_channel' => $channel->name]);
         }
 
+        // Filter group messages
         $messages = GroupMessage::where([
             ['team_id', $current_team_id],['channel_id', $current_channel_id]
         ])
         ->get();
 
+        // Filter channels
         $channels = Channel::where('team_id', $current_team_id)->get();
 
         $teams = Team::all();

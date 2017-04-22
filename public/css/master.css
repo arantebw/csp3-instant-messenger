@@ -55,20 +55,21 @@ body {
   color: #000;
 }
 
-/* Create new channel */
+/* Create new channel page */
 .green-header {
   background-color: green;
   opacity: 0.5;
   color: #fff;
 }
 
-/* Log out page */
+/* Sign out page */
 .blue-header {
   background-color: blue;
   opacity: 0.5;
   color: #fff;
 }
 
+/* Sign in page */
 .indigo-header {
   background-color: indigo;
   opacity: 0.5;
@@ -78,7 +79,7 @@ body {
 .violet-header {
   background-color: violet;
   opacity: 0.5;
-  color: #fff;
+  color: #000;
 }
 
 .left-margin {

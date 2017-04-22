@@ -67,7 +67,7 @@
                 </div>
                 <br>
 
-                <button class="btn btn-outline-primary btn-lg pull-right" type="submit">Continue</button>
+                <button class="btn btn-outline-primary btn-lg pull-right" type="submit">Sign up</button>
             </form>
         </div>
     </div>
