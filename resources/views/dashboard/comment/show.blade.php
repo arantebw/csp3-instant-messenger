@@ -23,7 +23,6 @@
     <small class="text-muted">in #general</small>
 
     <p class="group-message">{{ $comment->body }}</p>
-    <hr>
 
     <div class="inline-form pull-left padding-10px">
         <a class="btn btn-outline-primary" href="/message/{{ $comment->group_message_id }}">

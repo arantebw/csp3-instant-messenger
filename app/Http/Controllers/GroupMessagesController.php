@@ -110,6 +110,8 @@ class GroupMessagesController extends Controller
         // Save message
         $message->save();
 
+        session()->flash('info', 'You modified this group message.');
+        
         // Redirect
         return view(
             'dashboard.comments',
@@ -128,6 +130,8 @@ class GroupMessagesController extends Controller
 
         // Deletion of group message
         $message->delete();
+
+        session()->flash('info', 'You deleted a group message.');
 
         // Redirects to parent channel
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));

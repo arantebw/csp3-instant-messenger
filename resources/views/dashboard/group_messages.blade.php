@@ -20,4 +20,3 @@
         <p class="group-message">{{ $message->body }}</p>
     </a>
 </div>
-<hr>

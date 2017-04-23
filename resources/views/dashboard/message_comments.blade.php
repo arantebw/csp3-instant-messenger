@@ -1,5 +1,7 @@
 <div>
     <p>
+        <i class="fa fa-user-circle-o fa-2x text-muted" aria-hidden="true"></i>
+
 		@foreach ($users as $user)
 			@if ($comment->member_id === $user->id)
 				<strong>{{ $user->username }}</strong>
@@ -15,4 +17,3 @@
         </p>
     </a>
 </div>
-<hr>

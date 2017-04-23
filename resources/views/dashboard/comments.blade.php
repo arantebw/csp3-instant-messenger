@@ -13,7 +13,7 @@
     @include ('layouts.errors')
     @include ('layouts.danger')
     @include ('layouts.info')
-    
+
     <p>
         @foreach ($users as $user)
             @if ($message->member_id === $user->id)
@@ -27,30 +27,40 @@
     <small class="text-muted">in #general</small>
 
     <p class="group-message">{{ $message->body }}</p>
+
+    <div class="inline-form">
+        <a class="btn btn-outline-primary" href="/dashboard/{{ session('current_team') }}/{{ session('current_channel') }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Back
+        </a>
+    </div>
+
+    <div class="inline-form pull-right">
+        <a class="btn btn-outline-primary" href="/message/{{ $message->id }}/edit">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Edit
+        </a>
+
+        <form class="inline-form" method="POST" action="/message/{{ $message->id }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+
+            <button type="submit" class="btn btn-outline-danger">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
+            </button>
+        </form>
+    </div>
     <hr>
 
-    <a class="btn btn-link" href="/message/{{ $message->id }}/edit">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-        Edit
-    </a>
-    &middot;
-    <form class="inline-form" method="POST" action="/message/{{ $message->id }}">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-
-        <button type="submit" class="btn btn-link text-primary">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-            Delete
-        </button>
-    </form>
-    <hr>
     <!-- Show number of comments -->
 
     <!-- Show comments thread -->
-    @foreach ($message->comments as $comment)
+    <div class="form-group">
+        @foreach ($message->comments as $comment)
         @include ('dashboard.message_comments')
-    @endforeach
-    <br><br><br>
+        @endforeach
+    </div>
 
     @include ('dashboard.create_comment')
 </main>
