@@ -8,6 +8,7 @@ use App\Channel;
 use App\User;
 use App\GroupMessage;
 use Auth;
+use App\TeamMember;
 
 class TeamsController extends Controller
 {
@@ -23,13 +24,19 @@ class TeamsController extends Controller
 
         $new_team = new Team;
         $new_team->name = request('team');
-        // $new_team->owner = session('owner');  // Defaults to 1; no owner yet
         $new_team->owner = Auth::user()->id;
         $new_team->save();
 
         // Set current session's team
         session(['current_team' => $new_team->name]);
 
+        // Create new relationship between member and team
+        $new_team_member = new TeamMember;
+        $new_team_member->team_id = $new_team->id;
+        $new_team_member->member_id = Auth::user()->id;
+        $new_team_member->save();
+
+        // Creates the default channel general
         $new_channel = new Channel;
         $new_channel->name = "general";
         $new_channel->team_id = $new_team->id;
@@ -37,10 +44,12 @@ class TeamsController extends Controller
         $new_channel->purpose = "A general-purpose channel. Everyone can view and join this channel.";
         $new_channel->save();
 
-        // Create a default general channel
+        // Set default channel general as current channel
         session(['current_channel' => $new_channel->name]);
 
         session()->flash('info', 'You created the new #' . $new_team->name . ' with default #general channel.');
+
+        // Go to home page
         return redirect('/dashboard');
     }
 

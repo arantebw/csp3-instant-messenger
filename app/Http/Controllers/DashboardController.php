@@ -18,9 +18,6 @@ class DashboardController extends Controller
             foreach ($team as $t) {
                 $current_team_id = $t->id;
                 $current_member_id = $t->owner;
-
-                // Sets current team of authenticated user
-                // session(['current_team' => $t->name]);
             }
         } else {
             $team = Team::where('owner', Auth::user()->id)->first();
@@ -37,12 +34,7 @@ class DashboardController extends Controller
             $channel = Channel::where('name', session('current_channel'))->get();
             foreach ($channel as $c) {
                 $current_channel_id = $c->id;
-
-                // Sets current channel of authenticated user
-                // session(['current_channel' => $c->name]);
-                // session(['current_channel_purpose' => $c->purpose]);
             }
-
         } else {
             $channel = Channel::where('member_id', Auth::user()->id)->first();
             $current_channel_id = $channel->id;

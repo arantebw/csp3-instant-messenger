@@ -40,7 +40,7 @@ class RegistrationsController extends Controller
         // session(['owner' => $member->id]);
 
         // Redirects to create new team page
-        return view('teams.create');
+        return view('teams.create', compact('member'));
     }
 
     public function show() {

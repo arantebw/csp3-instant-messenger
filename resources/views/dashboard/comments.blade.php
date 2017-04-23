@@ -56,9 +56,9 @@
     <!-- Show number of comments -->
 
     <!-- Show comments thread -->
-    <div class="form-group">
+    <div class="form-group direct-messages">
         @foreach ($message->comments as $comment)
-        @include ('dashboard.message_comments')
+            @include ('dashboard.message_comments')
         @endforeach
     </div>
 

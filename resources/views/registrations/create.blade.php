@@ -21,7 +21,7 @@
             <p class="card-text text-muted">Your name will be displayed along with your messages in reoslack.</p>
             <br>
 
-            <form class="form-group" action="/members" method="post">
+            <form class="form-group" action="/members" method="POST">
                 {{ csrf_field() }}
 
                 <label for="name_group">Your name</label>
@@ -63,7 +63,10 @@
                 </div>
                 <br>
 
-                <button class="btn btn-outline-primary btn-lg pull-right" type="submit">Sign up</button>
+                <button class="btn btn-success btn-lg pull-right" type="submit">
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    Continue
+                </button>
             </form>
         </div>
     </div>

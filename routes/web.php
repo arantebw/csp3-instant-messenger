@@ -19,6 +19,10 @@ Route::get('/logged-out', function () {
     return view('logged_out');
 });
 
+Route::get('/test', function () {
+    return view('test');
+});
+
 // Dashboard
 Route::get('/dashboard', 'DashboardController@index');
 Route::get('/dashboard/{team}', 'DashboardController@index');
@@ -56,6 +60,7 @@ Route::put('/members/{member}', 'RegistrationsController@update');
 Route::delete('/members/{member}', 'RegistrationsController@destroy');
 Route::get('/members/{member}/logout', 'RegistrationsController@logout');
 
+// Sessions
 Route::get('/signin', 'SessionsController@create');
 Route::post('/signin', 'SessionsController@store');
 
@@ -74,3 +79,7 @@ Route::post('/direct-messages/{direct_message}/create', 'DirectMessagesControlle
 Route::get('/direct-messages/{direct_message}', 'DirectMessagesController@show');
 Route::get('/direct-messages/{direct_message}/edit', 'DirectMessagesController@edit');
 Route::put('/direct-messages/{direct_message}', 'DirectMessagesController@update');
+
+// Teams and Members
+Route::get('/join', 'TeamMembersController@index');
+Route::post('/join', 'TeamMembersController@create');

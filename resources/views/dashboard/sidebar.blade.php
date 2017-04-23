@@ -138,7 +138,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link text-muted" href="/teams/join">
+            <a class="nav-link side-link text-muted" href="/join">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Join team

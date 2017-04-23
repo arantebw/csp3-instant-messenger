@@ -1,16 +1,16 @@
-@extends ('layouts.master_alternative')
+@extends('layouts.master_alternative')
 
-@section ('title')
-    reoslack &middot; Create new team
+@section('title')
+    reoslack &middot; Join a team
 @endsection
 
-@section ('header')
+@section('header')
 <div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection
 
-@section ('content')
+@section('content')
 <a href="/dashboard">
     <i class="fa fa-times fa-3x close-button-white" aria-hidden="true"></i>
 </a>
@@ -19,24 +19,22 @@
     @include ('layouts.errors')
 
     <div class="card">
-        <h3 class="card-header text-center">Create your new team</h3>
-
-        <!-- <img class="card-img-top" src="/img/team.jpg"> -->
+        <h3 class="card-header text-center">Join a team</h3>
 
         <div class="card-block">
-            <h4 class="card-title">Enter new team's name, or join existing team</h4>
+            <h4 class="card-title">Enter existing team's name, or create a new one</h4>
 
             <p class="card-text text-muted">Please enter your team's name in all lowercase letters separated by dashes.</p>
 
-            <form class="form-group" action="/teams" method="post">
+            <form class="form-group" action="/join" method="POST">
                 {{ csrf_field() }}
 
                 <input class="form-control form-control-lg" type="text" placeholder="your-new-team" id="team" name="team" required>
                 <br>
 
-                <a class="btn btn-outline-primary btn-lg" href="/join">
+                <a class="btn btn-outline-primary btn-lg" href="/teams/create">
                     <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                    Join a team
+                    Create a team
                 </a>
 
                 <button class="btn btn-success btn-lg pull-right" type="submit">

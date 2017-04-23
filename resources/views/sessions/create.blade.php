@@ -32,9 +32,9 @@
                 <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" name="password" required>
                 <br>
 
-                <button class="btn btn-outline-primary btn-lg pull-right" type="submit">
+                <button class="btn btn-success btn-lg pull-right" type="submit">
                     <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    Sign in
+                    Continue
                 </button>
             </form>
         </div>
