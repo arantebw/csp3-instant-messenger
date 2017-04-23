@@ -24,17 +24,17 @@
 
         <textarea class="edit-textarea" id="body" name="body">{{ $comment->body }}</textarea>
 
-        <hr>
-        <button class="btn btn-link"type="submit">
-            <i class="fa fa-floppy-o" aria-hidden="true"></i>
-            Save
-        </button>
-        &middot;
-        <a class="btn btn-link" href="/comment/{{ $comment->id }}">
-            <i class="fa fa-ban" aria-hidden="true"></i>
-            Cancel
-        </a>
-        <hr>
+        <div class="inline-form pull-right padding-10px">
+            <button class="btn btn-outline-success"type="submit">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                Save
+            </button>
+
+            <a class="btn btn-outline-primary" href="/comment/{{ $comment->id }}">
+                <i class="fa fa-ban" aria-hidden="true"></i>
+                Cancel
+            </a>
+        </div>
     </form>
 </main>
 @endsection

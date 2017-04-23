@@ -24,13 +24,6 @@
 
         <textarea class="edit-textarea" id="body" name="body">{{ $message->body }}</textarea>
 
-        <!-- <div class="inline-form pull-left" style="padding-top:10px;">
-            <a class="btn btn-outline-primary" href="/message/{{ $message->id }}">
-                <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                Back
-            </a>
-        </div> -->
-
         <div class="inline-form pull-right" style="padding-top:10px;">
 
             <button class="btn btn-outline-success" type="submit">

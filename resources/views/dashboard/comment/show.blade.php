@@ -25,20 +25,28 @@
     <p class="group-message">{{ $comment->body }}</p>
     <hr>
 
-    <a class="btn btn-link" href="/comment/{{ $comment->id }}/edit">
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-        Edit
-    </a>
-    &middot;
-    <form class="inline-form" method="POST" action="/comment/{{ $comment->id }}">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
+    <div class="inline-form pull-left padding-10px">
+        <a class="btn btn-outline-primary" href="/message/{{ $comment->group_message_id }}">
+            <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            Back
+        </a>
+    </div>
 
-        <button type="submit" class="btn btn-link">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-            Delete
-        </button>
-    </form>
-    <hr>
+    <div class="inline-form pull-right padding-10px">
+        <a class="btn btn-outline-primary" href="/comment/{{ $comment->id }}/edit">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            Edit
+        </a>
+
+        <form class="inline-form" method="POST" action="/comment/{{ $comment->id }}">
+            {{ csrf_field() }}
+            {{ method_field('DELETE') }}
+
+            <button type="submit" class="btn btn-outline-danger">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
+            </button>
+        </form>
+    </div>
 </main>
 @endsection
