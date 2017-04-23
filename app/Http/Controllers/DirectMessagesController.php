@@ -9,22 +9,51 @@ use App\User;
 use App\DirectMessage;
 use DB;
 use Auth;
+use App\TeamMember;
 
 class DirectMessagesController extends Controller
 {
     public function chats($team, $user1, $user2) {
-        // Filters channel's list in sidebar
-        $team = Team::where('name', session('current_team'))->get();
-        foreach ($team as $t) {
-            $current_team_id = $t->id;
-            $current_member_id = $t->member_id;
+        // Retrieve's current team ID
+        if (session('current_team')) {
+            $team = Team::where('name', session('current_team'))->get();
+            foreach ($team as $t) {
+                $current_team_id = $t->id;
+                $current_member_id = $t->owner;
+            }
+        } else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+
+            $current_team_id = $team->id;
+            $current_member_id = $team->owner;
+
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
         }
+
+        // Retrieve's current channel ID
+        if (session('current_channel')) {
+            $channel = Channel::where('name', session('current_channel'))->get();
+            foreach ($channel as $c) {
+                $current_channel_id = $c->id;
+            }
+        } else {
+            $channel = Channel::where('member_id', Auth::user()->id)->first();
+            $current_channel_id = $channel->id;
+
+            // Sets current channel of authenticated user
+            session(['current_channel' => $channel->name]);
+            session(['current_channel_purpose' => $channel->purpose]);
+        }
+
         $channels = Channel::where('team_id', $current_team_id)->get();
 
         $teams = Team::all();
         $team = Team::where('name', $team)->get();
+        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
 
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();
 
         // $direct_messages = DirectMessage::all();
         $direct_messages = DirectMessage::where([['receiver_id', $user2],['sender_id', $user1]])
@@ -37,13 +66,8 @@ class DirectMessagesController extends Controller
         return view(
             'members.chat',
             compact(
-                'teams',
-                'channels',
-                'users',
-                'direct_messages',
-                'team',
-                'user1',
-                'user2'
+                'teams','channels','users','direct_messages','team','user1',
+                'user2','my_teams','my_team_mates'
             )
         );
     }
@@ -64,28 +88,54 @@ class DirectMessagesController extends Controller
     }
 
     public function show(DirectMessage $direct_message) {
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->owner;
+        }
+
         $teams = Team::all();
+        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+
         $channels = Channel::all();
+
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();
 
         $sender = User::where('id', $direct_message->sender_id)->first();
         $receiver = User::where('id', $direct_message->receiver_id)->first();
 
         return view('direct-messages.show',
-            compact('direct_message', 'teams', 'channels', 'users', 'sender', 'receiver')
+            compact(
+                'direct_message', 'teams', 'channels', 'users', 'sender',
+                'receiver', 'my_teams', 'my_team_mates'
+            )
         );
     }
 
     public function edit(DirectMessage $direct_message) {
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->owner;
+        }
+
         $teams = Team::all();
+        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+
         $channels = Channel::all();
+
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();
 
         $sender = User::where('id', $direct_message->sender_id)->first();
         $receiver = User::where('id', $direct_message->receiver_id)->first();
 
         return view('direct-messages.edit',
-            compact('direct_message', 'teams', 'channels', 'users', 'sender', 'receiver')
+            compact(
+                'direct_message', 'teams', 'channels', 'users', 'sender',
+                'receiver', 'my_teams', 'my_team_mates'
+            )
         );
     }
 

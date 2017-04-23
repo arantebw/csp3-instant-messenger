@@ -15,6 +15,8 @@
     @include ('layouts.info')
 
     <div>
+        <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+
         <strong>{{ '@' . $sender->username }}</strong>
 
         <span class="counter-padding">&middot;</span>

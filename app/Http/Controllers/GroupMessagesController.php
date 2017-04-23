@@ -8,6 +8,9 @@ use App\Team;
 use App\Channel;
 use App\User;
 use App\Thread;
+use App\TeamMember;
+use App\ChannelMember;
+use Auth;
 
 class GroupMessagesController extends Controller
 {
@@ -48,21 +51,27 @@ class GroupMessagesController extends Controller
             $current_team_id = $t->id;
             $current_member_id = $t->member_id;
         }
+
+        $channel = Channel::where('name', session('current_channel'))->get();
+        foreach ($channel as $c) {
+            $current_channel_id = $c->id;
+        }
+
         $channels = Channel::where('team_id', $current_team_id)->get();
 
         $teams = Team::all();
+        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
 
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
+
         $comments = Thread::all();
 
         return view(
             'dashboard.comments',
             compact(
-                'message',
-                'teams',
-                'channels',
-                'users',
-                'comments'
+                'message','teams','channels','users','comments','my_teams',
+                'my_team_mates'
             )
         );
     }
@@ -74,29 +83,52 @@ class GroupMessagesController extends Controller
             $current_team_id = $t->id;
             $current_member_id = $t->member_id;
         }
+
+        $channel = Channel::where('name', session('current_channel'))->get();
+        foreach ($channel as $c) {
+            $current_channel_id = $c->id;
+        }
+
         $channels = Channel::where('team_id', $current_team_id)->get();
 
         $teams = Team::all();
+        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
 
         $user = User::where('id', $message->member_id)->get();
 
         return view(
             'dashboard.group-message.edit',
             compact(
-                'message',
-                'teams',
-                'channels',
-                'users',
-                'user'
+                'message','teams','channels','users','user','my_teams',
+                'my_team_mates'
             )
         );
     }
 
     public function update(GroupMessage $message) {
+        // Current team
+        $team = Team::where('name', session('current_team'))->get();
+        foreach ($team as $t) {
+            $current_team_id = $t->id;
+            $current_member_id = $t->member_id;
+        }
+
+        // Current channel
+        $channel = Channel::where('name', session('current_channel'))->get();
+        foreach ($channel as $c) {
+            $current_channel_id = $c->id;
+        }
+
         $teams = Team::all();
+        $my_teams = TeamMember::where('team_id', $current_member_id)->get();
+
         $channels = Channel::all();
+
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();
 
         // Validation
         $this->validate(request(), [
@@ -111,15 +143,12 @@ class GroupMessagesController extends Controller
         $message->save();
 
         session()->flash('info', 'You modified this group message.');
-        
+
         // Redirect
         return view(
             'dashboard.comments',
             compact(
-                'message',
-                'teams',
-                'channels',
-                'users'
+                'message','teams','channels','users','my_teams','my_team_mates'
             )
         );
     }

@@ -58,15 +58,17 @@ class DashboardController extends Controller
         $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
 
         $users = User::all();
+        $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
 
         return view(
             'dashboard.index',
             compact(
                 'messages',
-                'my_teams',
                 'teams',
+                'my_teams',
                 'channels',
-                'users'
+                'users',
+                'my_team_mates'
             )
         );
     }

@@ -113,14 +113,18 @@
 
         @if (Auth::check())
             @foreach ($users as $user)
-            <li class="nav-item">
-                <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
-                    <i class="fa fa-circle-o" aria-hidden="true"></i>
-                    <span class="sidebar-item">
-                        {{ $user->first_name . ' ' . $user->last_name }}
-                    </span>
-                </a>
-            </li>
+                @foreach ($my_team_mates as $my_team_mate)
+                    @if ($user->id == $my_team_mate->id)
+                        <li class="nav-item">
+                            <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
+                                <i class="fa fa-circle-o" aria-hidden="true"></i>
+                                <span class="sidebar-item">
+                                    {{ $user->first_name . ' ' . $user->last_name }}
+                                </span>
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
             @endforeach
         @endif
     </ul>
