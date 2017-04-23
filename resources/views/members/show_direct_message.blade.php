@@ -1,4 +1,4 @@
-<div>
+<div class="direct-messages">
     @foreach ($direct_messages as $direct_message)
     <div>
         <i class="fa fa-user-circle-o fa-2x text-muted" aria-hidden="true"></i>

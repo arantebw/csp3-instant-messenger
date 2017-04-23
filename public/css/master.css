@@ -112,3 +112,7 @@ section.message-maker {
 .padding-10px {
   padding-top: 10px;
 }
+
+.direct-messages {
+  margin-bottom: 100px;
+}
