@@ -29,16 +29,22 @@
                 <label for="team_owner">Assign new owner of this team?</label>
                 <select class="form-control form-control-lg" name="team_owner">
                     @foreach ($user as $u1)
-                        <option value="{{ $u1->id }}">{{ $u1->first_name . ' ' . $u1->last_name }}</option>
+                        <option value="{{ $u1->id }}">
+                            {{ $u1->first_name . ' ' . $u1->last_name }}
+                        </option>
                     @endforeach
                 </select>
                 <br>
 
-                <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/teams/{{ $team->id }}">
-                    Cancel
-                </a>
+                <div class="form-group pull-right">
+                    <button class="btn btn-outline-primary btn-lg" type="submit">
+                        Save
+                    </button>
 
-                <button class="btn btn-outline-primary btn-lg pull-right left-margin" type="submit">Save</button>
+                    <a class="btn btn-outline-primary btn-lg" href="/teams/{{ $team->id }}">
+                        Cancel
+                    </a>
+                </div>
             </div>
         </div>
     </form>

@@ -5,7 +5,7 @@
 @endsection
 
 @section ('header')
-<div class="container-fluid main-header yellow-header">
+<div class="container-fluid main-header indigo-header">
     @include ('layouts.header_content')
 </div>
 @endsection
@@ -48,9 +48,9 @@
                     <label for="">Confirm password</label>
                     <input class="form-control form-control-lg" type="password" name="password_confirmation" value="{{  Auth::user()->password }}">
                 </div>
-                <div class="form-group row pull-right">
-                    <button class="btn btn-outline-primary btn-lg left-margin" type="submit" name="button">Save</button>
-                    <a class="btn btn-outline-primary btn-lg left-margin" href="/members/{{ Auth::user()->id }}">Cancel</a>
+                <div class="form-group pull-right">
+                    <button class="btn btn-outline-primary btn-lg" type="submit" name="button">Save</button>
+                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}">Cancel</a>
                 </div>
             </form>
         </div>

@@ -39,18 +39,22 @@
                     <label for="team_owner">Assign new owner of this channel?</label>
                     <select class="form-control form-control-lg" name="channel_owner">
                         @foreach ($users as $user)
-                            <option value="{{ $user->id }}">{{ $user->first_name . ' ' . $user->last_name }}</option>
+                            <option value="{{ $user->id }}">
+                                {{ $user->first_name . ' ' . $user->last_name }}
+                            </option>
                         @endforeach
                     </select>
                     <br>
 
-                    <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/channels/{{ $channel->id }}">
-                        Cancel
-                    </a>
+                    <div class="form-group pull-right">
+                        <button class="btn btn-outline-primary btn-lg" type="submit">
+                            Save
+                        </button>
 
-                    <button class="btn btn-outline-primary btn-lg pull-right left-margin" type="submit">
-                        Save
-                    </button>
+                        <a class="btn btn-outline-primary btn-lg" href="/channels/{{ $channel->id }}">
+                            Cancel
+                        </a>
+                    </div>
                 </div>
             </form>
         </div>

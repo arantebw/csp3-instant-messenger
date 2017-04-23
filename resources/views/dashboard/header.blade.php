@@ -13,26 +13,38 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard/{{ session('current_team') }}/{{ session('current_channel') }}">
-                    Home
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    home
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Settings</a>
+                <a class="nav-link" href="#">
+                    <i class="fa fa-wrench" aria-hidden="true"></i>
+                    settings
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
+                <a class="nav-link" href="#">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    profile
+                </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="#">Help</a>
+                <a class="nav-link" href="#">
+                    <i class="fa fa-question" aria-hidden="true"></i>
+                    help
+                </a>
             </li>
         </ul>
 
         <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Enter keyword">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-primary my-2 my-sm-0" type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
         </form>
     </div>
 </nav>

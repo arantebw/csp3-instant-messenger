@@ -19,7 +19,7 @@
         @include ('layouts.errors')
         @include ('layouts.danger')
         @include ('layouts.info')
-        
+
         <div class="card">
             <h3 class="card-header text-center">Manage your channel</h3>
 
@@ -40,17 +40,19 @@
                         <input class="form-control form-control-lg" type="text" value="{{ $user->first_name . ' ' . $user->last_name }}" id="channel_owner" name="channel_owner" disabled>
                     <br>
 
-                    <button class="btn btn-outline-danger btn-lg pull-right left-margin" type="submit">
-                        Delete
-                    </button>
+                    <div class="form-group pull-right">
+                        <a class="btn btn-outline-primary btn-lg" href="/channels/{{ $channel->id }}/set">
+                            Set as current channel
+                        </a>
 
-                    <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/channels/{{ $channel->id }}/edit">
-                        Edit
-                    </a>
-
-                    <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/channels/{{ $channel->id }}/set">
-                        Set as current channel
-                    </a>
+                        <a class="btn btn-outline-primary btn-lg" href="/channels/{{ $channel->id }}/edit">
+                            Edit
+                        </a>
+                        
+                        <button class="btn btn-outline-danger btn-lg" type="submit">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -19,7 +19,7 @@
     @include ('layouts.errors')
     @include ('layouts.danger')
     @include ('layouts.info')
-    
+
     <div class="card">
         <h3 class="card-header text-center">Manage your team</h3>
 
@@ -42,17 +42,19 @@
                 @endforeach
                 <br>
 
-                <button class="btn btn-outline-primary btn-lg pull-right left-margin" type="submit">
-                    Delete
-                </button>
+                <div class="form-group pull-right">
+                    <a class="btn btn-outline-primary btn-lg" href="/teams/{{ $team->id }}/set">
+                        Set as current team
+                    </a>
 
-                <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/teams/{{ $team->id }}/edit">
-                    Edit
-                </a>
+                    <a class="btn btn-outline-primary btn-lg" href="/teams/{{ $team->id }}/edit">
+                        Edit
+                    </a>
 
-                <a class="btn btn-outline-primary btn-lg pull-right left-margin" href="/teams/{{ $team->id }}/set">
-                    Set as current team
-                </a>
+                    <button class="btn btn-outline-danger btn-lg" type="submit">
+                        Delete
+                    </button>
+                </div>
             </div>
         </form>
     </div>

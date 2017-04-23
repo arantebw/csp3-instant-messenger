@@ -1,6 +1,8 @@
 <div>
     @foreach ($direct_messages as $direct_message)
     <div>
+        <i class="fa fa-user-circle-o fa-2x text-muted" aria-hidden="true"></i>
+
         @foreach ($users as $user)
             @if ($user->id === $direct_message->sender_id)
                 <strong>{{ $user->username }}</strong>
