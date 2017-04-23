@@ -47,8 +47,14 @@ class SessionsController extends Controller
         $current_user = User::where('email', request('email_address'))->first();
         auth()->login($current_user, true);
 
+        // Search all teams this user is member of
+
+        // Search all channels of this user's teams
+
+        // Search all users this user can do direct messaging
+
         session()->flash('info', 'Logging in was successful.');
-        
+
         // Redirects to home page
         return redirect('/dashboard');
     }

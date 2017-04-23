@@ -17,11 +17,7 @@
     <div class="card">
         <h3 class="card-header text-center">What's your name?</h3>
 
-        <!-- <img class="card-img-top" src="/img/team.jpg"> -->
-
         <div class="card-block">
-            <!-- <h4 class="card-title">Enter your new team's name</h4> -->
-
             <p class="card-text text-muted">Your name will be displayed along with your messages in reoslack.</p>
             <br>
 

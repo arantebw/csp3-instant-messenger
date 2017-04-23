@@ -14,28 +14,28 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/dashboard/{{ session('current_team') }}/{{ session('current_channel') }}">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    home
+                    Home
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-wrench" aria-hidden="true"></i>
-                    settings
+                    Settings
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    profile
+                    Profile
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="#">
                     <i class="fa fa-question" aria-hidden="true"></i>
-                    help
+                    Help
                 </a>
             </li>
         </ul>
