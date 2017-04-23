@@ -8,6 +8,7 @@ use App\Team;
 use App\User;
 use App\GroupMessage;
 use Auth;
+use App\ChannelMember;
 
 class ChannelsController extends Controller
 {
@@ -35,6 +36,12 @@ class ChannelsController extends Controller
     	$new_channel->member_id = Auth::user()->id;
     	$new_channel->save();
 
+        // Create channel to member relationship
+        $new_channel_member = new ChannelMember;
+        $new_channel_member->channel_id = $new_channel->id;
+        $new_channel_member->member_id = Auth::user()->id;
+        $new_channel_member->save();
+
         session()->flash('info', 'New #' . $new_channel->name . ' channel was created.');
 
     	return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
@@ -55,7 +62,7 @@ class ChannelsController extends Controller
         // Set new current channel
         session(['current_channel' => $channel->name]);
         session(['current_channel_purpose' => $channel->purpose]);
-        
+
         session()->flash('info', 'You set #' . $channel->name . ' as your current channel.');
 
         return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));

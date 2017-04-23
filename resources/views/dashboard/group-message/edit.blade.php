@@ -1,5 +1,9 @@
 @extends ('layouts.master')
 
+@section('title')
+    reoslack &middot; Modify group message
+@endsection
+
 @section ('header')
     @include ('dashboard.header')
 @endsection

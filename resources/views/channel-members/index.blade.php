@@ -1,7 +1,7 @@
 @extends ('teams.create')
 
 @section ('title')
-    reoslack &middot; Create new channel
+    reoslack &middot; Join a channel
 @endsection
 
 @section ('header')
@@ -21,28 +21,26 @@
     @include ('layouts.info')
 
     <div class="card">
-        <h3 class="card-header text-center">Create your new channel</h3>
+        <h3 class="card-header text-center">Join a channel</h3>
 
         <div class="card-block">
-            <h4 class="card-title">Enter your new channel's name</h4>
+            <h4 class="card-title">Enter your channel's name, or create a new one</h4>
 
             <p class="card-text">Please enter your channel's name in all lowercase letters separated by dashes.</p>
 
-            <form class="form-group" action="/channels" method="post">
+            <form class="form-group" action="/join/channel" method="post">
                 {{ csrf_field() }}
 
                 <input class="form-control form-control-lg" type="text" placeholder="your-new-channel" id="channel" name="channel" required>
                 <br>
 
-                <input class="form-control form-control-lg" type="text" placeholder="Purpose of this channel" id="purpose" name="purpose" required>
-                <br>
-
                 <div class="d-inline-block">
-                    <a href="/join/channel" class="btn btn-outline-primary btn-lg">
+                    <a href="/channels/create" class="btn btn-outline-primary btn-lg">
                         <i class="fa fa-hand-o-right" aria-hidden="true"></i>
-                        Join a channel
+                        Create a channel
                     </a>
                 </div>
+
                 <button class="btn btn-success btn-lg pull-right" type="submit">
                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     Continue

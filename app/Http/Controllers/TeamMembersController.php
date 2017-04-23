@@ -27,10 +27,13 @@ class TeamMembersController extends Controller
             $new_team_member = new TeamMember;
             $new_team_member->team_id = $team->id;
             $new_team_member->member_id = Auth::user()->id;
-
             $new_team_member->save();
-
             session(['current_team' => $team->name]);
+
+            $new_channel_member = new ChannelMember;
+            $new_channel_member->channel_id = $channel->id;
+            $new_channel_member->member_id = Auth::user()->id;
+            $new_channel_member->save();
             session(['current_channel' => 'general']);
         }
         else {

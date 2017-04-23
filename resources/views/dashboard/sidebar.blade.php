@@ -156,7 +156,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link side-link text-muted" href="#">
+            <a class="nav-link side-link text-muted" href="/join/channel">
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Join channel

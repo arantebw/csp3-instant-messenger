@@ -9,6 +9,7 @@ use App\User;
 use App\GroupMessage;
 use Auth;
 use App\TeamMember;
+use App\ChannelMember;
 
 class TeamsController extends Controller
 {
@@ -43,6 +44,11 @@ class TeamsController extends Controller
         $new_channel->member_id = Auth::user()->id;
         $new_channel->purpose = "A general-purpose channel. Everyone can view and join this channel.";
         $new_channel->save();
+
+        $new_channel_member = new ChannelMember;
+        $new_channel_member->channel_id = $new_channel->id;
+        $new_channel_member->member_id = Auth::user()->id;
+        $new_channel_member->save();
 
         // Set default channel general as current channel
         session(['current_channel' => $new_channel->name]);

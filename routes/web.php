@@ -80,6 +80,9 @@ Route::get('/direct-messages/{direct_message}', 'DirectMessagesController@show')
 Route::get('/direct-messages/{direct_message}/edit', 'DirectMessagesController@edit');
 Route::put('/direct-messages/{direct_message}', 'DirectMessagesController@update');
 
-// Teams and Members
+// Join existing team
 Route::get('/join', 'TeamMembersController@index');
 Route::post('/join', 'TeamMembersController@create');
+// Join existing channel
+Route::get('/join/channel', 'ChannelMembersController@index');
+Route::post('/join/channel', 'ChannelMembersController@create');
