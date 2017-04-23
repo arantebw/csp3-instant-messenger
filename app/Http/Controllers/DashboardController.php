@@ -8,6 +8,7 @@ use App\Team;
 use App\Channel;
 use App\User;
 use Auth;
+use App\TeamMember;
 
 class DashboardController extends Controller
 {
@@ -54,12 +55,15 @@ class DashboardController extends Controller
         $channels = Channel::where('team_id', $current_team_id)->get();
 
         $teams = Team::all();
+        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+
         $users = User::all();
 
         return view(
             'dashboard.index',
             compact(
                 'messages',
+                'my_teams',
                 'teams',
                 'channels',
                 'users'

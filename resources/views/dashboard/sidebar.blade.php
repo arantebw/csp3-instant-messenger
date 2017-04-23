@@ -67,14 +67,18 @@
 
         @if (Auth::check())
             @foreach ($teams as $team)
-            <li class="nav-item">
-                <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
-                    <i class="fa fa-users" aria-hidden="true"></i>
-                    <span class="sidebar-item">
-                        {{ $team->name }}
-                    </span>
-                </a>
-            </li>
+                @foreach ($my_teams as $my_team)
+                    @if ($team->id == $my_team->team_id)
+                        <li class="nav-item">
+                            <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                                <span class="sidebar-item">
+                                        {{ $team->name }}
+                                </span>
+                            </a>
+                        </li>
+                    @endif
+                @endforeach
             @endforeach
         @endif
     </ul>
