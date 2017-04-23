@@ -31,21 +31,20 @@
             {{ csrf_field() }}
             {{ method_field('PUT') }}
 
-            <div class="group-message">
-                <textarea id="body" name="body" class="edit-textarea">{{ $direct_message->body }}</textarea>
-            </div>
-            <hr>
+            <textarea id="body" name="body" class="edit-textarea">{{ $direct_message->body }}</textarea>
 
-            <div class="pull-right">
-                <button type="submit" class="btn btn-outline-primary">
-                    <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                    Save
-                </button>
+            <div class="form-group padding-10px">
+                <div class="pull-right">
+                    <button type="submit" class="btn btn-outline-success">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        Save
+                    </button>
 
-                <a class="btn btn-outline-primary" href="/direct-messages/{{ $direct_message->id }}">
-                    <i class="fa fa-ban" aria-hidden="true"></i>
-                    Cancel
-                </a>
+                    <a class="btn btn-outline-primary" href="/direct-messages/{{ $direct_message->id }}">
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                        Cancel
+                    </a>
+                </div>
             </div>
         </form>
     </div>

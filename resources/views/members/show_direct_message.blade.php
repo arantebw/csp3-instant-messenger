@@ -20,6 +20,5 @@
         <p class="group-message">{{ $direct_message->body }}</p>
     </a>
 
-    <hr>
     @endforeach
 </div>

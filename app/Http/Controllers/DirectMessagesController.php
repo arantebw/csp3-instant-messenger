@@ -108,6 +108,8 @@ class DirectMessagesController extends Controller
 
         $message->save();
 
-        return redirect('/dashboard/' . session('current_team') . '/' . $message->sender_id . '/chats/' . $message->receiver_id);
+        session()->flash('info', 'You modified this direct message.');
+
+        return redirect('/direct-messages/' . $message->id);
     }
 }
