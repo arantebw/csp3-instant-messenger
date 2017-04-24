@@ -90,7 +90,10 @@
     <!-- Show team's created channels -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link text-muted" href="#">Channels</a>
+            <a class="nav-link text-muted" href="#">
+                Channels
+                <small class="pull-right badge badge-pill badge-default">{{ count($channels)}}</small>
+            </a>
         </li>
 
         @if (Auth::check())

@@ -16,7 +16,7 @@ class TeamsController extends Controller
     public function __construct() {
         $this->middleware('auth');
     }
-    
+
     public function create() {
         return view('teams.create');
     }
@@ -75,11 +75,15 @@ class TeamsController extends Controller
         $users = User::all();
         $messages = GroupMessage::all();
 
-        // Set new current channel
+        $channel = Channel::where('team_id', $team->id)->first();
+        session(['current_channel' => $channel->name]);
+        session(['current_channel_purpose' => $channel->purpose]);
+
         session(['current_team' => $team->name]);
+
         session()->flash('info', 'You set #' . $team->name . ' as your current team.');
 
-        return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
+        return redirect('/dashboard');
     }
 
     public function edit(Team $team) {
