@@ -63,10 +63,22 @@
                 </div>
                 <br>
 
-                <button class="btn btn-success btn-lg pull-right" type="submit">
-                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                    Continue
-                </button>
+                <div class="pull-left">
+                    <a href="/signin" class="btn btn-outline-primary btn-lg">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        Sign in
+                    </a>
+                    <button class="btn btn-outline-primary btn-lg" type="submit">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Go to dashboard
+                    </button>
+                </div>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-success btn-lg">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        Create or join a team
+                    </a>
+                </div>
             </form>
         </div>
     </div>

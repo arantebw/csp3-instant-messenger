@@ -4,7 +4,7 @@
     </button>
 
     <!-- Redirect members to reoslack landing page -->
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/dashboard">
         <i class="fa fa-registered" aria-hidden="true"></i>
         reoslack
     </a>

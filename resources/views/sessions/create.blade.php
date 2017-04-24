@@ -32,10 +32,22 @@
                 <input class="form-control form-control-lg" type="password" placeholder="Password" id="password" name="password" required>
                 <br>
 
-                <button class="btn btn-success btn-lg pull-right" type="submit">
-                    <i class="fa fa-sign-in" aria-hidden="true"></i>
-                    Continue
-                </button>
+                <div class="pull-left">
+                    <a href="/members/create" class="btn btn-outline-primary btn-lg">
+                        <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        Sign up
+                    </a>
+                    <button class="btn btn-outline-primary btn-lg" type="submit">
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        Go to dashboard
+                    </button>
+                </div>
+                <div class="pull-right">
+                    <a href="#" class="btn btn-success btn-lg">
+                        <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        Create or join a team
+                    </a>
+                </div>
             </form>
         </div>
     </div>

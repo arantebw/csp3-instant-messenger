@@ -53,6 +53,8 @@ Route::delete('/teams/{team}', 'TeamsController@destroy');
 
 // Members
 Route::get('/members/create', 'RegistrationsController@create');
+// Redirect unauthorized user to sigin page
+Route::get('login', ['as' => 'login', 'uses' => 'SessionsController@create']);
 Route::post('/members', 'RegistrationsController@store');
 Route::get('/members/{member}', 'RegistrationsController@show');
 Route::get('/members/{member}/edit', 'RegistrationsController@edit');
@@ -83,6 +85,8 @@ Route::put('/direct-messages/{direct_message}', 'DirectMessagesController@update
 // Join existing team
 Route::get('/join', 'TeamMembersController@index');
 Route::post('/join', 'TeamMembersController@create');
+// Redirect unauthorized user to sigin page
+Route::get('login', ['as' => 'login', 'uses' => 'SessionsController@create']);
 // Join existing channel
 Route::get('/join/channel', 'ChannelMembersController@index');
 Route::post('/join/channel', 'ChannelMembersController@create');

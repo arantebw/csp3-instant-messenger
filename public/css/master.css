@@ -116,3 +116,15 @@ section.message-maker {
 .direct-messages {
   margin-bottom: 100px;
 }
+
+a.brand-name {
+  color: #fff;
+  text-decoration: none;
+}
+a.brand-name:hover {
+  color: #fff;
+}
+
+.margin-50px {
+  margin: 50px 0;
+}

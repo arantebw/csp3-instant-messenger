@@ -24,7 +24,11 @@
                     <p>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="sidebar-item">
-                            {{ session('current_team') }}
+                            @if (session('current_team'))
+                                {{ session('current_team') }}
+                            @else
+                                Choose your current team
+                            @endif
                         </span>
                     </p>
                 </a>
@@ -62,23 +66,22 @@
 
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link text-muted" href="#">Teams</a>
+            <a class="nav-link text-muted" href="#">
+                Teams
+                <small class="pull-right badge badge-pill badge-default">{{ count($teams)}}</small>
+            </a>
         </li>
 
         @if (Auth::check())
             @foreach ($teams as $team)
-                @foreach ($my_teams as $my_team)
-                    @if ($team->id == $my_team->team_id)
-                        <li class="nav-item">
-                            <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
-                                <i class="fa fa-users" aria-hidden="true"></i>
-                                <span class="sidebar-item">
-                                        {{ $team->name }}
-                                </span>
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
+                <li class="nav-item">
+                    <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
+                        <i class="fa fa-users" aria-hidden="true"></i>
+                        <span class="sidebar-item">
+                                {{ $team->name }}
+                        </span>
+                    </a>
+                </li>
             @endforeach
         @endif
     </ul>
@@ -108,23 +111,22 @@
     <!-- Shows available direct messages for team members -->
     <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-            <a class="nav-link text-muted" href="#">Direct Messages</a>
+            <a class="nav-link text-muted" href="#">
+                Direct Messages
+                <small class="pull-right badge badge-pill badge-default">{{ count($users)}}</small>
+            </a>
         </li>
 
         @if (Auth::check())
             @foreach ($users as $user)
-                @foreach ($my_team_mates as $my_team_mate)
-                    @if ($user->id == $my_team_mate->id)
-                        <li class="nav-item">
-                            <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
-                                <i class="fa fa-circle-o" aria-hidden="true"></i>
-                                <span class="sidebar-item">
-                                    {{ $user->first_name . ' ' . $user->last_name }}
-                                </span>
-                            </a>
-                        </li>
-                    @endif
-                @endforeach
+                <li class="nav-item">
+                    <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
+                        <i class="fa fa-circle-o" aria-hidden="true"></i>
+                        <span class="sidebar-item">
+                            {{ $user->first_name . ' ' . $user->last_name }}
+                        </span>
+                    </a>
+                </li>
             @endforeach
         @endif
     </ul>

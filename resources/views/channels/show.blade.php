@@ -42,14 +42,17 @@
 
                     <div class="form-group pull-right">
                         <a class="btn btn-outline-primary btn-lg" href="/channels/{{ $channel->id }}/set">
+                            <i class="fa fa-slack" aria-hidden="true"></i>
                             Set as current channel
                         </a>
 
                         <a class="btn btn-outline-primary btn-lg" href="/channels/{{ $channel->id }}/edit">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
                             Edit
                         </a>
-                        
+
                         <button class="btn btn-outline-danger btn-lg" type="submit">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
                             Delete
                         </button>
                     </div>

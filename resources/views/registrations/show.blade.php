@@ -56,15 +56,24 @@
                 </div>
 
                 <div class="form-group pull-right">
-                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}/logout">Sign out</a>
+                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}/logout">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        Sign out
+                    </a>
 
-                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}/edit">Edit</a>
+                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}/edit">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        Edit
+                    </a>
 
                     <form class="inline-form" action="/members/{{ Auth::user()->id }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
 
-                        <button class="btn btn-outline-danger btn-lg" type="submit" name="button">Delete</button>
+                        <button class="btn btn-outline-danger btn-lg" type="submit" name="button">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            Delete
+                        </button>
                     </form>
                 </div>
             </div>

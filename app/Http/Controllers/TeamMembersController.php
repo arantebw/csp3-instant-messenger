@@ -7,9 +7,15 @@ use App\TeamMember;
 use App\Team;
 use App\User;
 use Auth;
+use App\ChannelMember;
+use App\Channel;
 
 class TeamMembersController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index() {
         return view('team-members.index');
     }
@@ -22,6 +28,7 @@ class TeamMembersController extends Controller
 
         // Search for team name's ID
         $team = Team::where('name', request('team'))->first();
+        $channel = Channel::where('team_id', $team->id)->first();
 
         if (count(TeamMember::where([['team_id', $team->id],['member_id', Auth::user()->id]])->first()) == 0) {
             $new_team_member = new TeamMember;

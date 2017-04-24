@@ -44,14 +44,17 @@
 
                 <div class="form-group pull-right">
                     <a class="btn btn-outline-primary btn-lg" href="/teams/{{ $team->id }}/set">
+                        <i class="fa fa-users" aria-hidden="true"></i>
                         Set as current team
                     </a>
 
                     <a class="btn btn-outline-primary btn-lg" href="/teams/{{ $team->id }}/edit">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
                         Edit
                     </a>
 
                     <button class="btn btn-outline-danger btn-lg" type="submit">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
                         Delete
                     </button>
                 </div>
