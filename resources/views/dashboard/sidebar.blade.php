@@ -74,17 +74,14 @@
 
         @if (Auth::check())
             @foreach ($teams as $team)
-            @foreach ($team_members as $key => $value)
                 <li class="nav-item">
                     <a class="nav-link side-link text-muted" href="/teams/{{ $team->id }}">
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="sidebar-item">
                                 {{ $team->name }}
                         </span>
-                        <small class="pull-right">{{ '(' . $value . ')' }}</small>
                     </a>
                 </li>
-            @endforeach
             @endforeach
         @endif
     </ul>
@@ -101,14 +98,14 @@
 
         @if (Auth::check())
             @foreach ($channels as $channel)
-            <li class="nav-item">
-                <a class="nav-link side-link text-muted" href="/channels/{{ $channel->id }}">
-                    <i class="fa fa-slack" aria-hidden="true"></i>
-                    <span class="sidebar-item">
-                        {{ $channel->name }}
-                    </span>
-                </a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link side-link text-muted" href="/channels/{{ $channel->id }}">
+                        <i class="fa fa-slack" aria-hidden="true"></i>
+                        <span class="sidebar-item">
+                            {{ $channel->name }}
+                        </span>
+                    </a>
+                </li>
             @endforeach
         @endif
     </ul>

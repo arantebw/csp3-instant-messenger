@@ -10,6 +10,7 @@ use App\User;
 use Auth;
 use App\TeamMember;
 use DB;
+use App\ChannelMember;
 
 class DashboardController extends Controller
 {
@@ -36,13 +37,20 @@ class DashboardController extends Controller
             ->select('teams.*')
             ->get();
 
+        // Count number of members per team
         $team_members = [];
         foreach ($teams as $team) {
-            array_push($team_members, count(TeamMember::where('team_id', $team->id)->get()));
+            $team_members = [$team->name, count(TeamMember::where('team_id', $team->id)->get())];
         }
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
+
+        // Count number of members per channel
+        $channel_members = [];
+        foreach ($channels as $channel) {
+            $channel_members = [$channel->name, count(ChannelMember::where('channel_id', $channel->id)->get())];
+        }
 
         // Filter all of user team mates
         $users = DB::table('users')
@@ -54,7 +62,8 @@ class DashboardController extends Controller
         return view(
             'dashboard.index',
             compact(
-                'messages','teams','channels','users','team_members'
+                'messages','teams','channels','users','team_members',
+                'channel_members'
             )
         );
     }
