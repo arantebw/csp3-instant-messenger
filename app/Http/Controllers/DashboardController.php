@@ -29,13 +29,17 @@ class DashboardController extends Controller
         ])
         ->get();
 
-
         // Filter all teams user is member of
         $teams = DB::table('teams')
             ->join('team_members', 'teams.id', '=', 'team_members.team_id')
             ->where('member_id', '=', Auth::user()->id)
             ->select('teams.*')
             ->get();
+
+        $team_members = [];
+        foreach ($teams as $team) {
+            array_push($team_members, count(TeamMember::where('team_id', $team->id)->get()));
+        }
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
@@ -50,7 +54,7 @@ class DashboardController extends Controller
         return view(
             'dashboard.index',
             compact(
-                'messages','teams','my_teams','channels','users'
+                'messages','teams','channels','users','team_members'
             )
         );
     }
