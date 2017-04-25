@@ -85,7 +85,8 @@ class RegistrationsController extends Controller
 
         // User is offline
         $user->online = false;
-
+        $user->save();
+        
         // Delete the current authorized user
         $user->delete();
 
@@ -98,6 +99,7 @@ class RegistrationsController extends Controller
     public function logout() {
         // Search user record
         $user = User::find(Auth::user()->id);
+
         // User is now offline
         $user->online = false;
         $user->save();
