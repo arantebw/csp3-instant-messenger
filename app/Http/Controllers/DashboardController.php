@@ -31,26 +31,17 @@ class DashboardController extends Controller
         ->get();
 
         // Filter all teams user is member of
-        $teams = DB::table('teams')
-            ->join('team_members', 'teams.id', '=', 'team_members.team_id')
-            ->where('member_id', '=', Auth::user()->id)
-            ->select('teams.*')
-            ->get();
-
-        // Count number of members per team
-        $team_members = [];
-        foreach ($teams as $team) {
-            $team_members = [$team->name, count(TeamMember::where('team_id', $team->id)->get())];
-        }
+        $teams = Auth::user()->teams;
 
         // Filter all channels of user's teams
-        $channels = Channel::where('team_id', $current_team_id)->get();
+        // $channels = Channel::where('team_id', $current_team_id)->get();
+        $channels = Auth::user()->channels;
 
         // Count number of members per channel
-        $channel_members = [];
-        foreach ($channels as $channel) {
-            $channel_members = [$channel->name, count(ChannelMember::where('channel_id', $channel->id)->get())];
-        }
+        // $channel_members = [];
+        // foreach ($channels as $channel) {
+        //     $channel_members = [$channel->name, count(ChannelMember::where('channel_id', $channel->id)->get())];
+        // }
 
         // Filter all of user team mates
         $users = DB::table('users')
@@ -62,8 +53,7 @@ class DashboardController extends Controller
         return view(
             'dashboard.index',
             compact(
-                'messages','teams','channels','users','team_members',
-                'channel_members'
+                'messages','teams','channels','users'
             )
         );
     }

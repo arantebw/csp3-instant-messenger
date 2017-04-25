@@ -80,6 +80,7 @@
                         <span class="sidebar-item">
                                 {{ $team->name }}
                         </span>
+                        <small class="pull-right">{{  count($team->team_members) }}</small>
                     </a>
                 </li>
             @endforeach
@@ -104,6 +105,7 @@
                         <span class="sidebar-item">
                             {{ $channel->name }}
                         </span>
+                        <small class="pull-right">{{ count($channel->channel_members) }}</small>
                     </a>
                 </li>
             @endforeach

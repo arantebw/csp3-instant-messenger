@@ -36,6 +36,10 @@ class User extends Authenticatable
     }
 
     public function teams() {
-        return $this->hasMany(Team::class);
+        return $this->belongsToMany('App\Team','team_members','team_id','member_id');
+    }
+
+    public function channels() {
+        return $this->belongsToMany('App\Channel','channel_members','channel_id','member_id');
     }
 }
