@@ -13,4 +13,8 @@ class Channel extends Model
     public function channel_members() {
     	return $this->hasMany(ChannelMember::class);
     }
+
+    public function group_messages() {
+        return $this->hasMany('App\GroupMessage');
+    }
 }

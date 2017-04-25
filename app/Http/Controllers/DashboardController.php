@@ -58,6 +58,7 @@ class DashboardController extends Controller
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         $current_channel = Channel::find($current_channel_id);
 
@@ -71,7 +72,7 @@ class DashboardController extends Controller
         return view(
             'dashboard.index',
             compact(
-                'messages','teams','channels','users','current_channel'
+                'messages','teams','channels','users','current_channel','my_channels'
             )
         );
     }

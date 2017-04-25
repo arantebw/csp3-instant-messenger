@@ -19,14 +19,15 @@
     @include ('layouts.danger')
     @include ('layouts.info')
 
-    <h2>{{ '#' . session('current_channel') }}</h2>  <!-- Current channel -->
+    <!-- <h2>{{ '#' . session('current_channel') }}</h2> -->
+    <h2>{{ '#' . $current_channel->name }}</h2>
     <small class="text-muted">
         <!-- Display team/channel members counter -->
         <span>
             <a href="#" class="text-muted counter-icons">
                 <i class="fa fa-star-o" aria-hidden="true"></i>
             </a>
-            
+
             <span class="counter-padding">&middot;</span>
 
             <a href="#" class="text-muted counter-icons">
@@ -38,7 +39,7 @@
         </span>
 
         <span class="counter-padding">&middot;</span>
-        
+
         <!-- Display purpose of channel -->
         <span>
             {{ session('current_channel_purpose') }}

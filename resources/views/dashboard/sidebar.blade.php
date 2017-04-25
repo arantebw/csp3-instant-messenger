@@ -68,7 +68,6 @@
         <li class="nav-item">
             <a class="nav-link text-muted" href="#">
                 Teams
-                <small class="pull-right badge badge-pill badge-default">{{ count($teams)}}</small>
             </a>
         </li>
 
@@ -80,7 +79,10 @@
                         <span class="sidebar-item">
                                 {{ $team->name }}
                         </span>
-                        <small class="pull-right">{{  count($team->team_members) }}</small>
+                        <small class="pull-right badge badge-pill badge-default">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            {{  count($team->team_members) }}
+                        </small>
                     </a>
                 </li>
             @endforeach
@@ -93,21 +95,27 @@
         <li class="nav-item">
             <a class="nav-link text-muted" href="#">
                 Channels
-                <small class="pull-right badge badge-pill badge-default">{{ count($channels)}}</small>
             </a>
         </li>
 
         @if (Auth::check())
             @foreach ($channels as $channel)
+            @foreach ($my_channels as $my_channel)
+            @if ($channel->id == $my_channel->channel_id)
                 <li class="nav-item">
                     <a class="nav-link side-link text-muted" href="/channels/{{ $channel->id }}">
                         <i class="fa fa-slack" aria-hidden="true"></i>
                         <span class="sidebar-item">
                             {{ $channel->name }}
                         </span>
-                        <small class="pull-right">{{ count($channel->channel_members) }}</small>
+                        <small class="pull-right badge badge-pill badge-default">
+                            <i class="fa fa-user-o" aria-hidden="true"></i>
+                            {{ count($channel->channel_members) }}
+                        </small>
                     </a>
                 </li>
+            @endif
+            @endforeach
             @endforeach
         @endif
     </ul>
@@ -118,7 +126,10 @@
         <li class="nav-item">
             <a class="nav-link text-muted" href="#">
                 Direct Messages
-                <small class="pull-right badge badge-pill badge-default">{{ count($users)}}</small>
+                <small class="pull-right badge badge-pill badge-default">
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
+                    {{ count($users)}}
+                </small>
             </a>
         </li>
 

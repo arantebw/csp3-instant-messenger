@@ -10,6 +10,7 @@ use App\DirectMessage;
 use DB;
 use Auth;
 use App\TeamMember;
+use App\ChannelMember;
 
 class DirectMessagesController extends Controller
 {
@@ -51,6 +52,7 @@ class DirectMessagesController extends Controller
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         // Filter all of user team mates
         $users = DB::table('users')
@@ -70,7 +72,7 @@ class DirectMessagesController extends Controller
             'members.chat',
             compact(
                 'teams','channels','users','direct_messages','team','user1',
-                'user2'
+                'user2','my_channels'
             )
         );
     }
@@ -128,6 +130,7 @@ class DirectMessagesController extends Controller
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         // Filter all of user team mates
         $users = DB::table('users')
@@ -142,7 +145,7 @@ class DirectMessagesController extends Controller
         return view('direct-messages.show',
             compact(
                 'direct_message', 'teams', 'channels', 'users', 'sender',
-                'receiver', 'my_teams', 'my_team_mates'
+                'receiver', 'my_teams', 'my_team_mates','my_channels'
             )
         );
     }
@@ -186,6 +189,7 @@ class DirectMessagesController extends Controller
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         // Filter all of user team mates
         $users = DB::table('users')
@@ -200,7 +204,7 @@ class DirectMessagesController extends Controller
         return view('direct-messages.edit',
             compact(
                 'direct_message', 'teams', 'channels', 'users', 'sender',
-                'receiver', 'my_teams', 'my_team_mates'
+                'receiver', 'my_teams', 'my_team_mates','my_channels'
             )
         );
     }

@@ -10,6 +10,7 @@ use App\GroupMessage;
 use Auth;
 use App\TeamMember;
 use App\ChannelMember;
+use DB;
 
 class TeamsController extends Controller
 {
@@ -70,20 +71,38 @@ class TeamsController extends Controller
     }
 
     public function set(Team $team) {
-        $teams = Team::all();
-        $channels = Channel::all();
-        $users = User::all();
-        $messages = GroupMessage::all();
+        // Retrieve default channel
+        $current_channel = Channel::where('name', 'general')->first();
 
-        $channel = Channel::where('team_id', $team->id)->first();
-        session(['current_channel' => $channel->name]);
-        session(['current_channel_purpose' => $channel->purpose]);
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
 
+        // Filter all channels of session current team
+        $channels = Channel::where('team_id', $team->id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
+
+        // Filter all of user team mates
+        $users = DB::table('users')
+            ->join('team_members', 'users.id', '=', 'team_members.member_id')
+            ->where('team_id', '=', $team->id)
+            ->select('users.*')
+            ->get();
+
+        // Filter group messages of current team & channel
+        $messages = GroupMessage::where([
+            ['team_id', $team->id],['channel_id', $current_channel->id]
+        ])
+        ->get();
+
+        session(['current_channel' => $current_channel->name]);
+        session(['current_channel_purpose' => $current_channel->purpose]);
         session(['current_team' => $team->name]);
 
         session()->flash('info', 'You set #' . $team->name . ' as your current team.');
 
-        return redirect('/dashboard');
+        return view('dashboard.index',
+                compact('teams','channels','users','current_channel','messages','my_channels')
+        );
     }
 
     public function edit(Team $team) {
@@ -121,7 +140,7 @@ class TeamsController extends Controller
             return back();
         }
 
-        session()->flash('info', 'You deleted #' . $deleted_team_name . ' successfully.');
+        session()->flash('info', 'You deleted the team #' . $deleted_team_name . '.');
         return redirect('/dashboard');
     }
 }

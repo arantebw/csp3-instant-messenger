@@ -39,6 +39,7 @@ class ThreadsController extends Controller
 
         // Filter all channels of user's teams
         $channels = Auth::user()->channels;
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         $users = User::all();
         $user = User::where('id', $comment->member_id)->get();
@@ -50,7 +51,7 @@ class ThreadsController extends Controller
                 'teams',
                 'channels',
                 'user',
-                'users'
+                'users','my_channels'
             )
         );
     }
@@ -58,6 +59,7 @@ class ThreadsController extends Controller
     public function edit(Thread $comment) {
         $teams = Team::all();
         $channels = Channel::all();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
         $users = User::all();
         $user = User::where('id', $comment->member_id)->get();
 
@@ -68,7 +70,7 @@ class ThreadsController extends Controller
                 'teams',
                 'channels',
                 'users',
-                'user'
+                'user','my_channels'
             )
         );
     }
@@ -76,6 +78,7 @@ class ThreadsController extends Controller
     public function update(Thread $comment) {
         $teams = Team::all();
         $channels = Channel::all();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
         $users = User::all();
         $user = User::where('id', $comment->member_id)->get();
 
@@ -101,7 +104,7 @@ class ThreadsController extends Controller
                 'teams',
                 'channels',
                 'users',
-                'user'
+                'user','my_channels'
             )
         );
     }

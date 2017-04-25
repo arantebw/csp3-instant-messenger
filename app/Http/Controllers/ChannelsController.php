@@ -9,6 +9,7 @@ use App\User;
 use App\GroupMessage;
 use Auth;
 use App\ChannelMember;
+use DB;
 
 class ChannelsController extends Controller
 {
@@ -54,18 +55,37 @@ class ChannelsController extends Controller
     }
 
     public function set(Channel $channel) {
-        $teams = Team::all();
-        $channels = Channel::all();
-        $users = User::all();
-        $messages = GroupMessage::all();
+        $current_team = Team::where('name', session('current_team'))->first();
 
-        // Set new current channel
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
+
+        // Filter all channels of session current team
+        $channels = Channel::where('team_id', $current_team->id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
+
+        // Filter all of user team mates
+        $users = DB::table('users')
+            ->join('team_members', 'users.id', '=', 'team_members.member_id')
+            ->where('team_id', '=', $current_team->id)
+            ->select('users.*')
+            ->get();
+
+        $current_channel = Channel::find($channel->id);
+        // Reset session current channel to user request
         session(['current_channel' => $channel->name]);
-        session(['current_channel_purpose' => $channel->purpose]);
 
-        session()->flash('info', 'You set #' . $channel->name . ' as your current channel.');
+        // Filter group messages of current team & channel
+        $messages = GroupMessage::where([
+            ['team_id', $current_team->id],['channel_id', $channel->id]
+        ])
+        ->get();
 
-        return redirect('/dashboard/' . session('current_team') . '/' . session('current_channel'));
+        session()->flash('info', 'Your current channel now is #' . $channel->name . '.');
+
+        return view('dashboard.index',
+            compact('teams','channels','users','current_channel','messages','my_channels')
+        );
     }
 
     public function edit(Channel $channel) {

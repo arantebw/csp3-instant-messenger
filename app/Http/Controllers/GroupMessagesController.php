@@ -62,6 +62,7 @@ class GroupMessagesController extends Controller
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
@@ -72,7 +73,7 @@ class GroupMessagesController extends Controller
             'dashboard.comments',
             compact(
                 'message','teams','channels','users','comments','my_teams',
-                'my_team_mates'
+                'my_team_mates','my_channels'
             )
         );
     }
@@ -91,6 +92,7 @@ class GroupMessagesController extends Controller
         }
 
         $channels = Channel::where('team_id', $current_team_id)->get();
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         $teams = Team::all();
         $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
@@ -104,7 +106,7 @@ class GroupMessagesController extends Controller
             'dashboard.group-message.edit',
             compact(
                 'message','teams','channels','users','user','my_teams',
-                'my_team_mates'
+                'my_team_mates','my_channels'
             )
         );
     }
@@ -122,6 +124,7 @@ class GroupMessagesController extends Controller
         foreach ($channel as $c) {
             $current_channel_id = $c->id;
         }
+        $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
         $teams = Team::all();
         $my_teams = TeamMember::where('team_id', $current_member_id)->get();
@@ -149,7 +152,7 @@ class GroupMessagesController extends Controller
         return view(
             'dashboard.comments',
             compact(
-                'message','teams','channels','users','my_teams','my_team_mates'
+                'message','teams','channels','users','my_teams','my_team_mates','my_channels'
             )
         );
     }
