@@ -15,7 +15,7 @@ use App\ChannelMember;
 class DashboardController extends Controller
 {
     public function index() {
-        // Retrieve's current team ID
+        // Retrieve current team ID
         if (session('current_team')) {
             $team = Team::where('name', session('current_team'))->get();
             foreach ($team as $t) {
@@ -32,7 +32,7 @@ class DashboardController extends Controller
             session(['current_team' => $team->name]);
         }
 
-        // Retrieve's current channel ID
+        // Retrieve current channel ID
         if (session('current_channel')) {
             $channel = Channel::where('name', session('current_channel'))->get();
             foreach ($channel as $c) {
@@ -47,7 +47,7 @@ class DashboardController extends Controller
             session(['current_channel_purpose' => $channel->purpose]);
         }
 
-        // Filter group messages
+        // Filter group messages of current team & channel
         $messages = GroupMessage::where([
             ['team_id', $current_team_id],['channel_id', $current_channel_id]
         ])
@@ -58,7 +58,7 @@ class DashboardController extends Controller
 
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
-        
+
         $current_channel = Channel::find($current_channel_id);
 
         // Filter all of user team mates

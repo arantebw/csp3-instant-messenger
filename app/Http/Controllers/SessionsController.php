@@ -45,13 +45,14 @@ class SessionsController extends Controller
 
         // Searches the user records
         $current_user = User::where('email', request('email_address'))->first();
+
         // User is now online
         $current_user->online = true;
         $current_user->save();
 
         auth()->login($current_user, true);
 
-        session()->flash('info', 'Logging in was successful.');
+        session()->flash('info', 'Sign in successful.');
 
         // Redirects to home page
         return redirect('/dashboard');

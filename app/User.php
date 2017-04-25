@@ -36,7 +36,8 @@ class User extends Authenticatable
     }
 
     public function teams() {
-        return $this->belongsToMany('App\Team','team_members','team_id','member_id');
+        // return $this->belongsToMany('App\Team','team_members','team_id','member_id');
+        return $this->belongsToMany('App\Team','team_members','member_id','team_id');
     }
 
     public function channels() {

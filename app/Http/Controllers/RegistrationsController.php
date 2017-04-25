@@ -86,7 +86,7 @@ class RegistrationsController extends Controller
         // User is offline
         $user->online = false;
         $user->save();
-        
+
         // Delete the current authorized user
         $user->delete();
 
@@ -106,7 +106,7 @@ class RegistrationsController extends Controller
 
         Auth::logout($user);
 
-        session()->flash('info', 'Logging out was successful.');
+        session()->flash('info', 'Sign out successful.');
 
         return redirect('/logged-out');
     }
