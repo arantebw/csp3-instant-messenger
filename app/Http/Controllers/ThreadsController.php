@@ -8,6 +8,7 @@ use App\Thread;
 use App\Team;
 use App\Channel;
 use App\User;
+use Auth;
 
 class ThreadsController extends Controller
 {
@@ -30,10 +31,16 @@ class ThreadsController extends Controller
             $current_team_id = $t->id;
             $current_member_id = $t->member_id;
         }
-        $channels = Channel::where('team_id', $current_team_id)->get();
+        // $channels = Channel::where('team_id', $current_team_id)->get();
+        // $teams = Team::all();
+
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
+
+        // Filter all channels of user's teams
+        $channels = Auth::user()->channels;
 
         $users = User::all();
-        $teams = Team::all();
         $user = User::where('id', $comment->member_id)->get();
 
     	return view(

@@ -128,3 +128,7 @@ a.brand-name:hover {
 .margin-50px {
   margin: 50px 0;
 }
+
+a.counter-icons {
+  text-decoration: none;
+}

@@ -19,6 +19,8 @@
     @include ('layouts.info')
 
     <p>
+        <i class="fa fa-user-circle-o fa-3x text-muted" aria-hidden="true"></i>
+        
         @foreach ($users as $user)
             @if ($message->member_id === $user->id)
                 <strong>{{ '@' . $user->username }}</strong>

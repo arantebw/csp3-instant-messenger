@@ -21,10 +21,29 @@
 
     <h2>{{ '#' . session('current_channel') }}</h2>  <!-- Current channel -->
     <small class="text-muted">
+        <!-- Display team/channel members counter -->
         <span>
-            <i class="fa fa-user-o" aria-hidden="true"></i>
+            <a href="#" class="text-muted counter-icons">
+                <i class="fa fa-star-o" aria-hidden="true"></i>
+            </a>
+            
+            <span class="counter-padding">&middot;</span>
+
+            <a href="#" class="text-muted counter-icons">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                @if (Auth::check())
+                    @foreach ($channels as $channel)
+                        @if (session('current_channel') == $channel->name)
+                            {{ count($channel->channel_members) }}
+                        @endif
+                    @endforeach
+                @endif
+            </a>
         </span>
+
         <span class="counter-padding">&middot;</span>
+        
+        <!-- Display purpose of channel -->
         <span>
             {{ session('current_channel_purpose') }}
         </span>

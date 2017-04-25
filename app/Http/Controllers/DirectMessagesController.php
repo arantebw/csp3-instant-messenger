@@ -46,16 +46,15 @@ class DirectMessagesController extends Controller
             session(['current_channel_purpose' => $channel->purpose]);
         }
 
-        $channels = Channel::where('team_id', $current_team_id)->get();
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
 
-        $teams = Team::all();
-        $team = Team::where('name', $team)->get();
-        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+        // Filter all channels of user's teams
+        $channels = Channel::where('team_id', $current_team_id)->get();
 
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();
 
-        // $direct_messages = DirectMessage::all();
         $direct_messages = DirectMessage::where([['receiver_id', $user2],['sender_id', $user1]])
             ->orWhere([['receiver_id', $user1],['sender_id', $user2]])
             ->get();
@@ -67,7 +66,7 @@ class DirectMessagesController extends Controller
             'members.chat',
             compact(
                 'teams','channels','users','direct_messages','team','user1',
-                'user2','my_teams','my_team_mates'
+                'user2'
             )
         );
     }
@@ -94,10 +93,11 @@ class DirectMessagesController extends Controller
             $current_member_id = $t->owner;
         }
 
-        $teams = Team::all();
-        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
 
-        $channels = Channel::all();
+        // Filter all channels of user's teams
+        $channels = Auth::user()->channels;
 
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();

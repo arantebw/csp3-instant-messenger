@@ -5,9 +5,9 @@
 
         <div class="d-inline align-middle" style="height:100%;">
             @foreach ($users as $user)
-            @if ($message->member_id === $user->id)
-            <strong>{{ $user->username }}</strong>
-            @endif
+                @if ($message->member_id === $user->id)
+                    <strong>{{ $user->username }}</strong>
+                @endif
             @endforeach
 
             <span class="counter-padding">&middot;</span>

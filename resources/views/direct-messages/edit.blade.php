@@ -16,6 +16,8 @@
 
     <div class="">
         <div>
+            <i class="fa fa-user-circle-o fa-3x text-muted" aria-hidden="true"></i>
+            
             <strong>{{ '@' . $sender->username }}</strong>
 
             <span class="counter-padding">&middot;</span>

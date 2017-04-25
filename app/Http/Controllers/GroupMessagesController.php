@@ -57,10 +57,11 @@ class GroupMessagesController extends Controller
             $current_channel_id = $c->id;
         }
 
-        $channels = Channel::where('team_id', $current_team_id)->get();
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
 
-        $teams = Team::all();
-        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+        // Filter all channels of user's teams
+        $channels = Channel::where('team_id', $current_team_id)->get();
 
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();

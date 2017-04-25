@@ -15,8 +15,12 @@
     @include ('layouts.info')
 
     <p>
+        <i class="fa fa-user-circle-o fa-3x text-muted" aria-hidden="true"></i>
+
         @foreach ($user as $u1) <strong>{{ '@' . $u1->username }}</strong> @endforeach
+        
         <span class="counter-padding">&middot;</span>
+        
         <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
     </p>
 

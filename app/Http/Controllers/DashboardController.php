@@ -15,14 +15,37 @@ use App\ChannelMember;
 class DashboardController extends Controller
 {
     public function index() {
-        // Retrieve current team
-        $team = Team::where('name', session('current_team'))->first();
-        $current_team_id = $team->id;
-        $current_member_id = $team->owner;
+        // Retrieve's current team ID
+        if (session('current_team')) {
+            $team = Team::where('name', session('current_team'))->get();
+            foreach ($team as $t) {
+                $current_team_id = $t->id;
+                $current_member_id = $t->owner;
+            }
+        } else {
+            $team = Team::where('owner', Auth::user()->id)->first();
 
-        // Retrieve current channel
-        $channel = Channel::where('name', session('current_channel'))->first();
-        $current_channel_id = $channel->id;
+            $current_team_id = $team->id;
+            $current_member_id = $team->owner;
+
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
+        }
+
+        // Retrieve's current channel ID
+        if (session('current_channel')) {
+            $channel = Channel::where('name', session('current_channel'))->get();
+            foreach ($channel as $c) {
+                $current_channel_id = $c->id;
+            }
+        } else {
+            $channel = Channel::where('member_id', Auth::user()->id)->first();
+            $current_channel_id = $channel->id;
+
+            // Sets current channel of authenticated user
+            session(['current_channel' => $channel->name]);
+            session(['current_channel_purpose' => $channel->purpose]);
+        }
 
         // Filter group messages
         $messages = GroupMessage::where([
@@ -34,14 +57,9 @@ class DashboardController extends Controller
         $teams = Auth::user()->teams;
 
         // Filter all channels of user's teams
-        // $channels = Channel::where('team_id', $current_team_id)->get();
-        $channels = Auth::user()->channels;
-
-        // Count number of members per channel
-        // $channel_members = [];
-        // foreach ($channels as $channel) {
-        //     $channel_members = [$channel->name, count(ChannelMember::where('channel_id', $channel->id)->get())];
-        // }
+        $channels = Channel::where('team_id', $current_team_id)->get();
+        
+        $current_channel = Channel::where('id', $current_channel_id)->first();
 
         // Filter all of user team mates
         $users = DB::table('users')
@@ -53,7 +71,7 @@ class DashboardController extends Controller
         return view(
             'dashboard.index',
             compact(
-                'messages','teams','channels','users'
+                'messages','teams','channels','users','current_channel'
             )
         );
     }
