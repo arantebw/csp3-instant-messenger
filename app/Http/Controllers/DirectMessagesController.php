@@ -162,4 +162,15 @@ class DirectMessagesController extends Controller
 
         return redirect('/direct-messages/' . $message->id);
     }
+
+    public function destroy(DirectMessage $direct_message) {
+        $message = DirectMessage::find($direct_message->id);
+        $sender = $message->sender_id;
+        $receiver = $message->receiver_id;
+        $message->delete();
+
+        session()->flash('info', 'You deleted a direct message.');
+        
+        return redirect('/dashboard/'. session('current_team') .'/'.  $sender .'/chats/'. $receiver);
+    }
 }

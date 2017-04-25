@@ -41,7 +41,7 @@
 
         </div>
         <div class="d-inline-block pull-right">
-            <form class="inline-form"action="" method="POST">
+            <form class="inline-form" action="/direct-messages/{{ $direct_message->id }}" method="POST">
                 {{ csrf_field() }}
                 {{ method_field('DELETE') }}
 
@@ -50,7 +50,7 @@
                     Edit
                 </a>
 
-                <button type="button" class="btn btn-outline-danger">
+                <button type="submit" class="btn btn-outline-danger">
                     <i class="fa fa-trash-o" aria-hidden="true"></i>
                     Delete
                 </button>

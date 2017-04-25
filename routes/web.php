@@ -81,6 +81,7 @@ Route::post('/direct-messages/{direct_message}/create', 'DirectMessagesControlle
 Route::get('/direct-messages/{direct_message}', 'DirectMessagesController@show');
 Route::get('/direct-messages/{direct_message}/edit', 'DirectMessagesController@edit');
 Route::put('/direct-messages/{direct_message}', 'DirectMessagesController@update');
+Route::delete('/direct-messages/{direct_message}', 'DirectMessagesController@destroy');
 
 // Join existing team
 Route::get('/join', 'TeamMembersController@index');

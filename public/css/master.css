@@ -132,3 +132,13 @@ a.brand-name:hover {
 a.counter-icons {
   text-decoration: none;
 }
+
+a.message-container {
+  color: #000;
+  text-decoration: none;
+}
+
+a.message-container p.group-message:hover {
+  background-color: #f1f1f1;
+  border: 1px solid #f1f1f1;
+}

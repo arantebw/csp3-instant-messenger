@@ -59,7 +59,7 @@ class DashboardController extends Controller
         // Filter all channels of user's teams
         $channels = Channel::where('team_id', $current_team_id)->get();
         
-        $current_channel = Channel::where('id', $current_channel_id)->first();
+        $current_channel = Channel::find($current_channel_id);
 
         // Filter all of user team mates
         $users = DB::table('users')

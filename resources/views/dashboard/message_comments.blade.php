@@ -13,7 +13,7 @@
         <small class="text-muted">{{ $comment->created_at->diffForHumans() }}</small>
     </p>
 
-	<a href="/comment/{{ $comment->id }}">
+	<a href="/comment/{{ $comment->id }}" class="message-container">
         <p class="group-message">
             {{ $comment->body }}
         </p>

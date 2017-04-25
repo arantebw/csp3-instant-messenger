@@ -14,6 +14,10 @@
 
 @section ('content')
     <main class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 pt-3">
+        @include ('layouts.errors')
+        @include ('layouts.danger')
+        @include ('layouts.info')
+        
         <p>
             @foreach ($user2 as $u2)
                 <i class="fa fa-user-circle-o fa-3x text-muted" aria-hidden="true"></i>

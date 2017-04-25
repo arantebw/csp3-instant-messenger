@@ -16,7 +16,7 @@
         </small>
     </div>
 
-    <a href="/direct-messages/{{ $direct_message->id }}">
+    <a href="/direct-messages/{{ $direct_message->id }}" class="message-container">
         <p class="group-message">{{ $direct_message->body }}</p>
     </a>
 

@@ -32,11 +32,7 @@
             <a href="#" class="text-muted counter-icons">
                 <i class="fa fa-user-o" aria-hidden="true"></i>
                 @if (Auth::check())
-                    @foreach ($channels as $channel)
-                        @if (session('current_channel') == $channel->name)
-                            {{ count($channel->channel_members) }}
-                        @endif
-                    @endforeach
+                    {{ count($current_channel->channel_members) }}
                 @endif
             </a>
         </span>

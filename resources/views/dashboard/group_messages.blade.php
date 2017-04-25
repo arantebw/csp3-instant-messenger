@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <a href="/message/{{ $message->id }}">
+    <a href="/message/{{ $message->id }}" class="message-container">
         <p class="group-message">{{ $message->body }}</p>
     </a>
 </div>
