@@ -1,7 +1,7 @@
 @extends ('layouts.master_alternative')
 
 @section ('title')
-    reoslack &middot; Your user profile
+    reoslack &middot; Your profile
 @endsection
 
 @section ('header')
@@ -21,7 +21,11 @@
     @include ('layouts.info')
 
     <div class="card">
-        <h3 class="card-header text-center">Your user profile</h3>
+        <h3 class="card-header text-center">Your profile</h3>
+
+        <div class="card-block text-center">
+            <img class="profile-img" src="{{ $default_img }}">
+        </div>
 
         <div class="card-block">
             <div class="container">

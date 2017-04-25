@@ -1,7 +1,7 @@
 @extends ('layouts.master_alternative')
 
 @section ('title')
-    reoslack &middot; Edit user profile
+    reoslack &middot; Edit your profile
 @endsection
 
 @section ('header')
@@ -15,9 +15,11 @@
     @include ('layouts.errors')
 
     <div class="card">
-        <h3 class="card-header text-center">Edit user profile</h3>
+        <h3 class="card-header text-center">Edit your profile</h3>
 
-        <!-- <img class="card-img-top" src="/img/team.jpg"> -->
+        <div class="card-block text-center">
+            <img class="profile-img" src="{{ $default_img }}">
+        </div>
 
         <div class="card-block">
             <form class="container" method="post" action="/members/{{ Auth::user()->id }}">

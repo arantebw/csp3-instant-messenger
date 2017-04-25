@@ -44,11 +44,15 @@ class RegistrationsController extends Controller
     }
 
     public function show() {
-        return view('registrations.show');
+        $default_img = "/img/img_avatar.png";
+
+        return view('registrations.show', compact('default_img'));
     }
 
     public function edit() {
-        return view('registrations.edit');
+        $default_img = "/img/img_avatar.png";
+
+        return view('registrations.edit', compact('default_img'));
     }
 
     public function update() {

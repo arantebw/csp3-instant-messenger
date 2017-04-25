@@ -142,3 +142,8 @@ a.message-container p.group-message:hover {
   background-color: #f1f1f1;
   border: 1px solid #f1f1f1;
 }
+
+.profile-img {
+  border-radius: 50%;
+  height: 300px;
+}
