@@ -29,6 +29,8 @@ class RegistrationsController extends Controller
         $member->email = request('email_address');
         $member->username = request('username');
         $member->password = bcrypt(request('password'));
+        // User is online
+        $member->online = true;
 
         // Store changes
         $member->save();
@@ -36,8 +38,6 @@ class RegistrationsController extends Controller
         // Authorize new user to login
         auth()->login($member);
 
-        // Owner of the new team to be created
-        // session(['owner' => $member->id]);
 
         // Redirects to create new team page
         return view('teams.create', compact('member'));
@@ -83,6 +83,9 @@ class RegistrationsController extends Controller
         // Searches for record of user to be deleted
         $user = User::find(Auth::user()->id);
 
+        // User is offline
+        $user->online = false;
+
         // Delete the current authorized user
         $user->delete();
 
@@ -93,9 +96,16 @@ class RegistrationsController extends Controller
     }
 
     public function logout() {
+        // Search user record
         $user = User::find(Auth::user()->id);
+        // User is now offline
+        $user->online = false;
+        $user->save();
+
         Auth::logout($user);
+
         session()->flash('info', 'Logging out was successful.');
+
         return redirect('/logged-out');
     }
 }

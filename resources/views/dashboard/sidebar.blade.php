@@ -126,7 +126,13 @@
             @foreach ($users as $user)
                 <li class="nav-item">
                     <a class="nav-link side-link text-muted" href="/dashboard/{{ session('current_team') }}/{{ Auth::user()->id }}/chats/{{ $user->id }}">
-                        <i class="fa fa-circle-o" aria-hidden="true"></i>
+                        <!-- Display user status -->
+                        @if ($user->online)
+                            <i class="fa fa-circle" aria-hidden="true" style="color:lightgreen;"></i>
+                        @else
+                            <i class="fa fa-circle-o" aria-hidden="true"></i>
+                        @endif
+
                         <span class="sidebar-item">
                             {{ $user->first_name . ' ' . $user->last_name }}
                         </span>

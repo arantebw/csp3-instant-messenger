@@ -32,8 +32,13 @@
 
                 <!-- Show status of user (i.e., online or offline) -->
                 <small>
-                    <i class="fa fa-circle" aria-hidden="true" style="color:green;"></i>
-                    <span class="text-muted">online</span>
+                    @if ($u2->online)
+                        <i class="fa fa-circle" aria-hidden="true" style="color:lightgreen;"></i>
+                        online
+                    @else
+                        <i class="fa fa-circle-o" aria-hidden="true"></i>
+                        offline
+                    @endif
                 </small>
             @endforeach
         </p>
