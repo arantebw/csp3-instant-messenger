@@ -31,8 +31,6 @@ class ThreadsController extends Controller
             $current_team_id = $t->id;
             $current_member_id = $t->member_id;
         }
-        // $channels = Channel::where('team_id', $current_team_id)->get();
-        // $teams = Team::all();
 
         // Filter all teams user is member of
         $teams = Auth::user()->teams;

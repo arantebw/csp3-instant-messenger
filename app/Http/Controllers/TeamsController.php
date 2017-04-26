@@ -132,8 +132,14 @@ class TeamsController extends Controller
         $current_team = Team::where('name', session('current_team'))->first();
 
         if ($current_team->id != $team->id) {
-            $deleted_team_name = $team->name;
-            $team->delete();
+            if (Auth::user()->id == $team->owner) {
+                $deleted_team_name = $team->name;
+                $team->delete();
+            }
+            else {
+                session()->flash('danger', 'You cannot delete a team if you are not the owner.');
+                return back();
+            }
         }
         else {
             session()->flash('danger', 'You cannot delete a team that is your current team.');

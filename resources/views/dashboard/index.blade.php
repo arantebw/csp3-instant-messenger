@@ -19,8 +19,11 @@
     @include ('layouts.danger')
     @include ('layouts.info')
 
-    <!-- <h2>{{ '#' . session('current_channel') }}</h2> -->
-    <h2>{{ '#' . $current_channel->name }}</h2>
+    @if (Auth::check())
+        <h2>{{ '#' . $current_channel->name }}</h2>
+    @else
+        <h2>#channel-name</h2>
+    @endif
     <small class="text-muted">
         <!-- Display team/channel members counter -->
         <span>
@@ -42,7 +45,9 @@
 
         <!-- Display purpose of channel -->
         <span>
-            {{ session('current_channel_purpose') }}
+            @if (Auth::check())
+                {{ $current_channel->purpose }}
+            @endif
         </span>
     </small>
     <hr>

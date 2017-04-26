@@ -111,12 +111,13 @@ class ChannelsController extends Controller
 
     public function destroy(Channel $channel) {
         if (session('current_channel') != $channel->name) {
+            $channel = Channel::find($channel->id);
             $deleted_channel = $channel->name;
             $channel->delete();
             session()->flash('info', 'You deleted #' . $deleted_channel . ' channel.');
         }
         else {
-            session()->flash('danger', 'You cannot delete a channel that is your active channel.');
+            session()->flash('danger', 'You cannot delete a channel that is your current channel.');
             return back();
         }
 
