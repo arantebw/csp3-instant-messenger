@@ -9,6 +9,7 @@ use App\Team;
 use App\Channel;
 use App\User;
 use Auth;
+use App\ChannelMember;
 
 class ThreadsController extends Controller
 {
@@ -92,7 +93,7 @@ class ThreadsController extends Controller
         $comment->body = request('body');
         $comment->save();
 
-        session()->flash('info', 'You modified this comment successfully.');
+        session()->flash('info', 'You modified this reply.');
 
         // Redirection
         return view(

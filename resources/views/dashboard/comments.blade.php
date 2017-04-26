@@ -20,7 +20,7 @@
 
     <p>
         <i class="fa fa-user-circle-o fa-3x text-muted" aria-hidden="true"></i>
-        
+
         @foreach ($users as $user)
             @if ($message->member_id === $user->id)
                 <strong>{{ '@' . $user->username }}</strong>
@@ -30,7 +30,7 @@
         <small class="text-muted">{{ $message->created_at->diffForHumans() }}</small>
     </p>
 
-    <small class="text-muted">in #general</small>
+    <small class="text-muted">{{ 'in #' . $message->channel['name']}}</small>
 
     <p class="group-message">{{ $message->body }}</p>
 

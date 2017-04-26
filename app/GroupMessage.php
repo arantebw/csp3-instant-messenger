@@ -27,4 +27,8 @@ class GroupMessage extends Model
     public function channel() {
         return $this->belongsTo('App\Channel');
     }
+
+    public function team() {
+        return $this->belongsTo('App\Team');
+    }
 }

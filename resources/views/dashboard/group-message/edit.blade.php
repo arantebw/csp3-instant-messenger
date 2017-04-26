@@ -20,11 +20,11 @@
             @foreach ($user as $u1) <strong>{{ '@' . $u1->username }}</strong> @endforeach
 
             <span class="counter-padding">&middot;</span>
-            
+
             <small class="text-muted">{{ $message->created_at->diffForHumans() }}</small>
         </p>
 
-        <small class="text-muted">in #general</small>
+        <small class="text-muted">{{ 'in #' . $message->channel['name'] }}</small>
 
     <form method="POST" action="/message/{{ $message->id }}">
         {{ csrf_field() }}
