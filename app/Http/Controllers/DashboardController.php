@@ -15,33 +15,34 @@ use App\ChannelMember;
 class DashboardController extends Controller
 {
     public function index() {
-        // Retrieve current team ID
+        // Retrieve session's current team
         if (session('current_team')) {
-            $team = Team::where('name', session('current_team'))->get();
-            foreach ($team as $t) {
-                $current_team_id = $t->id;
-                $current_member_id = $t->owner;
-            }
-        } else {
-            $team = Team::where('owner', Auth::user()->id)->first();
-
+            // This is your current team
+            $team = Team::where([
+                ['name', session('current_team')]
+            ])->first();
             $current_team_id = $team->id;
-            $current_member_id = $team->owner;
-
+        }
+        else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+            $current_team_id = $team->id;
             // Sets current team of authenticated user
             session(['current_team' => $team->name]);
         }
 
-        // Retrieve current channel ID
+        // Retrieve sessions's current channel
         if (session('current_channel')) {
-            $channel = Channel::where('name', session('current_channel'))->get();
-            foreach ($channel as $c) {
-                $current_channel_id = $c->id;
-            }
-        } else {
+            // This is your current channel
+            $channel = Channel::where([
+                ['name', session('current_channel')],
+                ['team_id', $team->id]
+            ])->first();
+            $current_channel_id = $channel->id;
+        }
+        else {
+            // Retrieve the default channel general
             $channel = Channel::where('member_id', Auth::user()->id)->first();
             $current_channel_id = $channel->id;
-
             // Sets current channel of authenticated user
             session(['current_channel' => $channel->name]);
             session(['current_channel_purpose' => $channel->purpose]);
