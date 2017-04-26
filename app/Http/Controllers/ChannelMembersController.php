@@ -17,7 +17,7 @@ class ChannelMembersController extends Controller
     public function create() {
         // User input validaton
         $this->validate(request(), [
-            'channel' => 'required|min:5'
+            'channel' => 'required|exists:channels,name|min:5'
         ]);
 
         $team = Team::where('name', session('current_team'))->first();
