@@ -50,8 +50,9 @@ class ChannelsController extends Controller
 
     public function show(Channel $channel) {
         $user = User::where('id', $channel->member_id)->first();
+        $channel_members = $channel->users;
 
-        return view('channels.show', compact('channel', 'user'));
+        return view('channels.show', compact('channel', 'user', 'channel_members'));
     }
 
     public function set(Channel $channel) {
@@ -90,7 +91,6 @@ class ChannelsController extends Controller
 
     public function edit(Channel $channel) {
         $users = User::all();
-
         return view('channels.edit', compact('channel', 'users'));
     }
 

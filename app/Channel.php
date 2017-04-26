@@ -11,10 +11,14 @@ class Channel extends Model
     }
 
     public function channel_members() {
-    	return $this->hasMany(ChannelMember::class);
+    	return $this->hasMany('App\ChannelMember');
     }
 
     public function group_messages() {
         return $this->hasMany('App\GroupMessage');
+    }
+
+    public function users() {
+        return $this->belongsToMany('App\User', 'channel_members', 'channel_id', 'member_id');
     }
 }

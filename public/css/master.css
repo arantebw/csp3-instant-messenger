@@ -159,3 +159,10 @@ a.message-container p.group-message:hover {
   font-size: 50%;
   margin: 0 auto;
 }
+
+.card-settings {
+}
+
+small.channel-owner {
+  padding: 0 20px;
+}
