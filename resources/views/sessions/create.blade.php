@@ -41,7 +41,7 @@
                 <div class="pull-right">
                     <button class="btn btn-success btn-lg" type="submit">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        Create or join a team
+                        Go to your dashboard
                     </button>
                 </div>
             </form>

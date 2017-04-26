@@ -39,7 +39,7 @@
                 <br>
 
                 <label for="email_address">Email address</label>
-                <input class="form-control form-control-lg" type="text" placeholder="juan.dela.cruz@example.com" id="email_address" name="email_address" required>
+                <input class="form-control form-control-lg" type="text" placeholder="juan.dela.cruz@example.com" id="email" name="email" required>
                 <br>
 
                 <label for="username">Username</label>

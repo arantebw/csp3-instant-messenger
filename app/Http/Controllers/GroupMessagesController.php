@@ -68,12 +68,12 @@ class GroupMessagesController extends Controller
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
 
-        $comments = Thread::all();
+        // $member_comments = Thread::where('group_message_id', $message->id)->distinct()->get(['member_id']);
 
         return view(
             'dashboard.comments',
             compact(
-                'message','teams','channels','users','comments','my_teams',
+                'message','teams','channels','users','my_teams',
                 'my_team_mates','my_channels'
             )
         );

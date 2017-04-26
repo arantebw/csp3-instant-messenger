@@ -11,6 +11,7 @@ use Auth;
 use App\TeamMember;
 use DB;
 use App\ChannelMember;
+use App\Thread;
 
 class DashboardController extends Controller
 {

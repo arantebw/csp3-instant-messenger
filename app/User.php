@@ -28,11 +28,11 @@ class User extends Authenticatable
     ];
 
     public function comments() {
-        return $this->hasMany(Thread::class);
+        return $this->hasMany('App\Thread');
     }
 
     public function group_messages() {
-        return $this->hasMany(GroupMessage::class);
+        return $this->hasMany('App\GroupMessage');
     }
 
     public function teams() {
