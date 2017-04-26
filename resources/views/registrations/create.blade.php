@@ -68,16 +68,12 @@
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         Sign in
                     </a>
-                    <button class="btn btn-outline-primary btn-lg" type="submit">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        Go to dashboard
-                    </button>
                 </div>
                 <div class="pull-right">
-                    <a href="#" class="btn btn-success btn-lg">
+                    <button class="btn btn-success btn-lg" type="submit">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         Create or join a team
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>

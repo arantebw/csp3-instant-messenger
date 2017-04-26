@@ -17,6 +17,18 @@
     </div>
 
     <a href="/message/{{ $message->id }}" class="message-container">
-        <p class="group-message">{{ $message->body }}</p>
+        <p class="group-message">
+            {{ $message->body }}
+            <small class="text-muted pull-right">
+                @if (count($message->comments) > 1)
+                    {{ count($message->comments) }}
+                    replies
+                @endif
+                @if (count($message->comments) == 1)
+                    {{ count($message->comments) }}
+                    reply
+                @endif
+            </small>
+        </p>
     </a>
 </div>
