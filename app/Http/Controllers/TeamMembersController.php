@@ -23,7 +23,7 @@ class TeamMembersController extends Controller
     public function create() {
         // User input validation
         $this->validate(request(), [
-            'team' => 'required|min:5'
+            'team' => 'required|exists:teams,name|min:5'
         ]);
 
         // Search for team name's ID

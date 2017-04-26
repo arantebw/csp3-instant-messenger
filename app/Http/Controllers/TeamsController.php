@@ -25,7 +25,7 @@ class TeamsController extends Controller
     public function store() {
         // Validate user input
         $this->validate(request(), [
-            'team' => 'required|min:5'
+            'team' => 'required|unique:teams,name|min:5'
         ]);
 
         $new_team = new Team;

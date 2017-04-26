@@ -59,11 +59,13 @@
                     <input class="form-control form-control-lg" type="password" name="" value="{{  Auth::user()->password }}" disabled>
                 </div>
 
-                <div class="form-group pull-right">
+                <div class="pull-left padding-10px">
                     <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}/logout">
                         <i class="fa fa-sign-out" aria-hidden="true"></i>
                         Sign out
                     </a>
+                </div>
+                <div class="form-group pull-right padding-10px">
 
                     <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}/edit">
                         <i class="fa fa-pencil" aria-hidden="true"></i>
