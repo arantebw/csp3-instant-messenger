@@ -60,7 +60,7 @@
             </form>
         </div>
 
-        <div class="card" style="margin-top:70px;">
+        <div id="card-settings" class="card">
             <div class="card-header text-center">
                 <h4>Channel members</h4>
             </div>

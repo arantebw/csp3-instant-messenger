@@ -65,9 +65,12 @@ class TeamsController extends Controller
     }
 
     public function show(Team $team) {
-        $user = User::where('id', $team->owner)->get();
+        $user = User::where('id', $team->owner)->first();
+        $team_members = $team->users;
 
-        return view('teams.show', compact('team', 'user'));
+        return view('teams.show',
+            compact('team','user','team_members')
+        );
     }
 
     public function set(Team $team) {

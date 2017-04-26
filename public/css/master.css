@@ -160,7 +160,8 @@ a.message-container p.group-message:hover {
   margin: 0 auto;
 }
 
-.card-settings {
+div#card-settings {
+  margin-top: 70px;
 }
 
 small.channel-owner {

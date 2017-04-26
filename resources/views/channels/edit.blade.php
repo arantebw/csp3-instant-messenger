@@ -60,9 +60,5 @@
                 </div>
             </form>
         </div>
-
-        <div class="card">
-            <h3 class="card-header">Channel Members</h3>
-        </div>
     </div>
 @endsection

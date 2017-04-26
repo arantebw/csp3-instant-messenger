@@ -35,11 +35,7 @@
                 <br>
 
                 <label for="team_owner">Owner</label>
-                @foreach ($user as $u1)
-                    @if ($u1->id == $team->owner)
-                        <input class="form-control form-control-lg" type="text" value="{{ $u1->first_name . ' ' . $u1->last_name }}" id="team_owner" name="team_owner" disabled>
-                    @endif
-                @endforeach
+                    <input class="form-control form-control-lg" type="text" value="{{ $user->first_name . ' ' . $user->last_name }}" id="team_owner" name="team_owner" disabled>
                 <br>
 
                 <div class="form-group pull-right">
@@ -60,6 +56,25 @@
                 </div>
             </div>
         </form>
+    </div>
+
+    <div id="card-settings" class="card">
+        <div class="card-header text-center">
+            <h4>Team members</h4>
+        </div>
+
+        <div class="card-block">
+            <ul class="list-group list-group-flush">
+                @foreach ($team_members as $member)
+                    <li class="list-group-item">
+                        {{ $member->first_name . ' ' . $member->last_name }}
+                        @if ($user->id == $member->id)
+                            <small class="text-muted channel-owner">(owner)</small>
+                        @endif
+                    </li>
+                @endforeach
+            </ul>
+        </div>
     </div>
 </div>
 @endsection
