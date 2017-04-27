@@ -14,6 +14,10 @@ use DB;
 
 class ThreadsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function store(GroupMessage $message) {
     	// Form validation
     	$this->validate(request(), [
@@ -143,7 +147,7 @@ class ThreadsController extends Controller
             ->where('team_id', '=', $current_team_id)
             ->select('users.*')
             ->get();
-            
+
         $user = User::where('id', $comment->member_id)->get();
 
         // Search comment from database

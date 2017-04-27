@@ -14,6 +14,10 @@ use App\ChannelMember;
 
 class DirectMessagesController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function chats($team, $user1, $user2) {
         // Retrieve session's current team
         if (session('current_team')) {

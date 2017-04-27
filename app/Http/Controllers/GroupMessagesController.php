@@ -15,6 +15,10 @@ use DB;
 
 class GroupMessagesController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function store() {
     	// Validation
     	$this->validate(request(), [
@@ -95,8 +99,8 @@ class GroupMessagesController extends Controller
         $channels = Channel::where('team_id', $current_team_id)->get();
         $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
-        $teams = Team::all();
-        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+        // Filters user's teams
+        $teams = Auth::user()->teams;
 
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
@@ -106,8 +110,7 @@ class GroupMessagesController extends Controller
         return view(
             'dashboard.group-message.edit',
             compact(
-                'message','teams','channels','users','user','my_teams',
-                'my_team_mates','my_channels'
+                'message','teams','channels','users','user','my_team_mates','my_channels'
             )
         );
     }

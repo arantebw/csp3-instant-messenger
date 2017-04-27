@@ -8,6 +8,10 @@ use Auth;
 
 class RegistrationsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['create','store']]);
+    }
+
     public function create() {
         return view('registrations.create');
     }
@@ -26,7 +30,7 @@ class RegistrationsController extends Controller
         $member = new User;
         $member->first_name = request('first_name');
         $member->last_name = request('last_name');
-        $member->email = request('email_address');
+        $member->email = request('email');
         $member->username = request('username');
         $member->password = bcrypt(request('password'));
         // User is online
@@ -37,7 +41,6 @@ class RegistrationsController extends Controller
 
         // Authorize new user to login
         auth()->login($member);
-
 
         // Redirects to create new team page
         return view('teams.create', compact('member'));
@@ -56,6 +59,8 @@ class RegistrationsController extends Controller
     }
 
     public function update() {
+        $default_img = "/img/img_avatar.png";
+
         // Validates user input
         $this->validate(request(), [
             'first_name' => 'required|min:2',
@@ -76,7 +81,7 @@ class RegistrationsController extends Controller
         Auth::user()->save();
 
         // Redirects to create new team page
-        return view('registrations.show');
+        return view('registrations.show', compact('default_img'));
     }
 
     public function destroy() {

@@ -15,6 +15,10 @@ use App\Thread;
 
 class DashboardController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function index() {
         // Retrieve session's current team
         if (session('current_team')) {

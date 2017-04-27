@@ -25,7 +25,7 @@ class TeamsController extends Controller
     public function store() {
         // Validate user input
         $this->validate(request(), [
-            'team' => 'required|unique:teams,name|min:5'
+            'team' => 'required|min:5|unique:teams,name'
         ]);
 
         $new_team = new Team;
@@ -33,14 +33,14 @@ class TeamsController extends Controller
         $new_team->owner = Auth::user()->id;
         $new_team->save();
 
-        // Set current session's team
-        session(['current_team' => $new_team->name]);
-
         // Create new relationship between member and team
         $new_team_member = new TeamMember;
         $new_team_member->team_id = $new_team->id;
         $new_team_member->member_id = Auth::user()->id;
         $new_team_member->save();
+
+        // Set current session's team
+        session(['current_team' => $new_team->name]);
 
         // Creates the default channel general
         $new_channel = new Channel;
