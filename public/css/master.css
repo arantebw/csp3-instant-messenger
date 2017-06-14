@@ -1,3 +1,4 @@
+/* For mobile phones */
 body {
   font-family: "Roboto", sans-serif;
 }
@@ -158,4 +159,343 @@ a.message-container p.group-message:hover {
   border-radius: 50%;
   font-size: 50%;
   margin: 0 auto;
+}
+
+.login-btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* For tablets */
+@media only screen and (min-width: 600px) {
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .new-message {
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .inline-form {
+    display: inline;
+  }
+
+  .edit-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px dotted lightgrey;
+  }
+
+  .chat-btn {
+    padding: 20px;
+  }
+
+  .main-header {
+    background-color: #bfbfbf;
+    padding: 20px 0 20px 0;
+  }
+
+  .main-footer {
+    background-color: #f7f7f7;
+    padding: 30px 0 30px 0;
+  }
+
+  /* Sign in page */
+  .indigo-header {
+    background-color: indigo;
+    color: #fff;
+  }
+
+  .left-margin {
+    margin: 10px;
+  }
+
+  .group-message {
+    padding: 20px;
+    border: 1px dotted lightgrey;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .sidebar-item {
+    padding-left: 10px;
+    font-size: 80%;
+    font-stretch: condensed;
+  }
+
+  a:hover.side-link {
+    background-color: #ededed;
+  }
+
+  main.section-right {
+    position: relative;
+  }
+
+  section.message-maker {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #fff;
+    padding: 20px 20px 20px 0;
+  }
+
+  .card-settings {
+    margin: 0 auto;
+    padding: 70px 0 70px 0;
+  }
+
+  .counter-padding {
+    padding: 0 10px;
+  }
+
+  .close-button-white {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+  }
+
+  .close-button-black {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #000;
+  }
+
+  .bg-inverse {
+    background-color: indigo !important;
+    color: #fff !important;
+  }
+
+  .single-message {
+    padding: 20px;
+  }
+
+  .padding-10px {
+    padding-top: 10px;
+  }
+
+  .direct-messages {
+    margin-bottom: 100px;
+  }
+
+  a.brand-name {
+    color: #fff;
+    text-decoration: none;
+  }
+  a.brand-name:hover {
+    color: #fff;
+  }
+
+  .margin-50px {
+    margin: 50px 0;
+  }
+
+  a.counter-icons {
+    text-decoration: none;
+  }
+
+  a.message-container {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a.message-container p.group-message:hover {
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+  }
+
+  .profile-img {
+    border-radius: 50%;
+    height: 300px;
+  }
+
+  .user-avatar {
+    background-color: red;
+    opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    color: #fff;
+    vertical-align: middle;
+    border-radius: 50%;
+    font-size: 50%;
+    margin: 0 auto;
+  }
+}
+
+/* For desktops */
+@media only screen and (min-width: 768px) {
+  body {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .new-message {
+    border: 1px solid lightgrey;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+
+  .inline-form {
+    display: inline;
+  }
+
+  .edit-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 1px dotted lightgrey;
+  }
+
+  .chat-btn {
+    padding: 20px;
+  }
+
+  .main-header {
+    background-color: #bfbfbf;
+    padding: 20px 0 20px 0;
+  }
+
+  .main-footer {
+    background-color: #f7f7f7;
+    padding: 30px 0 30px 0;
+  }
+
+  /* Sign in page */
+  .indigo-header {
+    background-color: indigo;
+    color: #fff;
+  }
+
+  .left-margin {
+    margin: 10px;
+  }
+
+  .group-message {
+    padding: 20px;
+    border: 1px dotted lightgrey;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+
+  .sidebar-item {
+    padding-left: 10px;
+    font-size: 80%;
+    font-stretch: condensed;
+  }
+
+  a:hover.side-link {
+    background-color: #ededed;
+  }
+
+  main.section-right {
+    position: relative;
+  }
+
+  section.message-maker {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: #fff;
+    padding: 20px 20px 20px 0;
+  }
+
+  .card-settings {
+    margin: 0 auto;
+    padding: 70px 0 70px 0;
+  }
+
+  .counter-padding {
+    padding: 0 10px;
+  }
+
+  .close-button-white {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+  }
+
+  .close-button-black {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #000;
+  }
+
+  .bg-inverse {
+    background-color: indigo !important;
+    color: #fff !important;
+  }
+
+  .single-message {
+    padding: 20px;
+  }
+
+  .padding-10px {
+    padding-top: 10px;
+  }
+
+  .direct-messages {
+    margin-bottom: 100px;
+  }
+
+  a.brand-name {
+    color: #fff;
+    text-decoration: none;
+  }
+  a.brand-name:hover {
+    color: #fff;
+  }
+
+  .margin-50px {
+    margin: 50px 0;
+  }
+
+  a.counter-icons {
+    text-decoration: none;
+  }
+
+  a.message-container {
+    color: #000;
+    text-decoration: none;
+  }
+
+  a.message-container p.group-message:hover {
+    background-color: #f1f1f1;
+    border: 1px solid #f1f1f1;
+  }
+
+  .profile-img {
+    border-radius: 50%;
+    height: 300px;
+  }
+
+  .user-avatar {
+    background-color: red;
+    opacity: 0.5;
+    width: 200px;
+    height: 200px;
+    color: #fff;
+    vertical-align: middle;
+    border-radius: 50%;
+    font-size: 50%;
+    margin: 0 auto;
+  }
+
+  .login-btn {
+    width: 20%;
+  }
 }
