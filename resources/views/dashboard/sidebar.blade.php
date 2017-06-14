@@ -79,7 +79,7 @@
                         <span class="sidebar-item">
                                 {{ $team->name }}
                         </span>
-                        <small class="pull-right badge badge-pill badge-default">
+                        <small class="pull-right">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                             {{  count($team->team_members) }}
                         </small>
@@ -108,7 +108,7 @@
                         <span class="sidebar-item">
                             {{ $channel->name }}
                         </span>
-                        <small class="pull-right badge badge-pill badge-default">
+                        <small class="pull-right">
                             <i class="fa fa-user-o" aria-hidden="true"></i>
                             {{ count($channel->channel_members) }}
                         </small>
@@ -126,7 +126,7 @@
         <li class="nav-item">
             <a class="nav-link text-muted" href="#">
                 Direct Messages
-                <small class="pull-right badge badge-pill badge-default">
+                <small class="pull-right">
                     <i class="fa fa-user-o" aria-hidden="true"></i>
                     {{ count($users)}}
                 </small>
@@ -192,15 +192,6 @@
                 <i class="fa fa-plus" aria-hidden="true"></i>
                 <span class="sidebar-item">
                     Join channel
-                </span>
-            </a>
-        </li>
-
-        <li class="nav-item">
-            <a class="nav-link side-link text-muted" href="#">
-                <i class="fa fa-plus" aria-hidden="true"></i>
-                <span class="sidebar-item">
-                    Invite member
                 </span>
             </a>
         </li>

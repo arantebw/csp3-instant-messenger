@@ -39,7 +39,7 @@
                 <br>
 
                 <label for="email_address">Email address</label>
-                <input class="form-control form-control-lg" type="text" placeholder="juan.dela.cruz@example.com" id="email_address" name="email_address" required>
+                <input class="form-control form-control-lg" type="text" placeholder="juan.dela.cruz@example.com" id="email" name="email" required>
                 <br>
 
                 <label for="username">Username</label>
@@ -68,16 +68,12 @@
                         <i class="fa fa-sign-in" aria-hidden="true"></i>
                         Sign in
                     </a>
-                    <button class="btn btn-outline-primary btn-lg" type="submit">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        Go to dashboard
-                    </button>
                 </div>
                 <div class="pull-right">
-                    <a href="#" class="btn btn-success btn-lg">
+                    <button class="btn btn-success btn-lg" type="submit">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
                         Create or join a team
-                    </a>
+                    </button>
                 </div>
             </form>
         </div>

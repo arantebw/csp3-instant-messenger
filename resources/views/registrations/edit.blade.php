@@ -50,9 +50,15 @@
                     <label for="">Confirm password</label>
                     <input class="form-control form-control-lg" type="password" name="password_confirmation" value="{{  Auth::user()->password }}">
                 </div>
-                <div class="form-group pull-right">
-                    <button class="btn btn-outline-primary btn-lg" type="submit" name="button">Save</button>
-                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}">Cancel</a>
+                <div class="form-group pull-right padding-10px">
+                    <button class="btn btn-outline-success btn-lg" type="submit" name="button">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                        Save
+                    </button>
+                    <a class="btn btn-outline-primary btn-lg" href="/members/{{ Auth::user()->id }}">
+                        <i class="fa fa-ban" aria-hidden="true"></i>
+                        Cancel
+                    </a>
                 </div>
             </form>
         </div>

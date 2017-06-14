@@ -8,6 +8,9 @@ use App\User;
 
 class SessionsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('guest');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,6 +39,11 @@ class SessionsController extends Controller
      */
     public function store()
     {
+        $this->validate(request(), [
+            'email_address' => 'required|email|exists:users,email',
+            'password' => 'required'
+        ]);
+
         // User validation
         if (Auth::attempt(['email' => request('email_address'),'password' => bcrypt(request('password'))], true)) {
             return back()->withErrors([

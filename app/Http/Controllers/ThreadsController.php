@@ -9,9 +9,15 @@ use App\Team;
 use App\Channel;
 use App\User;
 use Auth;
+use App\ChannelMember;
+use DB;
 
 class ThreadsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function store(GroupMessage $message) {
     	// Form validation
     	$this->validate(request(), [
@@ -25,23 +31,35 @@ class ThreadsController extends Controller
     }
 
     public function show(Thread $comment) {
-        // Filters channel's list in sidebar
-        $team = Team::where('name', session('current_team'))->get();
-        foreach ($team as $t) {
-            $current_team_id = $t->id;
-            $current_member_id = $t->member_id;
+        // Retrieve session's current team
+        if (session('current_team')) {
+            // This is your current team
+            $team = Team::where([
+                ['name', session('current_team')]
+            ])->first();
+            $current_team_id = $team->id;
         }
-        // $channels = Channel::where('team_id', $current_team_id)->get();
-        // $teams = Team::all();
+        else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+            $current_team_id = $team->id;
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
+        }
 
         // Filter all teams user is member of
         $teams = Auth::user()->teams;
 
         // Filter all channels of user's teams
-        $channels = Auth::user()->channels;
+        $channels = Channel::where('team_id', $current_team_id)->get();
         $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
-        $users = User::all();
+        // Filter all of user team mates
+        $users = DB::table('users')
+            ->join('team_members', 'users.id', '=', 'team_members.member_id')
+            ->where('team_id', '=', $current_team_id)
+            ->select('users.*')
+            ->get();
+
         $user = User::where('id', $comment->member_id)->get();
 
     	return view(
@@ -57,10 +75,35 @@ class ThreadsController extends Controller
     }
 
     public function edit(Thread $comment) {
-        $teams = Team::all();
-        $channels = Channel::all();
+        // Retrieve session's current team
+        if (session('current_team')) {
+            // This is your current team
+            $team = Team::where([
+                ['name', session('current_team')]
+            ])->first();
+            $current_team_id = $team->id;
+        }
+        else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+            $current_team_id = $team->id;
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
+        }
+
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
+
+        // Filter all channels of user's teams
+        $channels = Channel::where('team_id', $current_team_id)->get();
         $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
-        $users = User::all();
+
+        // Filter all of user team mates
+        $users = DB::table('users')
+            ->join('team_members', 'users.id', '=', 'team_members.member_id')
+            ->where('team_id', '=', $current_team_id)
+            ->select('users.*')
+            ->get();
+
         $user = User::where('id', $comment->member_id)->get();
 
         return view(
@@ -76,10 +119,35 @@ class ThreadsController extends Controller
     }
 
     public function update(Thread $comment) {
-        $teams = Team::all();
-        $channels = Channel::all();
+        // Retrieve session's current team
+        if (session('current_team')) {
+            // This is your current team
+            $team = Team::where([
+                ['name', session('current_team')]
+            ])->first();
+            $current_team_id = $team->id;
+        }
+        else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+            $current_team_id = $team->id;
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
+        }
+
+        // Filter all teams user is member of
+        $teams = Auth::user()->teams;
+
+        // Filter all channels of user's teams
+        $channels = Channel::where('team_id', $current_team_id)->get();
         $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
-        $users = User::all();
+
+        // Filter all of user team mates
+        $users = DB::table('users')
+            ->join('team_members', 'users.id', '=', 'team_members.member_id')
+            ->where('team_id', '=', $current_team_id)
+            ->select('users.*')
+            ->get();
+
         $user = User::where('id', $comment->member_id)->get();
 
         // Search comment from database
@@ -94,7 +162,7 @@ class ThreadsController extends Controller
         $comment->body = request('body');
         $comment->save();
 
-        session()->flash('info', 'You modified this comment successfully.');
+        session()->flash('info', 'You modified this reply.');
 
         // Redirection
         return view(

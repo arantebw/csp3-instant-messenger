@@ -37,11 +37,13 @@
                 <br>
 
                 <div class="form-group pull-right">
-                    <button class="btn btn-outline-primary btn-lg" type="submit">
+                    <button class="btn btn-outline-success btn-lg" type="submit">
+                        <i class="fa fa-floppy-o" aria-hidden="true"></i>
                         Save
                     </button>
 
                     <a class="btn btn-outline-primary btn-lg" href="/teams/{{ $team->id }}">
+                        <i class="fa fa-ban" aria-hidden="true"></i>
                         Cancel
                     </a>
                 </div>

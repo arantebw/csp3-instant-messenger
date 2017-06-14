@@ -11,9 +11,14 @@ use App\Thread;
 use App\TeamMember;
 use App\ChannelMember;
 use Auth;
+use DB;
 
 class GroupMessagesController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function store() {
     	// Validation
     	$this->validate(request(), [
@@ -67,12 +72,12 @@ class GroupMessagesController extends Controller
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
 
-        $comments = Thread::all();
+        // $member_comments = Thread::where('group_message_id', $message->id)->distinct()->get(['member_id']);
 
         return view(
             'dashboard.comments',
             compact(
-                'message','teams','channels','users','comments','my_teams',
+                'message','teams','channels','users','my_teams',
                 'my_team_mates','my_channels'
             )
         );
@@ -94,8 +99,8 @@ class GroupMessagesController extends Controller
         $channels = Channel::where('team_id', $current_team_id)->get();
         $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
-        $teams = Team::all();
-        $my_teams = TeamMember::where('member_id', Auth::user()->id)->get();
+        // Filters user's teams
+        $teams = Auth::user()->teams;
 
         $users = User::all();
         $my_team_mates = TeamMember::where('team_id', $current_team_id)->get();
@@ -105,34 +110,57 @@ class GroupMessagesController extends Controller
         return view(
             'dashboard.group-message.edit',
             compact(
-                'message','teams','channels','users','user','my_teams',
-                'my_team_mates','my_channels'
+                'message','teams','channels','users','user','my_team_mates','my_channels'
             )
         );
     }
 
     public function update(GroupMessage $message) {
-        // Current team
-        $team = Team::where('name', session('current_team'))->get();
-        foreach ($team as $t) {
-            $current_team_id = $t->id;
-            $current_member_id = $t->member_id;
+        // Retrieve session's current team
+        if (session('current_team')) {
+            // This is your current team
+            $team = Team::where([
+                ['name', session('current_team')]
+            ])->first();
+            $current_team_id = $team->id;
+        }
+        else {
+            $team = Team::where('owner', Auth::user()->id)->first();
+            $current_team_id = $team->id;
+            // Sets current team of authenticated user
+            session(['current_team' => $team->name]);
         }
 
-        // Current channel
-        $channel = Channel::where('name', session('current_channel'))->get();
-        foreach ($channel as $c) {
-            $current_channel_id = $c->id;
+        // Retrieve sessions's current channel
+        if (session('current_channel')) {
+            // This is your current channel
+            $channel = Channel::where([
+                ['name', session('current_channel')],
+                ['team_id', $team->id]
+            ])->first();
+            $current_channel_id = $channel->id;
         }
+        else {
+            // Retrieve the default channel general
+            $channel = Channel::where('member_id', Auth::user()->id)->first();
+            $current_channel_id = $channel->id;
+            // Sets current channel of authenticated user
+            session(['current_channel' => $channel->name]);
+            session(['current_channel_purpose' => $channel->purpose]);
+        }
+
+        $teams = Auth::user()->teams;
+
+        // Filter all channels of user's teams
+        $channels = Channel::where('team_id', $current_team_id)->get();
         $my_channels = ChannelMember::where('member_id', Auth::user()->id)->get();
 
-        $teams = Team::all();
-        $my_teams = TeamMember::where('team_id', $current_member_id)->get();
-
-        $channels = Channel::all();
-
-        $users = User::all();
-        $my_team_mates = TeamMember::where('team_id', $current_member_id)->get();
+        // Filter all of user team mates
+        $users = DB::table('users')
+            ->join('team_members', 'users.id', '=', 'team_members.member_id')
+            ->where('team_id', '=', $current_team_id)
+            ->select('users.*')
+            ->get();
 
         // Validation
         $this->validate(request(), [

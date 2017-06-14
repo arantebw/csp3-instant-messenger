@@ -28,19 +28,18 @@ class User extends Authenticatable
     ];
 
     public function comments() {
-        return $this->hasMany(Thread::class);
+        return $this->hasMany('App\Thread');
     }
 
     public function group_messages() {
-        return $this->hasMany(GroupMessage::class);
+        return $this->hasMany('App\GroupMessage');
     }
 
     public function teams() {
-        // return $this->belongsToMany('App\Team','team_members','team_id','member_id');
         return $this->belongsToMany('App\Team','team_members','member_id','team_id');
     }
 
     public function channels() {
-        return $this->belongsToMany('App\Channel','channel_members','channel_id','member_id');
+        return $this->belongsToMany('App\Channel','channel_members','member_id','channel_id');
     }
 }

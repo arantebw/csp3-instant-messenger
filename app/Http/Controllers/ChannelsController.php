@@ -13,6 +13,10 @@ use DB;
 
 class ChannelsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function create() {
     	return view('channels.create');
     }
@@ -50,8 +54,9 @@ class ChannelsController extends Controller
 
     public function show(Channel $channel) {
         $user = User::where('id', $channel->member_id)->first();
+        $channel_members = $channel->users;
 
-        return view('channels.show', compact('channel', 'user'));
+        return view('channels.show', compact('channel', 'user', 'channel_members'));
     }
 
     public function set(Channel $channel) {
@@ -90,7 +95,6 @@ class ChannelsController extends Controller
 
     public function edit(Channel $channel) {
         $users = User::all();
-
         return view('channels.edit', compact('channel', 'users'));
     }
 
@@ -111,12 +115,13 @@ class ChannelsController extends Controller
 
     public function destroy(Channel $channel) {
         if (session('current_channel') != $channel->name) {
+            $channel = Channel::find($channel->id);
             $deleted_channel = $channel->name;
             $channel->delete();
             session()->flash('info', 'You deleted #' . $deleted_channel . ' channel.');
         }
         else {
-            session()->flash('danger', 'You cannot delete a channel that is your active channel.');
+            session()->flash('danger', 'You cannot delete a channel that is your current channel.');
             return back();
         }
 

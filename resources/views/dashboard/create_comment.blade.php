@@ -8,13 +8,6 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Type in your comment then hit Enter" id="comment" name="comment" required>
 
-                <!-- New file upload -->
-                <span class="input-group-btn">
-                    <button class="btn btn-outline-primary chat-btn" type="button" title="Send a file">
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                    </button>
-                </span>
-
                 <!-- New comment -->
                 <span class="input-group-btn">
                     <button class="btn btn-outline-primary chat-btn" type="submit" title="Send comment">

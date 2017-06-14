@@ -8,13 +8,6 @@
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Type in your direct message then hit Enter" id="body" name="body" required>
 
-                <!-- New file upload -->
-                <span class="input-group-btn">
-                    <button class="btn btn-outline-primary chat-btn" type="button" title="Send a file">
-                        <i class="fa fa-upload" aria-hidden="true"></i>
-                    </button>
-                </span>
-
                 <!-- New direct_message -->
                 <span class="input-group-btn">
                     <button class="btn btn-outline-primary chat-btn" type="submit" title="Send direct message">

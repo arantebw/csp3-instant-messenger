@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class GroupMessage extends Model
 {
     public function comments() {
-    	return $this->hasMany(Thread::class);
+    	return $this->hasMany('App\Thread');
     }
 
     public function user() {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\User');
     }
 
     public function add_comment($comment) {
@@ -26,5 +26,9 @@ class GroupMessage extends Model
 
     public function channel() {
         return $this->belongsTo('App\Channel');
+    }
+
+    public function team() {
+        return $this->belongsTo('App\Team');
     }
 }

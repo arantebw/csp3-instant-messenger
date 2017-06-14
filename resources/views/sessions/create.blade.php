@@ -37,16 +37,12 @@
                         <i class="fa fa-user-plus" aria-hidden="true"></i>
                         Sign up
                     </a>
-                    <button class="btn btn-outline-primary btn-lg" type="submit">
-                        <i class="fa fa-home" aria-hidden="true"></i>
-                        Go to dashboard
-                    </button>
                 </div>
                 <div class="pull-right">
-                    <a href="#" class="btn btn-success btn-lg">
+                    <button class="btn btn-success btn-lg" type="submit">
                         <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                        Create or join a team
-                    </a>
+                        Go to your dashboard
+                    </button>
                 </div>
             </form>
         </div>
