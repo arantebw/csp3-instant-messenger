@@ -1,12 +1,30 @@
-# Reoslack
+# csp3-instant-messenger
 
-Reoslack (Replication of Slack) is an open-source web developers' communication tool.
+My third capstone project (reoslack) at Zuitt (formerly Tuitt) Coding Bootcamp.
 
-## License
-
-This product is licensed under [GNU General Public License version 3](https://github.com/arante/reoslack-linux/blob/71589108c0415b0b9c803e2ba6498f8cc2861bae/LICENSE.md).
+## Setup
+- Install the dependencies.
+```
+$ composer install
+```
+- Generate a new application key.
+```
+$ php artisan key:generate
+```
+- Create a copy of `.env.example` file as `.env`.
+```
+$ cat .env.example > .env
+```
+- Update the following environment variables.
+```
+DB_DATABASE=reoslack_db
+DB_USERNAME=root
+```
+- Execute the database migration.
+```
+$ php artisan migrate
+```
 
 ---
-Created by [Billy Wilson Arante](https://arante.github.io) of Mandaluyong City, Philippines
-
-Powered by [Tuitt Coding Bootcamp](http://tuitt.com/)
+Created by [Billy Arante](http://billyarante.com) of Mandaluyong City, Philippines  
+Powered by [Zuitt (formerly Tuitt) Coding Bootcamp](https://zuitt.co/)
